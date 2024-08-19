@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* customize sidebar scroll bar start*/
+/* width */
+.sidebar-scrollbar-customize::-webkit-scrollbar {
+  @apply w-0;
+}
+
+.sidebar-scrollbar-customize:hover::-webkit-scrollbar {
+  @apply w-[7px];
+}
+
+/* Track */
+.sidebar-scrollbar-customize::-webkit-scrollbar-track {
+  @apply bg-[#f1f1f1];
+}
+
+/* Handle */
+.sidebar-scrollbar-customize::-webkit-scrollbar-thumb {
+  @apply bg-[#a1a1a1];
+}
+
+/* Handle on hover */
+.sidebar-scrollbar-customize::-webkit-scrollbar-thumb:hover {
+  @apply cursor-pointer bg-[#777777];
+}
+
+/* customize sidebar scroll bar end */

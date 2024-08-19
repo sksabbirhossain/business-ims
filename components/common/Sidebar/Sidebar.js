@@ -1,28 +1,14 @@
-import Link from "next/link";
+import sidebarRoutes from "@/utils/sidebarRoutes";
+import MenuItems from "./MenuItems";
 
 const Sidebar = () => {
   return (
-    <aside className="fixed left-0 top-[45px] z-40 h-screen w-52 -translate-x-full transition-transform sm:translate-x-0">
-      <div className="h-full overflow-y-auto bg-gray-200 px-2 py-2">
+    <aside className="fixed left-0 top-[45px] z-40 h-screen w-52 -translate-x-full pb-[45px] transition-transform sm:translate-x-0">
+      <div className="sidebar-scrollbar-customize h-full overflow-y-auto bg-gray-200 py-2">
         <ul className="space-y-1 text-[15px] font-medium">
-          <li>
-            <Link
-              href="#"
-              className="group flex items-center rounded-md p-2 text-gray-900 hover:bg-gray-100"
-            >
-              <svg
-                className="h-5 w-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 21"
-              >
-                <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-              </svg>
-              <span className="ms-3">Dashboard</span>
-            </Link>
-          </li>
+          {sidebarRoutes?.map((item, i) => (
+            <MenuItems key={i} item={item} />
+          ))}
         </ul>
       </div>
     </aside>

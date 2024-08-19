@@ -1,9 +1,10 @@
 import defaultImage from "@/public/default.jpg";
 import Image from "next/image";
+import OpenSidebarButton from "./OpenSidebarButton";
 
 const Header = () => {
   return (
-    <div className="fixed top-0 flex h-[45px] w-full items-center bg-white px-2 shadow-sm shadow-gray-300 sm:px-4">
+    <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white px-2 shadow-sm shadow-gray-300 sm:px-4">
       <div className="flex h-full w-full items-center justify-between gap-2">
         {/* show info */}
         <div className="">
@@ -110,22 +111,7 @@ const Header = () => {
             </p>
           </div>
           {/* mobile open menu */}
-          <p className="group inline-block cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-green-600 hover:bg-green-50 sm:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6 group-hover:text-green-900"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
-              />
-            </svg>
-          </p>
+          <OpenSidebarButton />
         </div>
       </div>
     </div>

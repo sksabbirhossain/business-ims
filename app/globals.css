@@ -14,17 +14,17 @@
 
 /* Track */
 .sidebar-scrollbar-customize::-webkit-scrollbar-track {
-  @apply bg-[#f1f1f1];
+  @apply bg-white;
 }
 
 /* Handle */
 .sidebar-scrollbar-customize::-webkit-scrollbar-thumb {
-  @apply bg-[#a1a1a1];
+  @apply bg-green-200;
 }
 
 /* Handle on hover */
 .sidebar-scrollbar-customize::-webkit-scrollbar-thumb:hover {
-  @apply cursor-pointer bg-[#777777];
+  @apply cursor-pointer bg-green-700;
 }
 
 /* customize sidebar scroll bar end */

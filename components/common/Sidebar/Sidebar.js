@@ -4,7 +4,7 @@ import MenuItems from "./MenuItems";
 const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-[45px] z-40 h-screen w-52 -translate-x-full pb-[45px] transition-transform sm:translate-x-0">
-      <div className="sidebar-scrollbar-customize h-full overflow-y-auto bg-gray-200 py-2">
+      <div className="sidebar-scrollbar-customize h-full overflow-y-auto bg-white py-2 shadow-sm shadow-gray-400">
         <ul className="space-y-1 text-[15px] font-medium">
           {sidebarRoutes?.map((item, i) => (
             <MenuItems key={i} item={item} />

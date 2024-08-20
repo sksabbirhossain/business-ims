@@ -2,7 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* customize sidebar scroll bar start*/
+/* common css start */
+
+::-webkit-scrollbar {
+  @apply w-[7px];
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-green-900;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply cursor-pointer bg-green-800;
+}
+
+/* common css end */
+
+/* customize sidebar start*/
 /* width */
 .sidebar-scrollbar-customize::-webkit-scrollbar {
   @apply w-0;
@@ -27,4 +50,12 @@
   @apply cursor-pointer bg-green-700;
 }
 
-/* customize sidebar scroll bar end */
+.active {
+  @apply border-l-4 border-green-700 bg-green-100 text-black;
+}
+
+.active span:first-child {
+  @apply text-green-700;
+}
+
+/* customize sidebar end */

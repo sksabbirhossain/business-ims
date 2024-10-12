@@ -9,12 +9,12 @@ const Dashboard = () => {
       <TopSection />
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}
-        <div className="col-span-1 rounded bg-white p-4 shadow-sm shadow-green-400 lg:col-span-2">
+        <div className="col-span-1 rounded bg-white p-4 shadow-sm shadow-primary lg:col-span-2">
           <PurchaseSaleSection />
         </div>
 
         {/* recently added categories */}
-        <div className="col-span-1 space-y-4 rounded bg-white p-4 shadow-sm shadow-green-400">
+        <div className="col-span-1 space-y-4 rounded bg-white p-4 shadow-sm shadow-primary">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
               <h3 className="text-lg font-semibold capitalize leading-5">
@@ -61,7 +61,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -83,7 +83,7 @@ const Dashboard = () => {
                     />
                   </td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -105,7 +105,7 @@ const Dashboard = () => {
                     />
                   </td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -127,7 +127,7 @@ const Dashboard = () => {
                     />
                   </td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -149,7 +149,7 @@ const Dashboard = () => {
                     />
                   </td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -171,7 +171,7 @@ const Dashboard = () => {
                     />
                   </td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -200,13 +200,13 @@ const Dashboard = () => {
       </div>
 
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
-        {/* purchase and sales */}
-        <div className="col-span-1 rounded bg-white p-4 shadow-sm shadow-green-400">
+        {/* daily buy and sales */}
+        <div className="col-span-1 rounded bg-white p-4 shadow-sm shadow-primary">
           <DailyBuySaleSection />
         </div>
 
         {/* recently added products */}
-        <div className="col-span-1 space-y-4 rounded bg-white p-4 shadow-sm shadow-green-400 lg:col-span-2">
+        <div className="col-span-1 space-y-4 rounded bg-white p-4 shadow-sm shadow-primary lg:col-span-2">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
               <h3 className="text-lg font-semibold capitalize leading-5">
@@ -255,7 +255,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -277,7 +277,7 @@ const Dashboard = () => {
                   <td className="px-2 py-3 font-medium text-black">KG</td>
                   <td className="px-2 py-3 text-black">1293</td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -299,7 +299,7 @@ const Dashboard = () => {
                   <td className="px-2 py-3 font-medium text-black">KG</td>
                   <td className="px-2 py-3 text-black">1293</td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -321,7 +321,7 @@ const Dashboard = () => {
                   <td className="px-2 py-3 font-medium text-black">KG</td>
                   <td className="px-2 py-3 text-black">1293</td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
@@ -343,7 +343,7 @@ const Dashboard = () => {
                   <td className="px-2 py-3 font-medium text-black">KG</td>
                   <td className="px-2 py-3 text-black">1293</td>
                 </tr>
-                <tr className="border-b bg-white hover:bg-green-100">
+                <tr className="border-b bg-white hover:bg-primary hover:text-text">
                   <th
                     scope="row"
                     className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"

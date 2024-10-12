@@ -14,7 +14,7 @@ const Header = () => {
         </div>
         {/* searchbar */}
         <form action="" className="hidden md:block">
-          <div className="group flex w-full items-center rounded-lg border-2 focus-within:border-green-600">
+          <div className="group flex w-full items-center rounded-lg border-2 focus-within:border-primary">
             <input
               type="search"
               placeholder="Search by categories..."
@@ -40,7 +40,7 @@ const Header = () => {
         </form>
         {/* left info */}
         <div className="flex items-center gap-x-2 md:gap-x-4">
-          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-green-600 hover:bg-green-50">
+          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-primary hover:bg-green-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -56,7 +56,7 @@ const Header = () => {
               />
             </svg>
           </p>
-          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-green-600 hover:bg-green-50">
+          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-primary hover:bg-green-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -72,7 +72,7 @@ const Header = () => {
               />
             </svg>
           </p>
-          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-green-600 hover:bg-green-50">
+          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-primary hover:bg-green-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

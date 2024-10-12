@@ -18,11 +18,11 @@ const PurchaseSaleSection = () => {
         </div>
         <div className="flex flex-wrap items-center gap-3 lg:flex-nowrap">
           <p className="flex items-center gap-1 text-sm font-medium">
-            <span className="inline-block h-3 w-3 rounded-full bg-green-600 capitalize"></span>
+            <span className="inline-block h-3 w-3 rounded-full bg-primary capitalize"></span>
             Sales
           </p>
           <p className="flex items-center gap-1 text-sm font-medium">
-            <span className="inline-block h-3 w-3 rounded-full bg-red-600 capitalize"></span>
+            <span className="inline-block h-3 w-3 rounded-full bg-red-400 capitalize"></span>
             purchase
           </p>
           <DatePicker

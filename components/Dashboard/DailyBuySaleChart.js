@@ -7,7 +7,7 @@ const data = [
   { name: "Sales", value: 92100 },
 ];
 
-const COLORS = ["#da0505", "green"];
+const COLORS = ["#f87171", "#15B392"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({

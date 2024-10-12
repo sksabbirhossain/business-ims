@@ -3,7 +3,7 @@ import React from "react";
 const TopSection = () => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-green-400 hover:bg-green-100">
+      <div className="hover:text-text flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary">
         <div className="rounded-full bg-red-400/50 p-2 ring-2 ring-red-400/60">
           {/* icons */}
           <svg
@@ -41,11 +41,11 @@ const TopSection = () => {
             </span>
             3,1992.00
           </h1>
-          <p className="text-[14px] font-normal capitalize">total purchase</p>
+          <p className="text-[14px] font-medium capitalize">total purchase</p>
         </div>
       </div>
 
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-green-400 hover:bg-green-100">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
         <div className="rounded-full bg-green-100 p-2 ring-2 ring-green-200">
           {/* icons */}
           <svg
@@ -85,7 +85,7 @@ const TopSection = () => {
           <p className="text-[14px] font-normal capitalize">total sales</p>
         </div>
       </div>
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-green-400 hover:bg-green-100">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
         <div className="rounded-full bg-yellow-100 p-2 ring-2 ring-yellow-200">
           {/* icons */}
           <svg
@@ -127,7 +127,7 @@ const TopSection = () => {
           <p className="text-[14px] font-normal capitalize">total profit</p>
         </div>
       </div>
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-green-400 hover:bg-green-100">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
         <div className="rounded-full bg-red-100 p-2 ring-2 ring-red-300">
           {/* icons */}
           <svg

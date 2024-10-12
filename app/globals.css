@@ -42,16 +42,16 @@
 
 /* Handle */
 .sidebar-scrollbar-customize::-webkit-scrollbar-thumb {
-  @apply bg-green-200;
+  @apply bg-primary;
 }
 
 /* Handle on hover */
 .sidebar-scrollbar-customize::-webkit-scrollbar-thumb:hover {
-  @apply cursor-pointer bg-green-700;
+  @apply cursor-pointer bg-secondary;
 }
 
 .active {
-  @apply border-l-4 border-green-700 bg-green-100 text-black;
+  @apply border-l-4 border-green-700 bg-primary text-white;
 }
 
 .active span:first-child {

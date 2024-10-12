@@ -3,7 +3,7 @@ import Sidebar from "@/components/common/Sidebar/Sidebar";
 
 export default function RootLayout({ children }) {
   return (
-    <div className="h-full min-h-screen w-full bg-gray-100">
+    <div className="bg-bg h-full min-h-screen w-full">
       <Header />
       <Sidebar />
       <div className="pt-[45px] sm:ml-52">

@@ -54,8 +54,8 @@ const PurchaseSalesChart = () => (
       <YAxis />
       <Tooltip />
       {/* <Legend /> */}
-      <Bar dataKey="Sale" fill="green" barSize={10} shape={<CustomBar />} />
-      <Bar dataKey="Purchase" fill="red" barSize={10} shape={<CustomBar />} />
+      <Bar dataKey="Sale" fill="#15B392" barSize={10} shape={<CustomBar />} />
+      <Bar dataKey="Purchase" fill="#f87171" barSize={10} shape={<CustomBar />} />
     </BarChart>
   </ResponsiveContainer>
 );

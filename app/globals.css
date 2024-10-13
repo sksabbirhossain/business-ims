@@ -58,4 +58,8 @@
   @apply text-green-700;
 }
 
+.active-menu {
+  @apply  bg-primary text-white;
+}
+
 /* customize sidebar end */

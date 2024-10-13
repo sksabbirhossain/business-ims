@@ -11,7 +11,7 @@ const Sidebar = () => {
     <div>
       {menuOpen && (
         <div
-          className="fixed top-[45px] z-30 h-screen w-full bg-black/50 block sm:hidden"
+          className="fixed top-[45px] z-30 block h-screen w-full bg-black/50 sm:hidden"
           onClick={mobileMenuHandler}
         />
       )}

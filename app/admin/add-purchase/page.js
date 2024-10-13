@@ -6,7 +6,7 @@ import PageHeader from "@/components/common/PageHeader/PageHeader";
 import SelectInput from "@/components/common/SelectInput/SelectInput";
 import { useState } from "react";
 
-const AddProduct = () => {
+const AddPurchase = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -29,10 +29,10 @@ const AddProduct = () => {
   return (
     <section className="space-y-4 md:space-y-6">
       {/* add page header */}
-      <PageHeader headText="add product" />
+      <PageHeader headText="add purchase" />
 
       {/* add product table */}
-      <div className="rounded-md bg-white px-2 py-5 shadow-sm shadow-gray-300">
+      <div className="rounded-md bg-white px-2 py-5 shadow-sm shadow-primary">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <div className="space-y-4">
@@ -106,7 +106,7 @@ const AddProduct = () => {
                 />
 
                 <SelectInput
-                  label="Supplier Name"
+                  label="Supplier Info"
                   name="supplier"
                   onChange={(e) => setSupplier(e.target.value)}
                 >
@@ -164,4 +164,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default AddPurchase;

@@ -1,22 +1,81 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const MenuItems = ({ item }) => {
   const pathName = usePathname();
+  const [dropDown, setDropDown] = useState(false);
 
-  return (
-    <li>
-      <Link
-        href={item?.path}
-        className={`text-text group flex items-center rounded-sm p-2 px-3 hover:border-l-4 hover:border-green-700 hover:bg-secondary hover:text-white ${pathName === item?.path ? "active" : ""}`}
+  //dropdown menu open
+  const handleDropDownMenu = () => {
+    setDropDown((prv) => !prv);
+  };
+
+  return item?.menu?.length >= 0 ? (
+    <li
+      className={`cursor-pointer hover:border-l-4 hover:border-green-700 ${dropDown ? "border-l-4 border-green-700 bg-secondary/50" : ""}`}
+    >
+      <div
+        onClick={() => handleDropDownMenu()}
+        className="flex items-center justify-between text-text hover:bg-secondary hover:text-white"
       >
-        <span className="text-text/50 h-5 w-5 transition duration-75 group-hover:text-green-700">
-          {item?.icon}
+        <p className={`group flex items-center rounded-sm p-2 px-3`}>
+          <span className="h-5 w-5 text-text/50 transition duration-75 group-hover:text-green-700">
+            {item?.icon}
+          </span>
+          <span className={`${dropDown ? "text-text/90" : ""} ms-2`}>
+            {item?.name}
+          </span>
+        </p>
+        <span className="pe-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
+            />
+          </svg>
         </span>
-        <span className="ms-2">{item?.name}</span>
-      </Link>
+      </div>
+
+      {/* dropdown menu */}
+      {item?.menu?.length >= 0 && (
+        <ul className={`${dropDown ? "" : "hidden"} `}>
+          {item.menu.map((item, i) => (
+            <li key={i} className="border-t-[1px] border-white/30">
+              <Link
+                href={item?.path}
+                className={`group flex items-center rounded-sm p-2 px-3 capitalize text-text/90 hover:bg-primary hover:text-white ${pathName === item?.path ? "active-menu" : ""}`}
+              >
+                <span className={`ms-7`}>{item?.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  ) : (
+    <li>
+      <div>
+        <Link
+          href={item?.path}
+          className={`group flex items-center rounded-sm p-2 px-3 text-text hover:bg-secondary hover:text-white ${pathName === item?.path ? "active" : ""}`}
+        >
+          <span className="h-5 w-5 text-text/50 transition duration-75 group-hover:text-green-700">
+            {item?.icon}
+          </span>
+          <span className="ms-2">{item?.name}</span>
+        </Link>
+      </div>
     </li>
   );
 };

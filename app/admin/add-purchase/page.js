@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/common/Button/Button";
+import Container from "@/components/common/Container/Container";
 import FormInput from "@/components/common/FormInput/FormInput";
 import TextArea from "@/components/common/FormInput/TextArea";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
@@ -27,7 +28,7 @@ const AddPurchase = () => {
   };
 
   return (
-    <section className="space-y-4 md:space-y-6">
+    <Container>
       {/* add page header */}
       <PageHeader headText="add purchase" />
 
@@ -160,7 +161,7 @@ const AddPurchase = () => {
           </div>
         </form>
       </div>
-    </section>
+    </Container>
   );
 };
 

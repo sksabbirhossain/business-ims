@@ -32,12 +32,16 @@ const sidebarRoutes = [
     ),
     menu: [
       {
-        name: "all Purchase",
-        path: "/admin/all-purchase",
+        name: "all sales",
+        path: "/admin/all-sales",
       },
       {
-        name: "add Purchase",
-        path: "/admin/add-purchase",
+        name: "return sales",
+        path: "/admin/return-sales",
+      },
+      {
+        name: "add sales",
+        path: "/admin/add-sales",
       },
     ],
   },

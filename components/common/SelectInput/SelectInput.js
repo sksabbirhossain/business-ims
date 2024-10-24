@@ -9,7 +9,7 @@ const SelectInput = ({ children, label, name, ...rest }) => {
 
       <select
         name={name}
-        className="rounded-[3px] bg-white px-1 py-2 ring-2 ring-primary focus:outline-none"
+        className="rounded-[3px] bg-white px-1.5 py-2 text-sm ring-1 ring-primary focus:outline-none"
         {...rest}
       >
         {children}

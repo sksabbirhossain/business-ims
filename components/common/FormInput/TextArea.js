@@ -9,7 +9,7 @@ const TextArea = ({ label, type, name, placeholder, value, ...rest }) => {
         placeholder={placeholder}
         value={value}
         {...rest}
-        className="rounded-[3px] px-1 py-2 ring-2 ring-primary focus:outline-none"
+        className="rounded-[3px] px-1.5 py-2 text-sm ring-1 ring-primary focus:outline-none"
       ></textarea>
     </div>
   );

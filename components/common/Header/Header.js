@@ -4,7 +4,7 @@ import OpenSidebarButton from "./OpenSidebarButton";
 
 const Header = () => {
   return (
-    <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white px-2 shadow-sm shadow-gray-300 sm:px-4">
+    <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white/70 px-2 shadow-sm shadow-gray-300 backdrop-blur sm:px-4">
       <div className="flex h-full w-full items-center justify-between gap-2">
         {/* show info */}
         <div className="">

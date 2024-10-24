@@ -5,7 +5,8 @@ import Link from "next/link";
 
 const Dashboard = () => {
   return (
-    <div className="space-y-4 md:space-y-6">
+    <div className="relative z-10 space-y-4 md:space-y-6">
+      <div className="absolute right-1 top-2 -z-10 h-[300px] w-[200px] max-w-full bg-gradient-to-r from-primary to-secondary blur-[99px]" />
       <TopSection />
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}

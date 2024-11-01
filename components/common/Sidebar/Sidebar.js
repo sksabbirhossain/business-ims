@@ -23,6 +23,31 @@ const Sidebar = () => {
             {sidebarRoutes?.map((item, i) => (
               <MenuItems key={i} item={item} />
             ))}
+
+            {/* logout button */}
+            <li>
+              <button
+                className={`capitalize w-full group flex items-center rounded-sm p-2 px-3 text-text hover:bg-secondary hover:text-white`}
+              >
+                <span className="h-5 w-5 text-text/50 transition duration-75 group-hover:text-green-700">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                    />
+                  </svg>
+                </span>
+                <span className="ms-2">log out</span>
+              </button>
+            </li>
           </ul>
         </div>
       </aside>

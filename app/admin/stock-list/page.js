@@ -7,7 +7,11 @@ const StockList = () => {
   return (
     <Container>
       {/* add page header */}
-      <PageHeader headText="stcok list" />
+      <PageHeader
+        headText="stcok list"
+        link="/admin/add-stock"
+        linkName="add stcok"
+      />
 
       {/* all stock list table */}
       <div class="relative overflow-x-auto rounded-md shadow-sm shadow-primary">

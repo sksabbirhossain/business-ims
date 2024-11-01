@@ -1,7 +1,7 @@
 const TextArea = ({ label, type, name, placeholder, value, ...rest }) => {
   return (
     <div className="flex flex-col space-y-2">
-      <label htmlFor="" className="text-base font-medium capitalize">
+      <label htmlFor="" className="text-base font-normal capitalize">
         {label}
       </label>
       <textarea

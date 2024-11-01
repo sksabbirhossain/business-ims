@@ -3,7 +3,7 @@ import React from "react";
 const SelectInput = ({ children, label, name, ...rest }) => {
   return (
     <div className="flex flex-col space-y-2">
-      <label htmlFor="" className="text-base font-medium capitalize">
+      <label htmlFor="" className="text-base font-normal capitalize">
         {label}
       </label>
 

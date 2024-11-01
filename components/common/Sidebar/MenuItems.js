@@ -54,7 +54,7 @@ const MenuItems = ({ item }) => {
             <li key={i} className="border-t-[1px] border-white/30">
               <Link
                 href={item?.path}
-                className={`group flex items-center rounded-sm p-2 px-3 capitalize text-text/90 hover:bg-primary hover:text-white ${pathName === item?.path ? "active-menu" : ""}`}
+                className={`group flex items-center rounded-sm px-5 py-2 capitalize text-text/90 before:absolute before:left-9 before:h-2 before:w-2 before:rounded-full hover:bg-primary hover:text-white ${pathName === item?.path ? "active-menu before:bg-white" : "before:bg-green-900"}`}
               >
                 <span className={`ms-7`}>{item?.name}</span>
               </Link>

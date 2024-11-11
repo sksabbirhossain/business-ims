@@ -1,6 +1,7 @@
-import DailyBuySaleSection from "@/components/Dashboard/DailyBuySaleSection";
-import PurchaseSaleSection from "@/components/Dashboard/PurchaseSaleSection";
-import TopSection from "@/components/Dashboard/TopSection";
+
+import DailyBuySaleSection from "@/components/admin/Dashboard/DailyBuySaleSection";
+import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSection";
+import TopSection from "@/components/admin/Dashboard/TopSection";
 import Link from "next/link";
 
 const Dashboard = () => {

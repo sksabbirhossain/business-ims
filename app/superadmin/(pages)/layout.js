@@ -1,5 +1,6 @@
-import Header from "@/components/admin/Header/Header";
-import Sidebar from "@/components/admin/Sidebar/Sidebar";
+import Header from "@/components/superAdmin/Header/Header";
+import Sidebar from "@/components/superAdmin/Sidebar/Sidebar";
+
 
 
 export default function RootLayout({ children }) {

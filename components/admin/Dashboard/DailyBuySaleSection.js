@@ -1,5 +1,5 @@
-import React from "react";
 import DailyBuySaleChart from "./DailyBuySaleChart";
+
 
 const DailyBuySaleSection = () => {
   return (

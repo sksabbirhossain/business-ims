@@ -1,6 +1,10 @@
 "use client";
+import { superAdminLogin } from "@/actions/superAdmin/auth/superAdminAuthActions";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
+import { auth } from "@/utils/superAdmin/superAdminAuth";
+// import { signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -21,19 +25,13 @@ const SuperAdminLogin = () => {
     setLoading(true);
     setError({});
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/login`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify({ email, password }),
-        },
-      );
-      const data = await res.json();
-      if (data?._id) {
+      const data = await signIn("credentials", {
+        redirect: false, // Prevent redirect on success
+        email,
+        password,
+      });
+      // console.log("this page data", data);
+      if (!data?.error) {
         setLoading(false);
         toast.success("Login Successful!");
         router.push("/superadmin/dashboard");

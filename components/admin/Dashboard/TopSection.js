@@ -3,7 +3,7 @@ import React from "react";
 const TopSection = () => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <div className="hover:text-text flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
         <div className="rounded-full bg-red-400/50 p-2 ring-2 ring-red-400/60">
           {/* icons */}
           <svg
@@ -32,8 +32,8 @@ const TopSection = () => {
                 <text
                   x="0"
                   y="20"
-                  font-size="24"
-                  font-family="Arial, Helvetica, sans-serif"
+                  fontSize="24"
+                  fontFamily="Arial, Helvetica, sans-serif"
                 >
                   ৳
                 </text>
@@ -73,8 +73,8 @@ const TopSection = () => {
                 <text
                   x="0"
                   y="20"
-                  font-size="24"
-                  font-family="Arial, Helvetica, sans-serif"
+                  fontSize="24"
+                  fontFamily="Arial, Helvetica, sans-serif"
                 >
                   ৳
                 </text>
@@ -115,8 +115,8 @@ const TopSection = () => {
                 <text
                   x="0"
                   y="20"
-                  font-size="24"
-                  font-family="Arial, Helvetica, sans-serif"
+                  fontSize="24"
+                  fontFamily="Arial, Helvetica, sans-serif"
                 >
                   ৳
                 </text>
@@ -157,8 +157,8 @@ const TopSection = () => {
                 <text
                   x="0"
                   y="20"
-                  font-size="24"
-                  font-family="Arial, Helvetica, sans-serif"
+                  fontSize="24"
+                  fontFamily="Arial, Helvetica, sans-serif"
                 >
                   ৳
                 </text>

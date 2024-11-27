@@ -1,10 +1,10 @@
-
 import DailyBuySaleSection from "@/components/admin/Dashboard/DailyBuySaleSection";
 import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSection";
 import TopSection from "@/components/admin/Dashboard/TopSection";
+import { auth } from "@/utils/superAdmin/superAdminAuth";
 import Link from "next/link";
 
-const Dashboard = () => {
+const Dashboard = async () => {
   return (
     <div className="relative z-10 space-y-4 md:space-y-6">
       <div className="absolute right-1 top-2 -z-10 h-[300px] w-[200px] max-w-full bg-gradient-to-r from-primary to-secondary blur-[99px]" />

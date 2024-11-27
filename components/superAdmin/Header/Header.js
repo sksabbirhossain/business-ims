@@ -1,8 +1,14 @@
 import defaultImage from "@/public/default.jpg";
+import { auth } from "@/utils/superAdmin/superAdminAuth";
 import Image from "next/image";
+import LogoutButton from "./LogoutButton";
 import OpenSidebarButton from "./OpenSidebarButton";
 
-const Header = () => {
+const Header = async () => {
+  const session = await auth();
+  const userInfo = session?.user || null;
+  console.log(userInfo);
+
   return (
     <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white/70 px-2 shadow-sm shadow-gray-300 backdrop-blur sm:px-4">
       <div className="flex h-full w-full items-center justify-between gap-2">
@@ -93,23 +99,32 @@ const Header = () => {
               />
             </svg>
           </p>
-          <div className="group flex cursor-pointer select-none items-center gap-x-2">
-            <div className="h-8 w-8">
-              <Image
-                src={defaultImage}
-                alt="default profile picture"
-                width={100}
-                height={100}
-                className="rounded-full ring-2 ring-gray-300 group-hover:ring-green-600"
-              />
+          {userInfo?._id && (
+            <div className="group relative flex cursor-pointer select-none items-center gap-x-2">
+              <div className="h-8 w-8">
+                <Image
+                  src={userInfo?.picture || defaultImage}
+                  alt="default profile picture"
+                  width={100}
+                  height={100}
+                  className="rounded-full ring-2 ring-gray-300 group-hover:ring-green-600"
+                />
+              </div>
+              <p className="hidden flex-col leading-4 md:flex">
+                <span className="text-nowrap text-[14px] font-semibold uppercase">
+                  {userInfo?.name}
+                </span>
+                <span className="text-[14px] font-normal capitalize">
+                  {userInfo?.role}
+                </span>
+              </p>
+
+              {/* logout button */}
+              <div className="absolute top-9 right-0 hidden group-hover:block">
+                <LogoutButton />
+              </div>
             </div>
-            <p className="hidden flex-col leading-4 md:flex">
-              <span className="text-nowrap text-[14px] font-semibold uppercase">
-                Sk Sabbir Hossain
-              </span>
-              <span className="text-[14px] font-normal capitalize">Admin</span>
-            </p>
-          </div>
+          )}
           {/* mobile open menu */}
           <OpenSidebarButton />
         </div>

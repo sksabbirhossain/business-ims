@@ -7,7 +7,6 @@ import OpenSidebarButton from "./OpenSidebarButton";
 const Header = async () => {
   const session = await auth();
   const userInfo = session?.user || null;
-  console.log(userInfo);
 
   return (
     <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white/70 px-2 shadow-sm shadow-gray-300 backdrop-blur sm:px-4">
@@ -120,7 +119,7 @@ const Header = async () => {
               </p>
 
               {/* logout button */}
-              <div className="absolute top-9 right-0 hidden group-hover:block">
+              <div className="absolute right-0 top-9 hidden group-hover:block">
                 <LogoutButton />
               </div>
             </div>

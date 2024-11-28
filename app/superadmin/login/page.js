@@ -1,10 +1,8 @@
 "use client";
-import { superAdminLogin } from "@/actions/superAdmin/auth/superAdminAuthActions";
+
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
-import { auth } from "@/utils/superAdmin/superAdminAuth";
-// import { signIn } from "next-auth/react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -19,25 +17,40 @@ const SuperAdminLogin = () => {
 
   const router = useRouter();
 
+  const redirectUrl = "";
+
+  const { data: session } = useSession();
+
+  if (session?.user?._id) {
+    return router.push("/superadmin/dashboard");
+  }
+
   //handle submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError({});
     try {
-      const data = await signIn("credentials", {
-        redirect: false, // Prevent redirect on success
+      const data = await signIn("superadmin-login", {
+        redirect: false,
         email,
         password,
       });
       // console.log("this page data", data);
-      if (!data?.error) {
+
+      if (data?.error) {
+        setLoading(false);
+        setError({
+          errors: {
+            common: {
+              msg: "Somethng went wrong!",
+            },
+          },
+        });
+      } else {
         setLoading(false);
         toast.success("Login Successful!");
         router.push("/superadmin/dashboard");
-      } else {
-        setLoading(false);
-        setError(data);
       }
     } catch (err) {
       setLoading(false);

@@ -3,7 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 //cll refresh token
 async function refreshTokenHandler(token) {
-  console.log("refresh token", token);
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/me`, {
     method: "POST",
     headers: {
@@ -32,7 +31,10 @@ async function refreshTokenHandler(token) {
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
+    // login for superAdmin
     CredentialsProvider({
+      id: "superadmin-login", // Unique ID for this provider
+      name: "SuperAdmin",
       async authorize(credentials) {
         try {
           const res = await fetch(
@@ -48,6 +50,43 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           const user = await res.json();
 
+          if (!user?._id && user?.errors) {
+            return user;
+          }
+          // If no error and we have user data, return it
+          if (user?._id && user?.status === 200) {
+            return user;
+          }
+          // Return null if user data could not be retrieved
+          return null;
+        } catch (er) {
+          console.log("err");
+        }
+      },
+    }),
+
+    //login as a store admin
+    CredentialsProvider({
+      id: "storeAdmin-login", // Unique ID for this provider
+      name: "Admin",
+      async authorize(credentials) {
+        try {
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/login`,
+            {
+              method: "POST",
+              body: JSON.stringify(credentials),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            },
+          );
+
+          const user = await res.json();
+
+          if (!user?._id && user?.errors) {
+            return user;
+          }
           // If no error and we have user data, return it
           if (user?._id && user?.status === 200) {
             return user;
@@ -61,6 +100,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      if (user?.errors) {
+        throw new Error(JSON.stringify(user));
+      }
+      return true;
+    },
     async jwt({ token, user, trigger, session }) {
       if (trigger === "update") {
         return { ...token, ...session.user };

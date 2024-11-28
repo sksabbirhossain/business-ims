@@ -1,12 +1,23 @@
+"use client";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
+  if (session?.user?._id) {
+    return router.push("/admin/dashboard");
+  }
+
   return (
     <div className="flex h-screen w-full items-center justify-center bg-bg px-2 sm:px-0">
       <div className="h-auto w-full max-w-[350px]">
-        <div className="space-y-6 bg-white px-4 rounded-md shadow-md w-full py-10">
+        <div className="w-full space-y-6 rounded-md bg-white px-4 py-10 shadow-md">
           <div className="space-y-1 text-center">
             <p className="text-lg font-semibold capitalize text-text">
               welcome back!

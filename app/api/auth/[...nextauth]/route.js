@@ -1,3 +1,3 @@
-import { handlers } from "@/utils/superAdmin/superAdminAuth";
+import { handlers } from "@/utils/authOptions";
 
 export const { GET, POST } = handlers;

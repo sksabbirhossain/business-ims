@@ -1,7 +1,7 @@
 "use client";
 
 import useMobileMenu from "@/contexts/mobileMenuContext";
-import sidebarRoutes from "@/utils/sidebarRoutes";
+import sidebarRoutes from "@/utils/admin/sidebarRoutes";
 import MenuItems from "./MenuItems";
 
 const Sidebar = () => {

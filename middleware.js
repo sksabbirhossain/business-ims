@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "./utils/superAdmin/superAdminAuth";
+import { auth } from "./utils/authOptions";
 
 export async function middleware(request) {
   const { nextUrl } = request;
@@ -7,8 +7,7 @@ export async function middleware(request) {
   const isAuthenticated = !!session?.user;
 
   const isPublic =
-    nextUrl.pathname.endsWith("/") ||
-    nextUrl.pathname.endsWith("/superadmin/login");
+    nextUrl.pathname === "/" || nextUrl.pathname.endsWith("/superadmin/login");
 
   if (isAuthenticated === false && !isPublic) {
     return NextResponse.redirect(new URL("/", nextUrl));
@@ -20,7 +19,7 @@ export async function middleware(request) {
     isAuthenticated &&
     !isPublic &&
     isAdmin &&
-    session?.user?.role !== "admin"
+    session?.user?.role !== "storeAdmin"
   ) {
     return NextResponse.redirect(new URL("/", nextUrl));
   }

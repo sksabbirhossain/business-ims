@@ -1,5 +1,5 @@
 import defaultImage from "@/public/default.jpg";
-import { auth } from "@/utils/superAdmin/superAdminAuth";
+import { auth } from "@/utils/authOptions";
 import Image from "next/image";
 import LogoutButton from "./LogoutButton";
 import OpenSidebarButton from "./OpenSidebarButton";

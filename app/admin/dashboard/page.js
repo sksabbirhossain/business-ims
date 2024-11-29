@@ -1,7 +1,7 @@
 import DailyBuySaleSection from "@/components/admin/Dashboard/DailyBuySaleSection";
 import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSection";
 import TopSection from "@/components/admin/Dashboard/TopSection";
-import { auth } from "@/utils/superAdmin/superAdminAuth";
+import { auth } from "@/utils/authOptions";
 import Link from "next/link";
 
 const Dashboard = async () => {

@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 //cll refresh token
 async function refreshTokenHandler(token) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/me`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/refresh/me`, {
     method: "POST",
     headers: {
       Authorization: `Refresh ${token.refreshToken}`,
@@ -72,7 +72,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         try {
           const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/login`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/admin/login`,
             {
               method: "POST",
               body: JSON.stringify(credentials),
@@ -99,6 +99,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       if (user?.errors) {

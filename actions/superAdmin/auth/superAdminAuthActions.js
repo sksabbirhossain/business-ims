@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/utils/superAdmin/superAdminAuth";
+import { signIn } from "@/utils/authOptions";
 
 export const superAdminLogin = async (formData) => {
   try {

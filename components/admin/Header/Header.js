@@ -1,17 +1,33 @@
+import LogoutButton from "@/components/common/Header/LogoutButton";
 import defaultImage from "@/public/default.jpg";
+import defaultLogo from "@/public/defaultLogo.png";
+import { auth } from "@/utils/authOptions";
 import Image from "next/image";
+import Link from "next/link";
 import OpenSidebarButton from "./OpenSidebarButton";
 
-const Header = () => {
+const Header = async () => {
+  const session = await auth();
+  const userInfo = session?.user || null;
+
   return (
     <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white/70 px-2 shadow-sm shadow-gray-300 backdrop-blur sm:px-4">
       <div className="flex h-full w-full items-center justify-between gap-2">
         {/* show info */}
-        <div className="">
-          <h1 className="text-nowrap text-lg font-semibold capitalize">
-            Demo shop
-          </h1>
-        </div>
+        <Link href="/admin/dashboard">
+          <div className="flex cursor-pointer select-none items-center gap-2">
+            <Image
+              src={userInfo?.picture ? userInfo?.picture : defaultLogo}
+              alt="store logo"
+              width={100}
+              height={100}
+              className="h-[35px] w-[35px] rounded-full object-cover ring-1 ring-secondary"
+            />
+            <h1 className="hidden text-nowrap text-lg font-semibold uppercase sm:block">
+              {userInfo?.storeName.substr(0, 12)}
+            </h1>
+          </div>
+        </Link>
         {/* searchbar */}
         <form action="" className="hidden md:block">
           <div className="group flex w-full items-center rounded-lg border-2 focus-within:border-primary">
@@ -93,23 +109,32 @@ const Header = () => {
               />
             </svg>
           </p>
-          <div className="group flex cursor-pointer select-none items-center gap-x-2">
-            <div className="h-8 w-8">
-              <Image
-                src={defaultImage}
-                alt="default profile picture"
-                width={100}
-                height={100}
-                className="rounded-full ring-2 ring-gray-300 group-hover:ring-green-600"
-              />
+          {userInfo?._id && (
+            <div className="group relative flex cursor-pointer select-none items-center gap-x-2">
+              <div className="h-8 w-8">
+                <Image
+                  src={userInfo?.picture || defaultImage}
+                  alt="default profile picture"
+                  width={100}
+                  height={100}
+                  className="rounded-full ring-2 ring-gray-300 group-hover:ring-green-600"
+                />
+              </div>
+              <p className="hidden flex-col leading-4 md:flex">
+                <span className="text-nowrap text-[14px] font-semibold uppercase">
+                  {userInfo?.ownerName}
+                </span>
+                <span className="text-[12px] font-medium uppercase text-black/80">
+                  {userInfo?.role}
+                </span>
+              </p>
+
+              {/* logout button */}
+              <div className="absolute right-0 top-9 hidden group-hover:block">
+                <LogoutButton link={"/admin/profile"} />
+              </div>
             </div>
-            <p className="hidden flex-col leading-4 md:flex">
-              <span className="text-nowrap text-[14px] font-semibold uppercase">
-                Sk Sabbir Hossain
-              </span>
-              <span className="text-[14px] font-normal capitalize">Admin</span>
-            </p>
-          </div>
+          )}
           {/* mobile open menu */}
           <OpenSidebarButton />
         </div>

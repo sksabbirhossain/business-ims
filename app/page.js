@@ -145,10 +145,7 @@ export default function Home() {
           <div>
             <p className="text-center text-sm capitalize text-text">
               forget your password? please{" "}
-              <Link
-                href="/admin/dashboard"
-                className="font-medium text-primary"
-              >
+              <Link href="/contact-us" className="font-medium text-primary">
                 Contact us!
               </Link>
             </p>

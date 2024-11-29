@@ -1,7 +1,7 @@
 import defaultImage from "@/public/default.jpg";
 import { auth } from "@/utils/authOptions";
 import Image from "next/image";
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "../../common/Header/LogoutButton";
 import OpenSidebarButton from "./OpenSidebarButton";
 
 const Header = async () => {

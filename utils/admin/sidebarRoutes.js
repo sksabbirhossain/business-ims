@@ -46,6 +46,30 @@ const sidebarRoutes = [
     ],
   },
   {
+    name: "Category",
+    path: "/admin/category",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="size-5"
+      >
+        <path d="M6 3a3 3 0 0 0-3 3v2.25a3 3 0 0 0 3 3h2.25a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H6ZM15.75 3a3 3 0 0 0-3 3v2.25a3 3 0 0 0 3 3H18a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3h-2.25ZM6 12.75a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h2.25a3 3 0 0 0 3-3v-2.25a3 3 0 0 0-3-3H6ZM17.625 13.5a.75.75 0 0 0-1.5 0v2.625H13.5a.75.75 0 0 0 0 1.5h2.625v2.625a.75.75 0 0 0 1.5 0v-2.625h2.625a.75.75 0 0 0 0-1.5h-2.625V13.5Z" />
+      </svg>
+    ),
+    menu: [
+      {
+        name: "Category List",
+        path: "/admin/category-list",
+      },
+      {
+        name: "add category",
+        path: "/admin/add-category",
+      },
+    ],
+  },
+  {
     name: "Purchase",
     path: "/admin/purchase",
     icon: (
@@ -195,6 +219,16 @@ const sidebarRoutes = [
         <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
       </svg>
     ),
+    menu: [
+      {
+        name: "Customer List",
+        path: "/admin/customer-list",
+      },
+      {
+        name: "add Customer",
+        path: "/admin/add-customer",
+      },
+    ],
   },
   {
     name: "Suppliers",
@@ -212,6 +246,39 @@ const sidebarRoutes = [
         />
       </svg>
     ),
+    menu: [
+      {
+        name: "Suppliers List",
+        path: "/admin/suppliers-list",
+      },
+      {
+        name: "add Suppliers",
+        path: "/admin/add-suppliers",
+      },
+    ],
+  },
+  {
+    name: "Employee",
+    path: "/admin/Employee",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
+      </svg>
+    ),
+    menu: [
+      {
+        name: "Employee List",
+        path: "/admin/employee-list",
+      },
+      {
+        name: "add Employee",
+        path: "/admin/add-employee",
+      },
+    ],
   },
   {
     name: "Account Head",
@@ -242,19 +309,6 @@ const sidebarRoutes = [
           clipRule="evenodd"
         />
         <path d="M12 7.875a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Employee",
-    path: "/admin/Employee",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
-        <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
       </svg>
     ),
   },

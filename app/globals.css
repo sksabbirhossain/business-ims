@@ -59,7 +59,7 @@
 }
 
 .active-menu {
-  @apply  bg-primary text-white;
+  @apply  bg-teal-600 text-white;
 }
 
 .pagination-active{

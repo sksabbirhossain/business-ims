@@ -11,7 +11,6 @@ export const superAdminLogin = async (formData) => {
     });
     return res;
   } catch (error) {
-    console.error("superAdminLogin error:", error);
     throw error;
   }
 };

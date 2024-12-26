@@ -14,3 +14,17 @@ export const getCategories = async () => {
     console.log(e.message);
   }
 };
+
+//get a category
+export const getCategory = async (categoryId) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category/${categoryId}`,
+      // { next: { revalidate: process.env.REVALIDATE_ACTION_TIME } },
+    );
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};

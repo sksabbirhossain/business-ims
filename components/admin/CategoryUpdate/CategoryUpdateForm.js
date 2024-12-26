@@ -4,10 +4,10 @@ import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import TextArea from "@/components/common/FormInput/TextArea";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const AddCategoryForm = () => {
+const CategoryUpdateForm = ({ category }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [picture, SetPicture] = useState(null);
@@ -15,6 +15,12 @@ const AddCategoryForm = () => {
   const [errors, setErrors] = useState({});
 
   const { data: session } = useSession();
+
+  // set category default value
+  useEffect(() => {
+    setName(category.data.name);
+    setDescription(category?.data?.description);
+  }, [category]);
 
   //handle form submit
   const handleSubmit = async (e) => {
@@ -133,7 +139,7 @@ const AddCategoryForm = () => {
               </svg>
             </p>
           ) : (
-            "Add"
+            "UPDATE"
           )}
         </Button>
         {errors?.errors?.common && (
@@ -146,4 +152,4 @@ const AddCategoryForm = () => {
   );
 };
 
-export default AddCategoryForm;
+export default CategoryUpdateForm;

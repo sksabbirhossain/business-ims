@@ -2,7 +2,6 @@ import { getCategories } from "@/actions/storeAdmin/category/categoryActions";
 import CategoryItem from "@/components/admin/Category-list/CategoryItem";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
-import Image from "next/image";
 
 export const metadata = {
   title: "Category List",
@@ -29,7 +28,7 @@ const CategoryList = async () => {
   }
 
   return (
-    <Container>
+    <Container className="group relative w-full">
       {/* add page header */}
       <PageHeader headText="category List" />
       {/* category table */}
@@ -54,6 +53,7 @@ const CategoryList = async () => {
           <tbody>{content}</tbody>
         </table>
       </div>
+
       {/* pagination  */}
       <div className="flex w-full justify-end pr-3">
         <div className="flex items-center gap-2">

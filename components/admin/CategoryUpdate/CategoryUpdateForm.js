@@ -4,6 +4,8 @@ import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import TextArea from "@/components/common/FormInput/TextArea";
 import { useSession } from "next-auth/react";
+import { revalidatePath } from "next/cache";
+import { redirect, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -16,6 +18,7 @@ const CategoryUpdateForm = ({ category }) => {
 
   const { data: session } = useSession();
 
+  const router = useRouter();
   // set category default value
   useEffect(() => {
     setName(category.data.name);
@@ -30,9 +33,9 @@ const CategoryUpdateForm = ({ category }) => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/add-category`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/update-category/${category?.data?._id}`,
         {
-          method: "POST",
+          method: "PATCH",
           body: JSON.stringify({
             name,
             description,
@@ -47,10 +50,9 @@ const CategoryUpdateForm = ({ category }) => {
 
       if (data?.data?._id) {
         setLoading(false);
-        // Reset the form fields
-        setName("");
-        setDescription("");
-        toast.success("Category Added Successful!");
+        toast.success("Category Updated Successful!");
+        router.refresh("/admin/category-list");
+        router.replace("/admin/category-list");
       } else {
         setLoading(false);
         setErrors(data);

@@ -6,7 +6,7 @@ export const getCategories = async () => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category-list`,
-      // { next: { revalidate: process.env.REVALIDATE_ACTION_TIME } },
+      { cache: "no-store" },
     );
     const data = await res.json();
     return data;
@@ -20,7 +20,7 @@ export const getCategory = async (categoryId) => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category/${categoryId}`,
-      // { next: { revalidate: process.env.REVALIDATE_ACTION_TIME } },
+      { cache: "no-store" },
     );
     const data = await res.json();
     return data;

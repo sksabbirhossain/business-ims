@@ -1,14 +1,46 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ActionButtons = ({ id }) => {
+  const [loading, setLoading] = useState(false);
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
   //delete a category
-  const handleDelete = (ID) => {
+  const handleDelete = async (ID) => {
+    setLoading(true);
     const agree = confirm("Are you sure you wanna delete this?");
-    if (agree) {
-      //call the api to delete this category
-      alert(ID);
+    try {
+      if (agree) {
+        //call the api to delete this category
+        alert(ID);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/admin/delete-category/${ID}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${session?.user?.accessToken}`,
+            },
+          },
+        );
+        if (res.ok) {
+          router.refresh("/admin/category-list");
+          toast.success("Category Deleted Successful!");
+        } else {
+          toast.error("Intranal server error!");
+        }
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      toast.error("Intranal server error!");
     }
   };
 
@@ -35,7 +67,11 @@ const ActionButtons = ({ id }) => {
             </span>
           </Link>
         </button>
-        <button className="" onClick={() => handleDelete(id)}>
+        <button
+          className=""
+          onClick={() => handleDelete(id)}
+          disabled={loading}
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

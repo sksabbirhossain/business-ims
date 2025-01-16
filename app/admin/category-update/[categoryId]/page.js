@@ -7,7 +7,11 @@ export const metadata = {
   title: "Category Update",
 };
 
-const CategoryUpdate = async ({ params: { categoryId } }) => {
+const CategoryUpdate = async (props) => {
+  const params = await props.params;
+
+  const { categoryId } = params;
+
   // get a category for showing update category form
   const category = await getCategory(categoryId);
 

@@ -249,11 +249,11 @@ const sidebarRoutes = [
     menu: [
       {
         name: "Suppliers List",
-        path: "/admin/suppliers-list",
+        path: "/admin/supplier-list",
       },
       {
         name: "add Suppliers",
-        path: "/admin/add-suppliers",
+        path: "/admin/add-supplier",
       },
     ],
   },

@@ -27,7 +27,7 @@ const Sidebar = () => {
             {/* logout button */}
             <li>
               <button
-                className={`capitalize w-full group flex items-center rounded-sm p-2 px-3 text-text hover:bg-secondary hover:text-white`}
+                className={`group flex w-full items-center rounded-sm p-2 px-3 capitalize text-text hover:bg-secondary hover:text-white`}
               >
                 <span className="h-5 w-5 text-text/50 transition duration-75 group-hover:text-green-700">
                   <svg

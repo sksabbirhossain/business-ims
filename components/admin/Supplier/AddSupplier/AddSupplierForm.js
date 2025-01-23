@@ -1,8 +1,12 @@
 "use client";
+import { addSupplier } from "@/actions/storeAdmin/supplier/supplierActions";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import TextArea from "@/components/common/FormInput/TextArea";
-import React, { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useActionState, useState } from "react";
+import { toast } from "react-toastify";
 
 const AddSupplierForm = () => {
   const [name, setName] = useState("");
@@ -16,8 +20,55 @@ const AddSupplierForm = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({});
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/create-supplier`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.user?.accessToken}`,
+          },
+          method: "POST",
+          body: JSON.stringify({
+            name,
+            shopName,
+            description,
+            email,
+            phone,
+            website,
+            address,
+            picture,
+          }),
+        },
+      );
+      const data = await res.json();
+
+      if (data?.data?._id) {
+        router.push("/admin/supplier-list");
+        toast.success("Supplier added successfull");
+      }
+
+      if (data?.errors) {
+        setErrors(data);
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      return err.message;
+    }
+  };
+
   return (
-    <form className="w-full">
+    <form className="w-full" onSubmit={handleSubmit}>
       <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
         <div className="space-y-4">
           <div className="space-y-2">
@@ -132,7 +183,7 @@ const AddSupplierForm = () => {
             />
           </div>
 
-          <Button className="w-full" disabled={loading}>
+          <Button className="w-full" disabled={loading} type={"submit"}>
             {loading ? (
               <p className="flex justify-center">
                 <svg

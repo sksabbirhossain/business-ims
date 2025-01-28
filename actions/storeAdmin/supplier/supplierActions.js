@@ -3,6 +3,20 @@
 import { Fetch } from "@/utils/Fetch";
 import { redirect } from "next/navigation";
 
+//get suppliers
+export const getSuppliers = async () => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/suppliers`,
+    );
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    return err.message;
+  }
+};
+
+//add supplier
 export const addSupplier = async (prevState, formData) => {
   try {
     const formDataObject = Object.fromEntries(formData.entries());

@@ -48,23 +48,23 @@ const SupplierItems = ({ suppliers }) => {
 
   return (
     <div>
-      <div class="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
-        <table class="w-full text-left text-sm text-text/80 rtl:text-right">
-          <thead class="bg-primary/25 text-xs uppercase text-text">
+      <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
+        <table className="w-full text-left text-sm text-text/80 rtl:text-right">
+          <thead className="bg-primary/25 text-xs uppercase text-text">
             <tr>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 supplier image
               </th>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 supplier name
               </th>{" "}
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 shop name
               </th>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 Supplier Number
               </th>
-              <th scope="col" class="px-2 py-4 text-center">
+              <th scope="col" className="px-2 py-4 text-center">
                 Action
               </th>
             </tr>
@@ -73,8 +73,11 @@ const SupplierItems = ({ suppliers }) => {
             {/* supplier data  */}
             {suppliers?.data?.map((supplier) => (
               <>
-                <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-                  <td class="px-2 py-1">
+                <tr
+                  className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
+                  key={supplier?._id}
+                >
+                  <td className="px-2 py-1">
                     <Image
                       src={supplier?.picture || "/default.jpg"}
                       alt="product image"
@@ -85,18 +88,18 @@ const SupplierItems = ({ suppliers }) => {
                   </td>
                   <th
                     scope="row"
-                    class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                    className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
                   >
                     {supplier?.name}
                   </th>
                   <th
                     scope="row"
-                    class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                    className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
                   >
                     {supplier?.shopName || "N/A"}
                   </th>
-                  <td class="px-2 py-1">{supplier?.phone}</td>
-                  <td class="px-2 py-1">
+                  <td className="px-2 py-1">{supplier?.phone}</td>
+                  <td className="px-2 py-1">
                     <span className="flex w-full items-center justify-center gap-2">
                       <button onClick={() => openDetailsModal(supplier)}>
                         <span>

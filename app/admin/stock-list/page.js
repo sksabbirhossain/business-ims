@@ -14,33 +14,33 @@ const StockList = () => {
       />
 
       {/* all stock list table */}
-      <div class="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
-        <table class="w-full text-left text-sm text-text/80 rtl:text-right">
-          <thead class="bg-primary/25 text-xs uppercase text-text">
+      <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
+        <table className="w-full text-left text-sm text-text/80 rtl:text-right">
+          <thead className="bg-primary/25 text-xs uppercase text-text">
             <tr>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 Product image
               </th>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 Product name
               </th>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 customer name
               </th>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 Quantity
               </th>
-              <th scope="col" class="px-2 py-4">
+              <th scope="col" className="px-2 py-4">
                 Price
               </th>
-              <th scope="col" class="px-2 py-4 text-center">
+              <th scope="col" className="px-2 py-4 text-center">
                 Action
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -51,16 +51,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -122,8 +122,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -134,16 +134,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +166,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +184,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -205,8 +205,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -217,16 +217,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +249,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +267,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -288,8 +288,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -300,16 +300,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +332,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -350,7 +350,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -371,8 +371,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -383,16 +383,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -415,7 +415,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -433,7 +433,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -454,8 +454,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -466,16 +466,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -498,7 +498,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -516,7 +516,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -537,8 +537,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -549,16 +549,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -581,7 +581,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -599,7 +599,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -620,8 +620,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -632,16 +632,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -664,7 +664,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -682,7 +682,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -703,8 +703,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -715,16 +715,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -747,7 +747,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -765,7 +765,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -786,8 +786,8 @@ const StockList = () => {
                 </span>
               </td>
             </tr>
-            <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
-              <td class="px-2 py-1">
+            <tr className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+              <td className="px-2 py-1">
                 <Image
                   src={"/default.jpg"}
                   alt="product image"
@@ -798,16 +798,16 @@ const StockList = () => {
               </td>
               <th
                 scope="row"
-                class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
               >
                 Apple MacBook Pro 17
               </th>
-              <td class="px-2 py-1">Silver</td>
-              <td class="px-2 py-1">10 - TON</td>
-              <td class="px-2 py-1">$2999</td>
-              <td class="px-2 py-1">
+              <td className="px-2 py-1">Silver</td>
+              <td className="px-2 py-1">10 - TON</td>
+              <td className="px-2 py-1">$2999</td>
+              <td className="px-2 py-1">
                 <span className="flex w-full items-center justify-center gap-2">
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -830,7 +830,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -848,7 +848,7 @@ const StockList = () => {
                       </svg>
                     </span>
                   </button>
-                  <button class="">
+                  <button className="">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

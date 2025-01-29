@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import DetailsModal from "./DetailsModal";
 
@@ -90,7 +91,10 @@ const SupplierItems = ({ suppliers }) => {
                           </svg>
                         </span>
                       </button>
-                      <button class="">
+                      <Link
+                        href={`/admin/supplier-update/${supplier._id}`}
+                        class=""
+                      >
                         <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +111,7 @@ const SupplierItems = ({ suppliers }) => {
                             />
                           </svg>
                         </span>
-                      </button>
+                      </Link>
                       <button class="">
                         <span>
                           <svg

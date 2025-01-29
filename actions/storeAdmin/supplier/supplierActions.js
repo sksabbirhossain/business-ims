@@ -16,6 +16,19 @@ export const getSuppliers = async () => {
   }
 };
 
+//get suppliers
+export const getSupplier = async (id) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/supplier/${id}`,
+    );
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    return err.message;
+  }
+};
+
 //add supplier
 export const addSupplier = async (prevState, formData) => {
   try {

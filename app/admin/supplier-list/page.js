@@ -2,7 +2,6 @@ import { getSuppliers } from "@/actions/storeAdmin/supplier/supplierActions";
 import SupplierItems from "@/components/admin/Supplier/Supplier-list/SupplierItems";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
-import Image from "next/image";
 
 export const metadata = {
   title: "Suppliers List",

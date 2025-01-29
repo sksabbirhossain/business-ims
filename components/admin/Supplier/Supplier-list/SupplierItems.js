@@ -1,18 +1,51 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import DetailsModal from "./DetailsModal";
 
 const SupplierItems = ({ suppliers }) => {
   const [detailsModal, setDetailsModal] = useState(false);
   const [detailsData, setDetailsData] = useState({});
+
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
   //open details modal
   const openDetailsModal = (details) => {
     setDetailsModal((prev) => !prev);
     setDetailsData(details);
   };
+
+  //delete supplier
+  const handleDelete = async (id) => {
+    const agree = confirm("Are you sure you wanna delete this?");
+    if (agree) {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/delete-supplier/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session?.user?.accessToken}`,
+          },
+          method: "DELETE",
+        },
+      );
+      const data = await res.json();
+
+      if (data?.data?._id) {
+        toast.success("Supplier Deleted Successfull!");
+        router.refresh("/admin/supplier-list");
+      } else {
+        toast.error("Something went wrong. Try again!");
+      }
+    }
+  };
+
   return (
     <div>
       <div class="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
@@ -43,7 +76,7 @@ const SupplierItems = ({ suppliers }) => {
                 <tr class="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
                   <td class="px-2 py-1">
                     <Image
-                      src={supplier.picture || "/default.jpg"}
+                      src={supplier?.picture || "/default.jpg"}
                       alt="product image"
                       width={200}
                       height={200}
@@ -54,21 +87,18 @@ const SupplierItems = ({ suppliers }) => {
                     scope="row"
                     class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
                   >
-                    {supplier.name}
+                    {supplier?.name}
                   </th>
                   <th
                     scope="row"
                     class="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
                   >
-                    {supplier.shopName || "N/A"}
+                    {supplier?.shopName || "N/A"}
                   </th>
-                  <td class="px-2 py-1">{supplier.phone}</td>
+                  <td class="px-2 py-1">{supplier?.phone}</td>
                   <td class="px-2 py-1">
                     <span className="flex w-full items-center justify-center gap-2">
-                      <button
-                        class=""
-                        onClick={() => openDetailsModal(supplier)}
-                      >
+                      <button onClick={() => openDetailsModal(supplier)}>
                         <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -91,10 +121,7 @@ const SupplierItems = ({ suppliers }) => {
                           </svg>
                         </span>
                       </button>
-                      <Link
-                        href={`/admin/supplier-update/${supplier._id}`}
-                        class=""
-                      >
+                      <Link href={`/admin/supplier-update/${supplier?._id}`}>
                         <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +139,7 @@ const SupplierItems = ({ suppliers }) => {
                           </svg>
                         </span>
                       </Link>
-                      <button class="">
+                      <button onClick={() => handleDelete(supplier?._id)}>
                         <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +163,11 @@ const SupplierItems = ({ suppliers }) => {
               </>
             ))}
 
-            {suppliers?.data?.length === 0 && <p>No supplier found!</p>}
+            {suppliers?.data?.length === 0 && (
+              <p className="py-5 text-center font-semibold capitalize">
+                No supplier found!
+              </p>
+            )}
           </tbody>
         </table>
       </div>

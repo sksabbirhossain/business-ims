@@ -1,5 +1,5 @@
 import { getSupplier } from "@/actions/storeAdmin/supplier/supplierActions";
-import UpdateSupplierForm from "@/components/admin/SupplierUpdate/UpdateSupplierForm";
+import UpdateSupplierForm from "@/components/admin/Supplier/SupplierUpdate/UpdateSupplierForm";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 

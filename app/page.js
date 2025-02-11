@@ -4,7 +4,7 @@ import FormInput from "@/components/common/FormInput/FormInput";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Home() {
@@ -18,9 +18,11 @@ export default function Home() {
 
   const router = useRouter();
 
-  if (session?.user?._id && session?.user?.role === "storeAdmin") {
-    return router.push("/admin/dashboard");
-  }
+  useEffect(() => {
+    if (session?.user?._id && session?.user?.role === "storeAdmin") {
+      return router.push("/admin/dashboard");
+    }
+  }, [router, session]);
 
   //handle submit form
   const handleSubmit = async (e) => {

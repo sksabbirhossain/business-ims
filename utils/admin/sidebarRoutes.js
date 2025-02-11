@@ -88,8 +88,8 @@ const sidebarRoutes = [
     ),
     menu: [
       {
-        name: "all Purchase",
-        path: "/admin/all-purchase",
+        name: "Purchase List",
+        path: "/admin/purchase-list",
       },
       {
         name: "add Purchase",

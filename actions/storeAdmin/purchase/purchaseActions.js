@@ -28,3 +28,17 @@ export const getPurchase = async (purchaseId) => {
     console.log(e.message);
   }
 };
+
+//delete a purchase
+export const DeletePurchase = async (purchaseId) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/purchase/delete/${purchaseId}`,
+      { cache: "no-store", method: "DELETE" },
+    );
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};

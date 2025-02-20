@@ -1,16 +1,34 @@
 "use client";
 
+import { DeletePurchase } from "@/actions/storeAdmin/purchase/purchaseActions";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ActionButtons = ({ id }) => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   // delete a purchase
   const handleDelete = async (purchaseId) => {
+    setLoading(true);
     try {
       const isSure = confirm("Are you sure you wanna delete this?");
       if (isSure) {
-        alert("deleted");
+        const result = await DeletePurchase(purchaseId);
+        if (result?.data) {
+          toast.success("Purchase deleted successfully");
+          router.refresh("/admin/purchase-list");
+        } else {
+          toast.error("Failed to delete the purchase");
+        }
       }
-    } catch (er) {}
+      setLoading(false);
+    } catch (er) {
+      setLoading(false);
+      toast.error(er.message);
+    }
   };
 
   return (
@@ -56,7 +74,7 @@ const ActionButtons = ({ id }) => {
           </svg>
         </span>
       </Link>
-      <button onClick={() => handleDelete(id)}>
+      <button onClick={() => handleDelete(id)} disabled={loading}>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

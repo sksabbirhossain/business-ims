@@ -62,7 +62,7 @@ const AllPurchase = async () => {
                 >
                   {purchase.name}
                 </th>
-                <td className="px-2 py-1">Silver</td>
+                <td className="px-2 py-1">{purchase?.supplierInfo?.name}</td>
                 <td className="px-2 py-1">
                   {purchase?.quantity} - {purchase?.uom}
                 </td>

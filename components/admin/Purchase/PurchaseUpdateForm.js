@@ -47,9 +47,63 @@ const PurchaseUpdateForm = ({ categories, suppliers, purchase }) => {
     }
   }, [purchase]);
 
+  //handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrors({});
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/purchase/update/${purchase.data?._id}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            name,
+            description,
+            category,
+            uom,
+            purchasePrice,
+            sellingPrice,
+            quantity,
+            sku,
+            supplierInfo: supplier,
+            image,
+            barcode,
+            status,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.user?.accessToken}`,
+          },
+        },
+      );
+      const data = await res.json();
+
+      if (data?.data?._id) {
+        setLoading(false);
+        router.push("/admin/purchase-list");
+        toast.success("Purchase Updated Successful!");
+      } else {
+        setLoading(false);
+        setErrors(data);
+      }
+    } catch (err) {
+      setLoading(false);
+      setErrors({
+        errors: {
+          common: {
+            // msg: err.message,
+            msg: "Intranal server error!",
+          },
+        },
+      });
+    }
+  };
+
   return (
     <div className="rounded-md bg-white px-2 py-5 shadow-sm shadow-primary">
-      <form onSubmit={"handleSubmit"}>
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className="space-y-4">
             <div className="space-y-2">
@@ -105,11 +159,12 @@ const PurchaseUpdateForm = ({ categories, suppliers, purchase }) => {
                 label="Unit of Measure"
                 name="uom"
                 onChange={(e) => setUom(e.target.value)}
+                defaultValue={purchase.data?.uom}
               >
                 <option value="">Select Unit</option>
-                <option value="kg">KG</option>
-                <option value="pices">PICES</option>
-                <option value="liter">LITER</option>
+                <option value="KG">KG</option>
+                <option value="PICES">PICES</option>
+                <option value="LITER">LITER</option>
               </SelectInput>
               <p className="text-sm font-semibold text-red-500">
                 {errors?.errors?.uom?.msg}

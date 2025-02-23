@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const PurchaseForm = ({ categories, suppliers }) => {
+const StockForm = ({ categories, suppliers }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -37,7 +37,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/purchase/create`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/stock/create`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -50,7 +50,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
             quantity,
             sku,
             supplierInfo: supplier,
-            image,
+            picture: image,
             barcode,
             status,
           }),
@@ -64,8 +64,8 @@ const PurchaseForm = ({ categories, suppliers }) => {
 
       if (data?.data?._id) {
         setLoading(false);
-        router.push("/admin/purchase-list");
-        toast.success("Purchase Added Successful!");
+        router.push("/admin/stock-list");
+        toast.success("Stock Added Successful!");
       } else {
         setLoading(false);
         setErrors(data);
@@ -75,14 +75,13 @@ const PurchaseForm = ({ categories, suppliers }) => {
       setErrors({
         errors: {
           common: {
-            // msg: err.message,
-            msg: "Intranal server error!",
+            msg: err.message,
+            // msg: "Intranal server error!",
           },
         },
       });
     }
   };
-
   return (
     <div className="rounded-md bg-white px-2 py-5 shadow-sm shadow-primary">
       <form onSubmit={handleSubmit}>
@@ -272,7 +271,9 @@ const PurchaseForm = ({ categories, suppliers }) => {
               </div>
 
               <div>
-                <Button className="w-full">add Purchase</Button>
+                <Button className="w-full" loading={loading}>
+                  add Stock
+                </Button>
               </div>
               {errors?.errors?.common && (
                 <p className="rounded bg-red-600 py-2 text-center text-sm font-medium text-white">
@@ -287,4 +288,4 @@ const PurchaseForm = ({ categories, suppliers }) => {
   );
 };
 
-export default PurchaseForm;
+export default StockForm;

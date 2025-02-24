@@ -75,7 +75,7 @@ const AllPurchase = async () => {
           </tbody>
         </table>
         {/* error message */}
-        {purchases?.length === 0 && (
+        {data?.length === 0 && (
           <p className="py-3 text-center font-semibold capitalize">
             No Purchase found!
           </p>

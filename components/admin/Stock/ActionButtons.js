@@ -18,7 +18,7 @@ const ActionButtons = ({ id }) => {
       if (isSure) {
         const result = await DeleteStock(stockId);
         if (result?.data) {
-          toast.success("{Product deleted successfully");
+          toast.success("Product deleted successfully");
           router.refresh("/admin/stock-list");
         } else {
           toast.error("Failed to delete the product");

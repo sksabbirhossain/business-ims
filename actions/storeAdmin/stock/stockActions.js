@@ -1,3 +1,5 @@
+"use server";
+
 import { Fetch } from "@/utils/Fetch";
 
 //get all stock

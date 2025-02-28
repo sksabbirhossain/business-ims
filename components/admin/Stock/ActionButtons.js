@@ -10,7 +10,7 @@ const ActionButtons = ({ id }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // delete a purchase
+  // delete a stock
   const handleDelete = async (stockId) => {
     setLoading(true);
     try {

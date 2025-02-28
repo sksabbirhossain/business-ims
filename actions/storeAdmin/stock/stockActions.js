@@ -16,6 +16,20 @@ export const getStocks = async () => {
   }
 };
 
+//get a stock
+export const getStock = async (stockId) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/stock/${stockId}`,
+      { cache: "no-store" },
+    );
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 //delete a stock
 export const DeleteStock = async (stockId) => {
   try {

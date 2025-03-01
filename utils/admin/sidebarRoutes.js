@@ -32,8 +32,8 @@ const sidebarRoutes = [
     ),
     menu: [
       {
-        name: "all sales",
-        path: "/admin/all-sales",
+        name: "sale list",
+        path: "/admin/sale-list",
       },
       {
         name: "return sales",

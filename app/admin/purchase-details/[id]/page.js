@@ -12,7 +12,7 @@ const PurchaseDetails = async ({ params }) => {
   const purchase = await getPurchase(purchaseId);
   return (
     <Container>
-      <PageHeader headText="Stock Details" />
+      <PageHeader headText="Purchase Details" />
       {/* details */}
       <div className="rounded-lg bg-white p-4 shadow-md">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

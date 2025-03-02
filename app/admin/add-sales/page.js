@@ -1,4 +1,5 @@
 import AddSalesContainer from "@/components/admin/Sales/AddSales/AddSalesContainer";
+import CartItemsContainer from "@/components/admin/Sales/AddSales/CartItemsContainer";
 import Button from "@/components/common/Button/Button";
 import Container from "@/components/common/Container/Container";
 import FormInput from "@/components/common/FormInput/FormInput";
@@ -16,8 +17,13 @@ const AddSales = () => {
       <PageHeader headText="Add Sales" />
       {/*  */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-        {/* search products  and add to cart*/}
-        <AddSalesContainer />
+        <div className="col-span-2 space-y-5">
+          {/* search products  and add to cart*/}
+          <AddSalesContainer />
+
+          {/* add to cart items list */}
+          <CartItemsContainer />
+        </div>
 
         {/* customer information */}
         <div className="rounded-md bg-secondary/50 px-2 py-5 shadow">

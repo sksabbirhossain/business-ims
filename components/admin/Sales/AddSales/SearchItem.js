@@ -1,11 +1,20 @@
+import useAddToCart from "@/contexts/addToCartContext";
 import Image from "next/image";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const SearchItem = ({ product }) => {
   const [qty, setQty] = useState(1);
+  const { addToCart } = useAddToCart();
+
+  //add to cart handler
+  const handleAddToCart = (item, count) => {
+    addToCart({ ...item, qty: parseInt(count) });
+    toast.success("Product added to cart");
+  };
 
   return (
-    <div className="flex h-full w-full flex-wrap items-center gap-x-4 border-b pb-2 justify-between">
+    <div className="flex h-full w-full flex-wrap items-center justify-between gap-x-4 border-b pb-2">
       <div className="pt-[1px]">
         <Image
           src="/default.jpg"
@@ -30,14 +39,14 @@ const SearchItem = ({ product }) => {
             <button
               disabled={qty === 1}
               className="rounded bg-primary px-1 text-lg font-bold text-white disabled:opacity-50"
-              onClick={() => setQty((prv) => prv - 1)}
+              onClick={() => setQty((prv) => parseInt(prv) - 1)}
             >
               {" "}
               -{" "}
             </button>
           </span>
           <input
-            type="text"
+            type="number"
             value={qty}
             onChange={(e) => setQty(e.target.value)}
             className="w-full max-w-[60px] rounded-md border-2 border-primary px-2 text-center focus:outline-none"
@@ -46,7 +55,7 @@ const SearchItem = ({ product }) => {
             <button
               disabled={qty == product?.quantity}
               className="rounded bg-primary px-1 text-lg font-bold text-white disabled:opacity-50"
-              onClick={() => setQty((prv) => prv + 1)}
+              onClick={() => setQty((prv) => parseInt(prv) + 1)}
             >
               {" "}
               +{" "}
@@ -63,9 +72,12 @@ const SearchItem = ({ product }) => {
         </p>
       </div>
       <div>
-        <p className="rounded bg-primary px-1 py-1 text-[12px] font-medium capitalize text-white">
+        <button
+          className="rounded bg-primary px-1 py-1 text-[12px] font-medium capitalize text-white"
+          onClick={() => handleAddToCart(product, qty)}
+        >
           Add to Cart
-        </p>
+        </button>
       </div>
     </div>
   );

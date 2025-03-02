@@ -8,11 +8,16 @@ export default function useAddToCart() {
 }
 
 export function AddToCartProvider({ children }) {
-  const [carts, setCarts] = useState(false);
+  const [carts, setCarts] = useState([]);
 
   //toggle mobile menu handler
   const addToCart = (item) => {
-    setCarts((prev) => [...prev, item]);
+    const oldItem = carts.find((i) => i._id === item._id);
+    if (oldItem) {
+      oldItem.qty += item.qty;
+      return setCarts([...carts]);
+    }
+    setCarts([...carts, item]);
   };
 
   const info = {

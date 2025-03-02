@@ -1,7 +1,16 @@
+import useAddToCart from "@/contexts/addToCartContext";
 import Image from "next/image";
 import React from "react";
+import { toast } from "react-toastify";
 
 const CartItem = ({ item }) => {
+  const { removeFromCart } = useAddToCart();
+
+  //remove from cart handler
+  const handleRemoveFromCart = (id) => {
+    removeFromCart(id);
+    toast.info("Product removed from cart");
+  };
   return (
     <div className="flex h-full w-full items-center justify-between border-b pb-2">
       <div className="pt-[1px]">
@@ -50,7 +59,10 @@ const CartItem = ({ item }) => {
         </p>
       </div>
       <div>
-        <p className="rounded bg-red-500 text-[12px] font-medium capitalize text-white">
+        <p
+          className="cursor-pointer select-none rounded bg-red-500 text-[12px] font-medium capitalize text-white"
+          onClick={() => handleRemoveFromCart(item._id)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

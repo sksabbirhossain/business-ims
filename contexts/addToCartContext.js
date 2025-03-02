@@ -20,9 +20,15 @@ export function AddToCartProvider({ children }) {
     setCarts([...carts, item]);
   };
 
+  //remove item from cart
+  const removeFromCart = (id) => {
+    setCarts(carts.filter((item) => item._id !== id));
+  };
+
   const info = {
     carts,
     addToCart,
+    removeFromCart,
   };
 
   return (

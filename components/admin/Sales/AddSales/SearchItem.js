@@ -5,7 +5,7 @@ const SearchItem = ({ product }) => {
   const [qty, setQty] = useState(1);
 
   return (
-    <div className="flex h-full w-full flex-wrap items-center gap-x-4 border-b pb-2 sm:justify-between">
+    <div className="flex h-full w-full flex-wrap items-center gap-x-4 border-b pb-2 justify-between">
       <div className="pt-[1px]">
         <Image
           src="/default.jpg"

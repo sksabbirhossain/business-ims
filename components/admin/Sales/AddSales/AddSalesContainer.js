@@ -58,7 +58,14 @@ const AddSalesContainer = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <Button isPending={loading}>Search</Button>
+              <Button
+                type="submit"
+                isPending={loading}
+                disabled={query === ""}
+                className="disabled:opacity-90"
+              >
+                Search
+              </Button>
             </div>
           </form>
         </div>

@@ -12,7 +12,7 @@ const CartItem = ({ item }) => {
     toast.info("Product removed from cart");
   };
   return (
-    <div className="flex h-full w-full items-center justify-between border-b pb-2">
+    <div className="flex h-full w-full flex-wrap items-center justify-between gap-3 border-b pb-2">
       <div className="pt-[1px]">
         <Image
           src="/default.jpg"
@@ -40,23 +40,12 @@ const CartItem = ({ item }) => {
         </p>
         <p className="text-[15px] font-normal">{item.sellingPrice} Taka </p>
       </div>
-      <div className="">
-        <p className="text-[14px] font-semibold capitalize text-primary">
-          disc
-        </p>
-        <input
-          type="number"
-          value="10"
-          className="w-full max-w-[100px] rounded-md border-2 border-primary px-2 focus:outline-none"
-        />
-      </div>
+
       <div className="">
         <p className="text-[14px] font-semibold capitalize text-primary">
           Total
         </p>
-        <p className="text-[15px] font-normal">
-          {item.sellingPrice * item.qty} Taka
-        </p>
+        <p className="text-[15px] font-normal">{item.total} Taka</p>
       </div>
       <div>
         <p

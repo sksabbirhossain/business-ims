@@ -13,10 +13,13 @@ export function AddToCartProvider({ children }) {
   //toggle mobile menu handler
   const addToCart = (item) => {
     const oldItem = carts.find((i) => i._id === item._id);
+
     if (oldItem) {
       oldItem.qty += item.qty;
+      oldItem.total = oldItem.qty * oldItem.sellingPrice;
       return setCarts([...carts]);
     }
+    item.total = item.qty * item.sellingPrice;
     setCarts([...carts, item]);
   };
 
@@ -29,6 +32,7 @@ export function AddToCartProvider({ children }) {
     carts,
     addToCart,
     removeFromCart,
+    setCarts,
   };
 
   return (

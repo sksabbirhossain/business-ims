@@ -37,7 +37,7 @@ const SearchItem = ({ product }) => {
         <p className="flex w-full items-center justify-between gap-x-1">
           <span>
             <button
-              disabled={qty === 1}
+              disabled={qty <= 1}
               className="rounded bg-primary px-1 text-lg font-bold text-white disabled:opacity-50"
               onClick={() => setQty((prv) => parseInt(prv) - 1)}
             >
@@ -49,6 +49,8 @@ const SearchItem = ({ product }) => {
             type="number"
             value={qty}
             onChange={(e) => setQty(e.target.value)}
+            min={1}
+            max={product?.quantity}
             className="w-full max-w-[60px] rounded-md border-2 border-primary px-2 text-center focus:outline-none"
           />
           <span>

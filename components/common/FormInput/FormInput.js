@@ -2,7 +2,10 @@ const FormInput = ({ label, type, name, placeholder, value, ...rest }) => {
   return (
     <div className="flex w-full flex-col space-y-1">
       {label != 0 && (
-        <label htmlFor="" className="text-base capitalize text-text">
+        <label
+          htmlFor=""
+          className="text-base font-medium capitalize text-text"
+        >
           {label}
         </label>
       )}

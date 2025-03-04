@@ -37,7 +37,7 @@ const PaymentContainer = () => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sales/sales-pament`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales-pament`,
         {
           method: "POST",
           body: JSON.stringify({

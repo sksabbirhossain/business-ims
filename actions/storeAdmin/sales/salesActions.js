@@ -16,6 +16,20 @@ export const getAllSales = async () => {
   }
 };
 
+//get sales by trxId
+export const getSalesByTrxId = async (trxId) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales/search?trxId=${trxId}`,
+      { cache: "no-store" },
+    );
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 //get a single sale
 export const getSale = async (saleId) => {
   try {

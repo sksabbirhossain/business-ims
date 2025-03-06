@@ -1,6 +1,6 @@
 "use client";
 
-import { DeleteStock } from "@/actions/storeAdmin/stock/stockActions";
+import { DeleteSale } from "@/actions/storeAdmin/sales/salesActions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,17 +11,17 @@ const ActionButtons = ({ id }) => {
   const router = useRouter();
 
   // delete a stock
-  const handleDelete = async (stockId) => {
+  const handleDelete = async (salesId) => {
     setLoading(true);
     try {
       const isSure = confirm("Are you sure you wanna delete this?");
       if (isSure) {
-        const result = await DeleteStock(stockId);
+        const result = await DeleteSale(salesId);
         if (result?.data) {
-          toast.success("Product deleted successfully");
-          router.refresh("/admin/stock-list");
+          toast.success("Sales deleted successfully");
+          router.refresh("/admin/sale-list");
         } else {
-          toast.error("Failed to delete the product");
+          toast.error("Failed to delete the Sales");
         }
       }
       setLoading(false);
@@ -56,7 +56,7 @@ const ActionButtons = ({ id }) => {
           </svg>
         </span>
       </Link>
-      <Link href={`/admin/saltes-update/${id}`}>
+      <Link href={`/admin/sales-update/${id}`}>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

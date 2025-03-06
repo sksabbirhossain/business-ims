@@ -29,3 +29,17 @@ export const getSale = async (saleId) => {
     console.log(e.message);
   }
 };
+
+//delete a sale
+export const DeleteSale = async (salesId) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales/${salesId}`,
+      { cache: "no-store", method: "DELETE" },
+    );
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};

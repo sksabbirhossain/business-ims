@@ -15,10 +15,8 @@ const ReturnSales = () => {
       {/* add page header */}
       <PageHeader headText="Return Sale" />
       <div className="space-y-10 rounded-md bg-white px-2 py-5 shadow-md">
-        {/* search products */}
+        {/* search products and return sale search list */}
         <SearchContainer />
-        {/* return sale search list */}
-        
 
         {/* return sales list table*/}
         <div className="space-y-3">

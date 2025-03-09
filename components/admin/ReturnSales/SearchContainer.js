@@ -92,6 +92,7 @@ const SearchContainer = () => {
                 key={item._id}
                 item={item}
                 customer={searchResults?.data?.customer}
+                trxid={searchResults?.data?.trxid}
               />
             ))}
           </tbody>

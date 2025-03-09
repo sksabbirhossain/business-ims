@@ -1,9 +1,27 @@
-import FormInput from "@/components/common/FormInput/FormInput";
+"use client";
+import { createReturnSale } from "@/actions/storeAdmin/returnSale/returnSaleActions";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
-const SearchItem = ({ item, customer }) => {
+const SearchItem = ({ item, customer, trxid }) => {
   const [qty, setQty] = useState(item.qty);
+
+  //handle return sale
+  const handleReturnSale = async () => {
+    const data = {
+      trxid,
+      productId: item.product?._id,
+      qty,
+    };
+    const results = await createReturnSale(data);
+    if (results?.data?._id) {
+      toast.success(results?.message);
+    } else {
+      toast.error("Please try again something went wrong!");
+    }
+  };
+
   return (
     <tr className="border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
       <td className="flex w-full items-center justify-center px-1 py-2">
@@ -21,7 +39,7 @@ const SearchItem = ({ item, customer }) => {
       >
         {item.product.name.substr(0, 20)}...
       </th>
-      <td className="px-1 py-2 whitespace-nowrap"> {customer?.name} </td>
+      <td className="whitespace-nowrap px-1 py-2"> {customer?.name} </td>
       <td className="text-nowrap px-1 py-2">
         <p className="flex w-full items-center justify-center gap-2">
           <input
@@ -36,7 +54,7 @@ const SearchItem = ({ item, customer }) => {
         </p>
       </td>
       <td className="px-1 py-2"> {item?.price} Tk. </td>
-      <td className="px-1 py-2">
+      <td className="px-1 py-2" onClick={handleReturnSale}>
         <button className="text-primary hover:text-primary/80">Return</button>
       </td>
     </tr>

@@ -32,8 +32,6 @@ const SearchContainer = () => {
     }
   };
 
-  console.log(searchResults?.data);
-
   return (
     <>
       <div className="">
@@ -93,6 +91,7 @@ const SearchContainer = () => {
                 item={item}
                 customer={searchResults?.data?.customer}
                 trxid={searchResults?.data?.trxid}
+                // price={}
               />
             ))}
           </tbody>

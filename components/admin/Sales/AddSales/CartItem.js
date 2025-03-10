@@ -38,14 +38,14 @@ const CartItem = ({ item }) => {
         <p className="text-[14px] font-semibold capitalize text-primary">
           price
         </p>
-        <p className="text-[15px] font-normal">{item.sellingPrice} Taka </p>
+        <p className="text-[15px] font-normal">{item.sellingPrice} Tk. </p>
       </div>
 
       <div className="">
         <p className="text-[14px] font-semibold capitalize text-primary">
           Total
         </p>
-        <p className="text-[15px] font-normal">{item.total} Taka</p>
+        <p className="text-[15px] font-normal">{item.total} Tk.</p>
       </div>
       <div>
         <p

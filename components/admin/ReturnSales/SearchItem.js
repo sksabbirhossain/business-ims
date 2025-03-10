@@ -13,8 +13,9 @@ const SearchItem = ({ item, customer, trxid }) => {
   const handleReturnSale = async () => {
     const data = {
       trxid,
-      productId: item.product?._id,
+      product: item.product?._id,
       qty,
+      price: item?.price,
     };
     const results = await createReturnSale(data);
     if (results?.data?._id) {

@@ -1,11 +1,13 @@
 "use client";
 import { createReturnSale } from "@/actions/storeAdmin/returnSale/returnSaleActions";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 const SearchItem = ({ item, customer, trxid }) => {
   const [qty, setQty] = useState(item.qty);
+  const router = useRouter();
 
   //handle return sale
   const handleReturnSale = async () => {
@@ -17,6 +19,7 @@ const SearchItem = ({ item, customer, trxid }) => {
     const results = await createReturnSale(data);
     if (results?.data?._id) {
       toast.success(results?.message);
+      router.refresh();
     } else {
       toast.error("Please try again something went wrong!");
     }

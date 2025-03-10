@@ -1,11 +1,8 @@
 import { returnSales } from "@/actions/storeAdmin/returnSale/returnSaleActions";
 import ReturnSaleItem from "@/components/admin/ReturnSales/ReturnSaleItem";
 import SearchContainer from "@/components/admin/ReturnSales/SearchContainer";
-import Button from "@/components/common/Button/Button";
 import Container from "@/components/common/Container/Container";
-import FormInput from "@/components/common/FormInput/FormInput";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
-import Image from "next/image";
 
 export const metadata = {
   title: "Return Sales",
@@ -29,7 +26,7 @@ const ReturnSales = async () => {
           <div className="space-y-5">
             <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
               <table className="w-full text-left text-sm text-text/80 rtl:text-right">
-                <thead className="bg-primary/25 text-xs uppercase text-text">
+                <thead className="bg-primary/25 text-xs text-center uppercase text-text">
                   <tr>
                     <th scope="col" className="px-2 py-4">
                       Product image

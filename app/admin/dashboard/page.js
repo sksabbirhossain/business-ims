@@ -1,36 +1,52 @@
+import { getCategories } from "@/actions/storeAdmin/category/categoryActions";
+import { getFinance } from "@/actions/storeAdmin/dashboard/dashboardActions";
+import { getStocks } from "@/actions/storeAdmin/stock/stockActions";
 import DailyBuySaleSection from "@/components/admin/Dashboard/DailyBuySaleSection";
 import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSection";
 import TopSection from "@/components/admin/Dashboard/TopSection";
-import { auth } from "@/utils/authOptions";
+import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Dashboard",
+};
+
 const Dashboard = async () => {
+  //get all financial informations
+  const finance = await getFinance();
+
+  //get all categories
+  const categories = await getCategories();
+
+  //get all stocks
+  const stocks = await getStocks();
+
   return (
     <div className="relative z-10 space-y-4 md:space-y-6">
-      <div className="absolute right-1 top-2 -z-10 h-[300px] w-[200px] max-w-full bg-gradient-to-r from-primary to-secondary blur-[99px]" />
-      <TopSection />
+      <TopSection finance={finance?.data} />
+      <div className="absolute top-0 -z-10 h-full w-full bg-gradient-to-l from-primary/40 to-secondary/20 blur-[99px]" />
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}
-        <div className="col-span-1 rounded bg-white p-4 shadow-sm shadow-primary lg:col-span-2">
+        <div className="col-span-1 rounded bg-white/50 p-4 shadow shadow-primary backdrop-blur lg:col-span-2">
           <PurchaseSaleSection />
         </div>
 
         {/* recently added categories */}
-        <div className="col-span-1 space-y-4 rounded bg-white p-4 shadow-sm shadow-primary">
+        <div className="col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
-              <h3 className="text-lg font-semibold capitalize leading-5">
+              <h3 className="text-md font-semibold capitalize leading-5">
                 recently added categories
               </h3>
             </div>
             <div className="flex flex-wrap items-center gap-3 lg:flex-nowrap">
-              <Link href="#">
-                <p className="flex items-center gap-1 text-nowrap text-sm font-medium capitalize">
+              <Link href="/admin/category-list">
+                <p className="flex items-center gap-1 text-nowrap text-sm font-normal capitalize">
                   view all
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
+                      viewBox="0 0 18 16"
                       fill="currentColor"
                       className="h-5 w-5"
                     >
@@ -47,9 +63,9 @@ const Dashboard = async () => {
           </div>
 
           {/* new products table */}
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div className="relative overflow-x-auto sm:rounded-lg">
             <table className="w-full text-left text-sm text-gray-500 rtl:text-right">
-              <thead className="bg-gray-100 text-xs uppercase text-gray-900">
+              <thead className="bg-transparent text-center text-xs uppercase text-gray-900 backdrop-blur">
                 <tr>
                   <th scope="col" className="px-2 py-3">
                     No.
@@ -63,160 +79,59 @@ const Dashboard = async () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
+                {categories?.data?.map((item, i) => (
+                  <tr
+                    className="border-b bg-transparent text-center hover:bg-primary/50 hover:text-text"
+                    key={item?._id}
                   >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    Apple Mobile
-                  </td>
-                  <td className="flex items-center px-2 py-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    Apple Mobile
-                  </td>
-                  <td className="flex items-center px-2 py-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    Apple Mobile
-                  </td>
-                  <td className="flex items-center px-2 py-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    Apple Mobile
-                  </td>
-                  <td className="flex items-center px-2 py-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    Apple Mobile
-                  </td>
-                  <td className="flex items-center px-2 py-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    Apple Mobile
-                  </td>
-                  <td className="flex items-center px-2 py-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                  </td>
-                </tr>
+                    <th
+                      scope="row"
+                      className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
+                    >
+                      {i + 1}
+                    </th>
+                    <td
+                      scope="row"
+                      className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
+                    >
+                      {item?.name}
+                    </td>
+                    <td className="flex items-center justify-center px-2 py-3">
+                      <Image
+                        className="h-8 w-8 rounded-full ring-1"
+                        width={100}
+                        height={100}
+                        src="/default.jpg"
+                        alt="Jese image"
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
+            {categories?.data?.length === 0 && (
+              <p className="py-3 text-center text-sm">No Cateogry Found!</p>
+            )}
           </div>
         </div>
       </div>
 
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* daily buy and sales */}
-        <div className="col-span-1 rounded bg-white p-4 shadow-sm shadow-primary">
+        <div className="col-span-1 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur">
           <DailyBuySaleSection />
         </div>
 
         {/* recently added products */}
-        <div className="col-span-1 space-y-4 rounded bg-white p-4 shadow-sm shadow-primary lg:col-span-2">
+        <div className="col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur lg:col-span-2">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
               <h3 className="text-lg font-semibold capitalize leading-5">
-                recently added products
+                recently added stocks
               </h3>
             </div>
             <div className="flex flex-wrap items-center gap-3 lg:flex-nowrap">
-              <Link href="#">
+              <Link href="/admin/stock-list">
                 <p className="flex items-center gap-1 text-sm font-medium capitalize">
                   view all
                   <span>
@@ -238,137 +153,55 @@ const Dashboard = async () => {
             </div>
           </div>
           {/* new products table */}
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div className="relative overflow-x-auto">
             <table className="w-full text-left text-sm text-gray-500 rtl:text-right">
-              <thead className="bg-gray-100 text-xs uppercase text-gray-900">
+              <thead className="border-b bg-transparent text-center text-xs uppercase text-gray-900 backdrop-blur">
                 <tr>
                   <th scope="col" className="px-2 py-3">
-                    No.
+                    product Image
                   </th>
                   <th scope="col" className="text-nowrap px-2 py-3">
-                    Products
+                    Product name
                   </th>
                   <th scope="col" className="px-2 py-3">
-                    unit
+                    quantity
                   </th>
                   <th scope="col" className="px-2 py-3">
-                    Price
+                    selling Price
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
+                {stocks?.data?.map((item) => (
+                  <tr
+                    className="border-b bg-transparent text-center hover:bg-primary/50 hover:text-text"
+                    key={item?._id}
                   >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="flex items-center gap-1 whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                    Apple Mobile
-                  </td>
-                  <td className="px-2 py-3 font-medium text-black">KG</td>
-                  <td className="px-2 py-3 text-black">1293</td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="flex items-center gap-1 whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                    Apple Mobile
-                  </td>
-                  <td className="px-2 py-3 font-medium text-black">KG</td>
-                  <td className="px-2 py-3 text-black">1293</td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="flex items-center gap-1 whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                    Apple Mobile
-                  </td>
-                  <td className="px-2 py-3 font-medium text-black">KG</td>
-                  <td className="px-2 py-3 text-black">1293</td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="flex items-center gap-1 whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                    Apple Mobile
-                  </td>
-                  <td className="px-2 py-3 font-medium text-black">KG</td>
-                  <td className="px-2 py-3 text-black">1293</td>
-                </tr>
-                <tr className="border-b bg-white hover:bg-primary hover:text-text">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    1
-                  </th>
-                  <td
-                    scope="row"
-                    className="flex items-center gap-1 whitespace-nowrap px-2 py-3 font-medium text-gray-900"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                      alt="Jese image"
-                    />
-                    Apple Mobile
-                  </td>
-                  <td className="px-2 py-3 font-medium text-black">KG</td>
-                  <td className="px-2 py-3 text-black">1293</td>
-                </tr>
+                    <td className="flex items-center justify-center px-2 py-3">
+                      <Image
+                        className="h-8 w-8 rounded-full ring-1"
+                        width={100}
+                        height={100}
+                        src="/default.jpg"
+                        alt="Jese image"
+                      />
+                    </td>
+                    <td className="px-2 py-3 font-medium capitalize text-gray-900">
+                      {item?.name?.substr(0, 20)}
+                    </td>
+                    <td className="px-2 py-3 font-medium text-black">
+                      {item?.quantity} - {item?.uom}
+                    </td>
+                    <td className="px-2 py-3 text-black">
+                      {item?.sellingPrice} Tk.
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
+            {stocks?.data?.length === 0 && (
+              <p className="py-3 text-center text-sm">No Cateogry Found!</p>
+            )}
           </div>
         </div>
       </div>

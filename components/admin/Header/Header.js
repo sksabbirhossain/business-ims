@@ -11,7 +11,7 @@ const Header = async () => {
   const userInfo = session?.user || null;
 
   return (
-    <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white/70 px-2 shadow-sm shadow-gray-300 backdrop-blur sm:px-4">
+    <div className="fixed top-0 z-50 flex h-[45px] w-full items-center bg-white/50 px-2 shadow-sm shadow-gray-300 backdrop-blur sm:px-4">
       <div className="flex h-full w-full items-center justify-between gap-2">
         {/* show info */}
         <Link href="/admin/dashboard">
@@ -34,7 +34,7 @@ const Header = async () => {
             <input
               type="search"
               placeholder="Search by categories..."
-              className="w-full max-w-[500px] rounded-lg px-2 py-1 focus:outline-none"
+              className="w-full max-w-[500px] rounded-lg bg-transparent px-2 py-1 focus:outline-none"
             />
             <button className="pe-2 hover:text-green-700">
               <svg

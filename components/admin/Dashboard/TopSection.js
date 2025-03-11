@@ -1,9 +1,9 @@
 import React from "react";
 
-const TopSection = () => {
+const TopSection = ({ finance }) => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white/50 shadow-md backdrop-blur hover:bg-primary/50 hover:text-text">
         <div className="rounded-full bg-red-400/50 p-2 ring-2 ring-red-400/60">
           {/* icons */}
           <svg
@@ -20,7 +20,7 @@ const TopSection = () => {
             <path d="M3 18.4v-2.796a4.3 4.3 0 0 0 .713.31A26.226 26.226 0 0 0 12 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 0 1-6.477-.427C4.047 21.128 3 19.852 3 18.4Z" />
           </svg>
         </div>
-        <div className="">
+        <div className="leading-6">
           <h1 className="flex items-center text-xl font-semibold">
             <span>
               <svg
@@ -39,13 +39,13 @@ const TopSection = () => {
                 </text>
               </svg>
             </span>
-            3,1992.00
+            {finance?.totalPurchaseCost} Tk.
           </h1>
-          <p className="text-[14px] font-medium capitalize">total purchase</p>
+          <p className="text-[14px] font-medium uppercase">total purchase</p>
         </div>
       </div>
 
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white/50 shadow-md backdrop-blur hover:bg-primary/50 hover:text-text">
         <div className="rounded-full bg-green-100 p-2 ring-2 ring-green-200">
           {/* icons */}
           <svg
@@ -61,7 +61,7 @@ const TopSection = () => {
             />
           </svg>
         </div>
-        <div className="">
+        <div className="leading-6">
           <h1 className="flex items-center text-xl font-semibold">
             <span>
               <svg
@@ -80,12 +80,12 @@ const TopSection = () => {
                 </text>
               </svg>
             </span>
-            3,1992.00
+            {finance?.totalSalesRevenue} Tk.
           </h1>
-          <p className="text-[14px] font-normal capitalize">total sales</p>
+          <p className="text-[14px] font-medium uppercase">total sales</p>
         </div>
       </div>
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white/50 shadow-md backdrop-blur hover:bg-primary/50 hover:text-text">
         <div className="rounded-full bg-yellow-100 p-2 ring-2 ring-yellow-200">
           {/* icons */}
           <svg
@@ -103,7 +103,7 @@ const TopSection = () => {
             />
           </svg>
         </div>
-        <div className="">
+        <div className="leading-6">
           <h1 className="flex items-center text-xl font-semibold">
             <span>
               <svg
@@ -122,12 +122,12 @@ const TopSection = () => {
                 </text>
               </svg>
             </span>
-            3,1992.00
+            {finance?.totalProfit} Tk.
           </h1>
-          <p className="text-[14px] font-normal capitalize">total profit</p>
+          <p className="text-[14px] font-medium uppercase">total profit</p>
         </div>
       </div>
-      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white shadow-sm shadow-secondary hover:bg-primary hover:text-text">
+      <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white/50 shadow-md backdrop-blur hover:bg-primary/50 hover:text-text">
         <div className="rounded-full bg-red-100 p-2 ring-2 ring-red-300">
           {/* icons */}
           <svg
@@ -145,7 +145,7 @@ const TopSection = () => {
             />
           </svg>
         </div>
-        <div className="">
+        <div className="leading-6">
           <h1 className="flex items-center text-xl font-semibold">
             <span>
               <svg
@@ -164,11 +164,9 @@ const TopSection = () => {
                 </text>
               </svg>
             </span>
-            3,1992.00
+            0 Tk.
           </h1>
-          <p className="text-[14px] font-normal capitalize">
-            total due ammount
-          </p>
+          <p className="text-[14px] font-medium uppercase">total due</p>
         </div>
       </div>
     </div>

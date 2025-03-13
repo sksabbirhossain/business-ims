@@ -164,7 +164,7 @@ const TopSection = ({ finance }) => {
                 </text>
               </svg>
             </span>
-            0 Tk.
+            {finance?.totalDue} Tk.
           </h1>
           <p className="text-[14px] font-medium uppercase">total due</p>
         </div>

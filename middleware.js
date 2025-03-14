@@ -24,6 +24,10 @@ export async function middleware(request) {
     return NextResponse.redirect(new URL("/", nextUrl));
   }
 
+  if (isPublic && isAuthenticated && session?.user?.role === "storeAdmin") {
+    return NextResponse.redirect(new URL("/admin/dashboard", nextUrl));
+  }
+
   const isSuperAdmin = nextUrl.pathname.startsWith("/superadmin");
 
   if (
@@ -34,6 +38,10 @@ export async function middleware(request) {
   ) {
     return NextResponse.redirect(new URL("/", nextUrl));
   }
+
+  if (isPublic && isAuthenticated && session?.user?.role === "superadmin") {
+    return NextResponse.redirect(new URL("/superadmin/deshboard", nextUrl));
+  }
 }
 
-export const config = { matcher: ["/admin/:path*", "/superadmin/:path*"] };
+export const config = { matcher: ["/", "/admin/:path*", "/superadmin/:path*"] };

@@ -30,7 +30,7 @@ async function refreshTokenHandler(token) {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  trustHost: true,
+  trustHost: process.env.NEXT_PUBLIC_TRUST_HOST,
   providers: [
     // login for superAdmin
     CredentialsProvider({

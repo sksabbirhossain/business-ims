@@ -120,7 +120,7 @@ const Header = async () => {
 
               {/* logout button */}
               <div className="absolute right-0 top-9 hidden group-hover:block">
-                <LogoutButton />
+                <LogoutButton link={"/superadmin/profile"} />
               </div>
             </div>
           )}

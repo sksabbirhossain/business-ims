@@ -1,7 +1,7 @@
 const sidebarRoutes = [
   {
     name: "Dashboard",
-    path: "/admin/dashboard",
+    path: "/superadmin/dashboard",
     icon: (
       <svg
         aria-hidden="true"

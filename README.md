@@ -9,6 +9,15 @@
 - [Business-IMS](#business-ims)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
+      - [User Authentication](#user-authentication)
+      - [Role-Based Access Control (RBAC)](#role-based-access-control-rbac)
+      - [Superadmin Dashboard](#superadmin-dashboard)
+      - [Store Management](#store-management)
+      - [Stock Management](#stock-management)
+      - [Sales \& Returns](#sales--returns)
+      - [Purchase Management](#purchase-management)
+      - [Advanced Analytics](#advanced-analytics)
+    - [Future Enhancements](#future-enhancements)
   - [Technologies Used](#technologies-used)
   - [Installation](#installation)
       - [1. Clone this repository to your local machine using Git.](#1-clone-this-repository-to-your-local-machine-using-git)
@@ -27,12 +36,50 @@
 
 **Business-IMS** includes the following features:
 
-- **Create an Account** – Secure user authentication with NextAuth (Google, GitHub, etc.).
-- **Role-Based Access Control** – Restrict access and permissions based on user roles.
-- **Stock Management** – Add, update, and delete stock items with real-time updates.
-- **Sales & Returns** – Record sales transactions and manage return processes.
-- **Purchase Management** – Track supplier purchases and maintain purchase records.
-- **Advanced Analytics** – Automatically calculate total purchases, profit, and costs.
+#### User Authentication
+
+- Secure account creation and login with **NextAuth**.
+- Supports OAuth and credential-based authentication.
+
+#### Role-Based Access Control (RBAC)
+
+- Restrict access and permissions based on user roles (Superadmin, Store Admin, Manager, Staff, etc.).
+- Ensure users only access the features relevant to their roles.
+
+#### Superadmin Dashboard
+
+- **Superadmin** can create, update, and delete multiple stores.
+- Manage multiple stores efficiently from a centralized panel.
+
+#### Store Management
+
+- Each store has its own **Store Admin**.
+- **Store Admin** can manage their own stock, purchases, sales, return sales, suppliers, customers, and employees.
+
+#### Stock Management
+
+- Add, update, and delete stock items with real-time updates.
+- Maintain accurate stock levels and inventory tracking.
+
+#### Sales & Returns
+
+- Record sales transactions and generate invoices.
+- Manage return processes efficiently with refund tracking.
+
+#### Purchase Management
+
+- Track supplier purchases and maintain purchase records.
+- Keep a detailed history of all purchases for better decision-making.
+
+#### Advanced Analytics
+
+- Automatically calculate **total purchases, profit, and costs**.
+- Generate insightful reports for business growth and decision-making.
+
+### Future Enhancements
+
+- **Barcode Scanning** for quicker stock management.
+- **AI-Powered Insights** for advanced data analysis.
 
 ## Technologies Used
 
@@ -40,8 +87,8 @@
 - **Authentication**: Utilizes `next-auth` version 5 for authentication.
 - **React:** A popular JavaScript library for building user interfaces.
 - **Tailwind CSS:** A utility-first CSS framework for styling the user interface.
-- **Node.js**: JavaScript runtime used for building the REST API.
-- **MongoDB**: Database for storing user accounts and blog data.
+- **Backend:** Node.js, Express.js used for building the REST API.
+- **Database**: Database schema for MongoDB using Mongoose models,
 
 ## Installation
 
@@ -84,7 +131,6 @@ Access the application in your web browser at [http://localhost:3000](http://loc
 ### Usage
 
 - Visit the deployed website or run the development server (as described in the installation instructions) to access the application.
-
 
 ## Contributing
 

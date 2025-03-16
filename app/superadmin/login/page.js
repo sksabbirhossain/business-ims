@@ -36,7 +36,6 @@ const SuperAdminLogin = () => {
         email,
         password,
       });
-      // console.log("this page data", data);
 
       if (data?.error) {
         setLoading(false);

@@ -22,9 +22,8 @@ const Dashboard = async () => {
   const stocks = await getStocks();
 
   return (
-    <div className="relative z-10 space-y-4 md:space-y-6">
+    <div className="space-y-4 md:space-y-6">
       <TopSection finance={finance?.data} />
-      <div className="absolute top-0 -z-10 h-full w-full bg-gradient-to-l from-primary/40 to-secondary/20 blur-[99px]" />
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}
         <div className="col-span-1 rounded bg-white/50 p-4 shadow shadow-primary backdrop-blur lg:col-span-2">
@@ -32,7 +31,7 @@ const Dashboard = async () => {
         </div>
 
         {/* recently added categories */}
-        <div className="col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur">
+        <div className="col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur fade-in ">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
               <h3 className="text-md font-semibold capitalize leading-5">

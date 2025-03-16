@@ -14,7 +14,7 @@ const StockDetails = async ({ params }) => {
     <Container>
       <PageHeader headText="Stock Details" />
       {/* details */}
-      <div className="rounded-lg bg-white p-4 shadow-md">
+      <div className="rounded-lg bg-white/50 p-4 shadow-md backdrop-blur">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="space-y-3">
             <div className="space-y-1 rounded p-3 shadow">

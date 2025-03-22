@@ -40,7 +40,7 @@ export async function middleware(request) {
   }
 
   if (isPublic && isAuthenticated && session?.user?.role === "superadmin") {
-    return NextResponse.redirect(new URL("/superadmin/deshboard", nextUrl));
+    return NextResponse.redirect(new URL("/superadmin/dashboard", nextUrl));
   }
 }
 

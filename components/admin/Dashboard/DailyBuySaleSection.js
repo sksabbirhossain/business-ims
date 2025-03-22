@@ -1,13 +1,12 @@
 import DailyBuySaleChart from "./DailyBuySaleChart";
 
-
-const DailyBuySaleSection = () => {
+const DailyBuySaleSection = ({ buySales }) => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
         <div>
           <h3 className="text-lg font-semibold capitalize leading-5">
-            daily buy & sales
+            last year buy & sales
           </h3>
         </div>
         <div className="flex flex-wrap items-center gap-3 lg:flex-nowrap">
@@ -24,7 +23,7 @@ const DailyBuySaleSection = () => {
 
       {/* Purchase and Sales Chart */}
       <div className="h-full max-h-[300px] w-full">
-        <DailyBuySaleChart />
+        <DailyBuySaleChart buySales={buySales} />
       </div>
     </>
   );

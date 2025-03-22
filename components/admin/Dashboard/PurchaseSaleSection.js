@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PurchaseSalesChart from "./PurchaseSalesChart";
 
-const PurchaseSaleSection = () => {
+const PurchaseSaleSection = ({ data }) => {
   const [newDate, setNewDate] = useState(new Date());
   const handleYearChange = (date) => {
     setNewDate(date);
@@ -37,7 +37,7 @@ const PurchaseSaleSection = () => {
 
       {/* Purchase and Sales Chart */}
       <div className="h-full max-h-[370px] w-full">
-        <PurchaseSalesChart />
+        <PurchaseSalesChart data={data} />
       </div>
     </>
   );

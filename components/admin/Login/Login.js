@@ -37,9 +37,9 @@ const Login = () => {
           },
         });
       } else {
-        setLoading(false);
         toast.success("Login Successful!");
         router.push("/admin/dashboard");
+        setLoading(false);
       }
     } catch (err) {
       setLoading(false);

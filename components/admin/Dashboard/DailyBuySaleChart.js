@@ -37,7 +37,11 @@ const renderCustomizedLabel = ({
   );
 };
 
-const DailyBuySaleChart = () => {
+const DailyBuySaleChart = ({ buySales }) => {
+  const data = [
+    { name: "Buy", value: buySales?.totalPurchase },
+    { name: "Sales", value: buySales?.totalSales },
+  ];
   return (
     <ResponsiveContainer width="100%" height="110%">
       <PieChart style={{ outline: "none" }}>

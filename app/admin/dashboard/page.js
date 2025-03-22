@@ -1,5 +1,9 @@
 import { getCategories } from "@/actions/storeAdmin/category/categoryActions";
-import { getFinance } from "@/actions/storeAdmin/dashboard/dashboardActions";
+import {
+  getFinance,
+  getPurchaseAndSales,
+  lastYearBuyAndSales,
+} from "@/actions/storeAdmin/dashboard/dashboardActions";
 import { getStocks } from "@/actions/storeAdmin/stock/stockActions";
 import DailyBuySaleSection from "@/components/admin/Dashboard/DailyBuySaleSection";
 import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSection";
@@ -21,17 +25,21 @@ const Dashboard = async () => {
   //get all stocks
   const stocks = await getStocks();
 
+  const res = await getPurchaseAndSales();
+
+  const buySales = await lastYearBuyAndSales();
+
   return (
     <div className="space-y-4 md:space-y-6">
       <TopSection finance={finance?.data} />
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}
         <div className="col-span-1 rounded bg-white/50 p-4 shadow shadow-primary backdrop-blur lg:col-span-2">
-          <PurchaseSaleSection />
+          <PurchaseSaleSection data={res?.data} />
         </div>
 
         {/* recently added categories */}
-        <div className="col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur fade-in ">
+        <div className="fade-in col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
               <h3 className="text-md font-semibold capitalize leading-5">
@@ -118,7 +126,7 @@ const Dashboard = async () => {
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* daily buy and sales */}
         <div className="col-span-1 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur">
-          <DailyBuySaleSection />
+          <DailyBuySaleSection buySales={buySales?.data} />
         </div>
 
         {/* recently added products */}

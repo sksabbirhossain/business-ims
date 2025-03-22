@@ -4,8 +4,7 @@ import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import TextArea from "@/components/common/FormInput/TextArea";
 import { useSession } from "next-auth/react";
-import { revalidatePath } from "next/cache";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 

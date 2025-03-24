@@ -2,10 +2,21 @@
 
 import useMobileMenu from "@/contexts/mobileMenuContext";
 import sidebarRoutes from "@/utils/admin/sidebarRoutes";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import MenuItems from "./MenuItems";
 
 const Sidebar = () => {
   const { menuOpen, mobileMenuHandler } = useMobileMenu();
+
+  const router = useRouter();
+  //user signout handler
+  const signOutHandler = async () => {
+    await signOut({ redirect: false, callbackUrl: "/superadmin/login" });
+    router.push("/");
+    toast.success("Logout successful!");
+  };
 
   return (
     <div>
@@ -25,7 +36,7 @@ const Sidebar = () => {
             ))}
 
             {/* logout button */}
-            <li>
+            <li onClick={signOutHandler}>
               <button
                 className={`group flex w-full items-center rounded-sm p-2 px-3 capitalize text-text hover:bg-secondary hover:text-white`}
               >

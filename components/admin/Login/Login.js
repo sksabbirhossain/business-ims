@@ -4,7 +4,7 @@ import FormInput from "@/components/common/FormInput/FormInput";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -14,6 +14,12 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
+  // set default store login
+  useEffect(() => {
+    setEmail("amarstore@gmail.com");
+    setPassword("amarStore@1234");
+  }, []);
 
   //handle submit form
   const handleSubmit = async (e) => {

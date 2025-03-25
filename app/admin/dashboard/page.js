@@ -207,7 +207,7 @@ const Dashboard = async () => {
               </tbody>
             </table>
             {stocks?.data?.length === 0 && (
-              <p className="py-3 text-center text-sm">No Cateogry Found!</p>
+              <p className="py-3 text-center text-sm">No Stock Found!</p>
             )}
           </div>
         </div>

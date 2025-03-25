@@ -20,7 +20,7 @@ const Dashboard = async () => {
   const finance = await getFinance();
 
   //get all categories
-  const categories = await getCategories();
+  const categories = await getCategories(6);
 
   //get all stocks
   const stocks = await getStocks();

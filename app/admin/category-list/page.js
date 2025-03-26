@@ -1,8 +1,8 @@
 import { getCategories } from "@/actions/storeAdmin/category/categoryActions";
 import CategoryItem from "@/components/admin/Category-list/CategoryItem";
-import Pagination from "@/components/common/Pagination/Pagination";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
+import Pagination from "@/components/common/Pagination/Pagination";
 
 export const metadata = {
   title: "Category List",
@@ -51,7 +51,11 @@ const CategoryList = async ({ searchParams }) => {
           </thead>
           <tbody>{content}</tbody>
         </table>
-        {data?.data && data?.data?.length === 0 && <p className="text-center py-4 font-medium text-black/70">No category found!</p> }
+        {data?.data && data?.data?.length === 0 && (
+          <p className="py-4 text-center font-medium text-black/70">
+            No category found!
+          </p>
+        )}
       </div>
 
       {/* pagination  */}

@@ -2,10 +2,10 @@
 
 import { Fetch } from "@/utils/Fetch";
 
-export const getPurchases = async () => {
+export const getPurchases = async (limit, page) => {
   try {
     const res = await Fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/purchase/all`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/purchase/all?page=${page}&limit=${limit}`,
       { cache: "no-store" },
     );
     const data = await res.json();

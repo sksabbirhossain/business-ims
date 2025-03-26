@@ -82,7 +82,7 @@ const Pagination = ({ data }) => {
           <Link href={`?page=${p}`} key={index}>
             <div
               className={`flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-[9px] border border-primary p-1 text-base font-semibold transition-all duration-500 ease-in-out hover:bg-secondary hover:text-white ${
-                p === data.currentPage
+                p === data?.currentPage
                   ? "pagination-active bg-primary text-white"
                   : ""
               }`}

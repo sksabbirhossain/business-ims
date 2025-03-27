@@ -2,6 +2,7 @@
 
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
+import RadioButton from "@/components/common/FormInput/RadioButton";
 import TextArea from "@/components/common/FormInput/TextArea";
 import SelectInput from "@/components/common/SelectInput/SelectInput";
 import { useSession } from "next-auth/react";
@@ -22,6 +23,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
   const [image, setImage] = useState(null);
   const [barcode, setBarcode] = useState("");
   const [status, setStatus] = useState(true);
+  const [isStock, setIsStock] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -53,6 +55,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
             image,
             barcode,
             status,
+            isStock,
           }),
           headers: {
             "Content-Type": "application/json",
@@ -177,23 +180,23 @@ const PurchaseForm = ({ categories, suppliers }) => {
                 {errors?.errors?.sellingPrice?.msg}
               </p>
             </div>
+
+            <div className="space-y-2">
+              <FormInput
+                label="Quantity"
+                type="text"
+                placeholder="Quantity"
+                value={quantity}
+                name="quantity"
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+              <p className="text-sm font-semibold text-red-500">
+                {errors?.errors?.quantity?.msg}
+              </p>
+            </div>
           </div>
           <div>
             <div className="space-y-4">
-              <div className="space-y-2">
-                <FormInput
-                  label="Quantity"
-                  type="text"
-                  placeholder="Quantity"
-                  value={quantity}
-                  name="quantity"
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-                <p className="text-sm font-semibold text-red-500">
-                  {errors?.errors?.quantity?.msg}
-                </p>
-              </div>
-
               <div className="space-y-2">
                 <SelectInput
                   label="Supplier Info"
@@ -271,8 +274,18 @@ const PurchaseForm = ({ categories, suppliers }) => {
                 </p> */}
               </div>
 
+              <div className="pt-2">
+                <RadioButton
+                  name="isStock"
+                  value={isStock}
+                  onChange={(e) => setIsStock(e.target.checked)}
+                />
+              </div>
+
               <div>
-                <Button className="w-full">add Purchase</Button>
+                <Button className="w-full" isPending={loading}>
+                  add Purchase
+                </Button>
               </div>
               {errors?.errors?.common && (
                 <p className="rounded bg-red-600 py-2 text-center text-sm font-medium text-white">

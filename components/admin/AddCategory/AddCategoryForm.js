@@ -101,40 +101,8 @@ const AddCategoryForm = () => {
           placeholder="enter category image"
           onChange={(e) => SetPicture(e.target.file[0])}
         />
-        <Button className="w-full" disabled={loading}>
-          {loading ? (
-            <p className="flex justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="9"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeDasharray="5, 5"
-                  strokeLinecap="round"
-                >
-                  <animateTransform
-                    attributeName="transform"
-                    type="rotate"
-                    from="0 12 12"
-                    to="360 12 12"
-                    dur="1s"
-                    repeatCount="indefinite"
-                  />
-                </circle>
-              </svg>
-            </p>
-          ) : (
-            "Add"
-          )}
+        <Button className="w-full" disabled={loading} isPending={loading}>
+          add
         </Button>
         {errors?.errors?.common && (
           <p className="rounded bg-red-600 py-2 text-center text-sm font-medium text-white">

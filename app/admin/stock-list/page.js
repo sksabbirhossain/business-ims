@@ -26,7 +26,7 @@ const StockList = async () => {
       <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
         <table className="w-full text-left text-sm text-text/80 rtl:text-right">
           <thead className="bg-primary/25 text-xs uppercase text-text">
-            <tr>
+            <tr className="text-nowrap text-center">
               <th scope="col" className="px-2 py-4">
                 Product image
               </th>
@@ -34,13 +34,16 @@ const StockList = async () => {
                 Product name
               </th>
               <th scope="col" className="px-2 py-4">
-                customer name
+                supplier
               </th>
               <th scope="col" className="px-2 py-4">
                 Quantity
               </th>
               <th scope="col" className="px-2 py-4">
-                purchase Price
+                selling Price
+              </th>
+              <th scope="col" className="px-2 py-4">
+                total Price
               </th>
               <th scope="col" className="px-2 py-4 text-center">
                 Action
@@ -50,10 +53,10 @@ const StockList = async () => {
           <tbody>
             {stocks?.data?.map((stock) => (
               <tr
-                className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
+                className="text-nowrap border-b text-center font-medium odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
                 key={stock._id}
               >
-                <td className="px-2 py-1">
+                <td className="flex h-full w-full items-center justify-center px-2 py-1">
                   <Image
                     src={stock.picture ? stock.picture : "/default.jpg"}
                     alt="product image"
@@ -62,19 +65,15 @@ const StockList = async () => {
                     className="h-[35px] w-[35px] rounded-full object-cover ring-1 ring-primary"
                   />
                 </td>
-                <th
-                  scope="row"
-                  className="whitespace-nowrap px-2 py-1 font-semibold"
-                >
-                  {stock.name}
-                </th>
+                <th className="whitespace-nowrap px-2 py-1 font-medium">{stock.name}</th>
                 <td className="whitespace-nowrap px-2 py-1">
                   {stock?.supplierInfo?.name}
                 </td>
                 <td className="px-2 py-1">
                   {stock?.quantity} - {stock?.uom}
                 </td>
-                <td className="px-2 py-1">{stock?.purchasePrice}</td>
+                <td className="px-2 py-1">{stock?.sellingPrice} Tk.</td>
+                <td className="px-2 py-1">{stock?.totalPrice} Tk.</td>
 
                 <td className="px-2 py-1 text-center">
                   <ActionButtons id={stock._id} />

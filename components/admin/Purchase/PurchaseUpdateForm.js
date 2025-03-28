@@ -163,7 +163,7 @@ const PurchaseUpdateForm = ({ categories, suppliers, purchase }) => {
               >
                 <option value="">Select Unit</option>
                 <option value="KG">KG</option>
-                <option value="PICES">PICES</option>
+                <option value="PIECE">PIECE</option>
                 <option value="LITER">LITER</option>
               </SelectInput>
               <p className="text-sm font-semibold text-red-500">

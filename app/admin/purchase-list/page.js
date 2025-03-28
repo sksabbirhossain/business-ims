@@ -22,7 +22,7 @@ const AllPurchase = async ({ searchParams }) => {
       <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
         <table className="w-full text-left text-sm text-text/80 rtl:text-right">
           <thead className="bg-primary/25 text-xs uppercase text-text">
-            <tr>
+            <tr className="text-nowrap text-center">
               <th scope="col" className="px-2 py-4">
                 Product image
               </th>
@@ -36,7 +36,10 @@ const AllPurchase = async ({ searchParams }) => {
                 Quantity
               </th>
               <th scope="col" className="px-2 py-4">
-                Price
+                Selling Price
+              </th>
+              <th scope="col" className="px-2 py-4">
+                Total Price
               </th>
               <th scope="col" className="px-2 py-4 text-center">
                 Action
@@ -46,10 +49,10 @@ const AllPurchase = async ({ searchParams }) => {
           <tbody>
             {data?.data?.map((purchase) => (
               <tr
-                className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
+                className="text-nowrap border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
                 key={purchase._id}
               >
-                <td className="px-2 py-1">
+                <td className="flex w-full items-center justify-center px-2 pt-2">
                   <Image
                     src={purchase.picture ? purchase.picture : "/default.jpg"}
                     alt="product image"
@@ -68,7 +71,8 @@ const AllPurchase = async ({ searchParams }) => {
                 <td className="px-2 py-1">
                   {purchase?.quantity} - {purchase?.uom}
                 </td>
-                <td className="px-2 py-1">{purchase?.purchasePrice}</td>
+                <td className="px-2 py-1">{purchase?.sellingPrice} Tk.</td>
+                <td className="px-2 py-1">{purchase?.totalPrice} Tk.</td>
                 <td className="px-2 py-1">
                   <ActionButtons id={purchase?._id} />
                 </td>

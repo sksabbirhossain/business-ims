@@ -31,6 +31,14 @@ const PurchaseForm = ({ categories, suppliers }) => {
 
   const router = useRouter();
 
+  // todo if use vps then remove this
+  if (isStock) {
+    setIsStock(false);
+    alert(
+      "Right Now This Feature Is Not Work In Vercel. Because Vercel Not Support Queue Worker.",
+    );
+  }
+
   //handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -145,7 +153,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
               >
                 <option value="">Select Unit</option>
                 <option value="KG">KG</option>
-                <option value="PICES">PICES</option>
+                <option value="PIECE">PIECE</option>
                 <option value="LITER">LITER</option>
               </SelectInput>
               <p className="text-sm font-semibold text-red-500">

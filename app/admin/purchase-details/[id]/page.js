@@ -55,6 +55,10 @@ const PurchaseDetails = async ({ params }) => {
                 {purchase?.data?.sellingPrice} Taka
               </p>
             </div>
+            <div className="space-y-1 rounded p-3 shadow">
+              <h2 className="text-md font-semibold">Total Price</h2>
+              <p className="text-gray-800">{purchase?.data?.totalPrice} Taka</p>
+            </div>
           </div>
 
           <div className="space-y-3">

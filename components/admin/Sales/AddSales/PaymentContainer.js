@@ -76,6 +76,12 @@ const PaymentContainer = () => {
       customerInfo = customer;
     }
 
+    if (selectCustomer === "new" && due > 0) {
+      alert("You can add due only for existing customer!");
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales-pament`,
@@ -114,6 +120,9 @@ const PaymentContainer = () => {
         setEmail("");
         setPhone("");
         setAddress("");
+        setCash(0);
+        setDue(0);
+        setBank(0);
         setLoading(false);
       } else {
         setLoading(false);
@@ -173,8 +182,7 @@ const PaymentContainer = () => {
               required={selectCustomer === "old"}
             >
               <option value="">Select customer</option>
-              <option value="67e7e69b2bbf18a9fc229791"> demo 1</option>
-              <option value=""> customer 2</option>
+              <option value="67e7e69b2bbf18a9fc229791"> demo customer</option>
             </SelectInput>
           </div>
         )}

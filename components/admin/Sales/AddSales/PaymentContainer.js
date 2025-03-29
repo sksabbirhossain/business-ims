@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
+import SelectInput from "@/components/common/SelectInput/SelectInput";
 import useAddToCart from "@/contexts/addToCartContext";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -12,22 +13,49 @@ const PaymentContainer = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
+  const [cash, setCash] = useState(0);
+  const [bank, setBank] = useState(0);
+  const [selectBank, setSelectBank] = useState(null);
+  const [due, setDue] = useState(0);
   const [name, setName] = useState("");
+  const [customer, setCustomer] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [selectCustomer, setSelectCustomer] = useState("new");
 
   const { data: session } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    //caculate total price
     const total = carts.reduce((acc, item) => acc + item.total, 0);
     setSubTotal(total);
-    setTotalPrice(total - discount);
-  }, [carts, discount]);
+
+    const calculatedTotalPrice = total - discount;
+    setTotalPrice(calculatedTotalPrice);
+
+    // Set cash only if it's 0 (meaning user hasn't manually changed it)
+    if (parseFloat(cash) === 0) {
+      setCash(calculatedTotalPrice);
+    }
+
+    setDue(
+      calculatedTotalPrice - (parseFloat(cash) || 0) - (parseFloat(bank) || 0),
+    );
+  }, [carts, discount, bank, cash]);
+
+  // set customer
+  const setCustomerHandler = (val) => {
+    if (val === "new") {
+      setSelectCustomer("new");
+    } else if (val === "old") {
+      setSelectCustomer("old");
+    } else {
+      setSelectCustomer("new");
+    }
+  };
 
   //handle submit
   const handleSubmit = async (e) => {
@@ -35,20 +63,32 @@ const PaymentContainer = () => {
     setLoading(true);
     setErrors({});
 
+    //set customer infomations for new or old customer
+    let customerInfo;
+    if (selectCustomer === "new") {
+      customerInfo = {
+        name,
+        email,
+        phone,
+        address,
+      };
+    } else if (selectCustomer === "old") {
+      customerInfo = customer;
+    }
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales-pament`,
         {
           method: "POST",
           body: JSON.stringify({
-            customer: {
-              name,
-              email,
-              phone,
-              address,
-            },
+            customer: customerInfo,
             discount,
             subTotal,
+            cash,
+            bank,
+            bankInfo: selectBank,
+            due,
             totalPrice,
             cart: [
               ...carts.map((item) => ({
@@ -99,62 +139,153 @@ const PaymentContainer = () => {
         </p>
       )}
       <form onSubmit={handleSubmit}>
-        <p className="text-[15px] font-semibold uppercase">Customer Info</p>
-        <div className="space-y-3 py-3">
-          <FormInput
-            label="name"
-            type="text"
-            placeholder="customer name"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <FormInput
-            label="email"
-            type="email"
-            placeholder="customer email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <FormInput
-            label=" phone"
-            type="number"
-            placeholder="customer phone"
-            name="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <FormInput
-            label=" Address"
-            type="text"
-            placeholder="customer address"
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
+        <p className="pb-2 text-[15px] font-semibold uppercase">
+          Customer Info
+        </p>
+        {/* select customer */}
+        <div className="flex w-full overflow-hidden rounded bg-gray-50 ring-1 ring-primary">
+          <div
+            className={`w-full border-e border-secondary py-2 text-center duration-300 ease-linear ${selectCustomer === "new" ? "bg-primary text-gray-100" : ""}`}
+            onClick={() => setCustomerHandler("new")}
+          >
+            <p className="cursor-pointer select-none text-sm font-medium">
+              new customer
+            </p>
+          </div>
+          <div
+            className={`w-full py-2 text-center duration-300 ease-linear ${selectCustomer === "old" ? "bg-primary text-gray-100" : ""}`}
+            onClick={() => setCustomerHandler("old")}
+          >
+            <p className="cursor-pointer select-none text-sm font-medium">
+              Existing customer
+            </p>
+          </div>
         </div>
 
-        <p className="py-2 text-[15px] font-semibold uppercase">Ammounts</p>
+        {/* existing customer select box */}
+        {selectCustomer === "old" && (
+          <div className="space-y-3 pt-3">
+            <SelectInput
+              label="Select Customer"
+              name="customer"
+              value={customer}
+              onChange={(e) => setCustomer(e.target.value)}
+              required={selectCustomer === "old"}
+            >
+              <option value="">Select customer</option>
+              <option value="67e7e69b2bbf18a9fc229791"> demo 1</option>
+              <option value=""> customer 2</option>
+            </SelectInput>
+          </div>
+        )}
+
+        {/* new customer form */}
+        {selectCustomer === "new" && (
+          <div className="space-y-3 pt-3">
+            <FormInput
+              label="name"
+              type="text"
+              placeholder="customer name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <FormInput
+              label="email"
+              type="email"
+              placeholder="customer email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <FormInput
+              label=" phone"
+              type="number"
+              placeholder="customer phone"
+              name="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <FormInput
+              label=" Address"
+              type="text"
+              placeholder="customer address"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+        )}
 
         <div>
+          {/* discount */}
+          <p className="pb-1 pt-3 text-sm font-semibold capitalize">
+            sale discount :
+          </p>
           <FormInput
-            label="discount"
-            type="text"
+            label={0}
+            type="number"
             placeholder="discount ammount"
             name="discount"
             value={discount}
             onChange={(e) => setDiscount(e.target.value)}
           />
-          <div className="space-y-1 pt-5">
-            <p className="flex items-center justify-between text-base font-semibold capitalize text-gray-600">
+          {/* payment method */}
+          <p className="pb-1 pt-3 text-base font-semibold uppercase">
+            Payment method
+          </p>
+          {/* cash */}
+          <div className="space-y-2 pb-1 pt-3">
+            <p className="text-sm font-medium capitalize">cash</p>
+            <FormInput
+              label={0}
+              type="number"
+              placeholder="cash ammount"
+              name="cash"
+              value={cash}
+              onChange={(e) => setCash(e.target.value)}
+            />
+          </div>
+          {/* bank */}
+          <div className="flex w-full gap-5">
+            <div className="space-y-2 pb-1 pt-3">
+              <p className="text-sm font-medium capitalize">bank</p>
+              <FormInput
+                label={0}
+                type="number"
+                placeholder="bank ammount"
+                name="bank"
+                value={bank}
+                onChange={(e) => setBank(e.target.value)}
+              />
+            </div>
+
+            <div className="w-full pt-3">
+              <p className="text-sm font-medium capitalize">Select Bank</p>
+              <SelectInput
+                label={""}
+                name="selectBank"
+                onChange={(e) => setSelectBank(e.target.value)}
+                required={bank > 0}
+              >
+                <option value="">Select Bank</option>
+                <option value=""> bank 1</option>
+                <option value=""> bank 2</option>
+              </SelectInput>
+            </div>
+          </div>
+          <div className="mt-5 space-y-1 rounded bg-secondary/50 px-2 py-1">
+            <p className="flex items-center justify-between text-base font-medium uppercase text-gray-900">
               <span>sub Price:</span> <span>{subTotal} tk.</span>
             </p>
-            <p className="flex items-center justify-between text-base font-semibold capitalize text-gray-600">
+            <p className="flex items-center justify-between text-base font-medium uppercase text-gray-900">
               <span>discount ammounts:</span> <span>{discount} tk.</span>
             </p>
-            <span className="block border-b-2" />
-            <p className="flex items-center justify-between text-base font-semibold capitalize text-gray-600">
+            <p className="flex items-center justify-between text-base font-medium uppercase text-gray-900">
+              <span>total due:</span> <span>{due} tk.</span>
+            </p>
+            <span className="block border-b" />
+            <p className="flex items-center justify-between text-base font-medium uppercase text-gray-900">
               <span>Total price:</span> <span>{totalPrice} tk.</span>
             </p>
           </div>

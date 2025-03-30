@@ -2,11 +2,6 @@
 
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-const data = [
-  { name: "Buy", value: 62100 },
-  { name: "Sales", value: 92100 },
-];
-
 const COLORS = ["#f87171", "#15B392"];
 
 const RADIAN = Math.PI / 180;

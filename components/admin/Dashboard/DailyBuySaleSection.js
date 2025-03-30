@@ -1,6 +1,8 @@
+import { lastYearBuyAndSales } from "@/actions/storeAdmin/dashboard/dashboardActions";
 import DailyBuySaleChart from "./DailyBuySaleChart";
 
-const DailyBuySaleSection = ({ buySales }) => {
+const DailyBuySaleSection = async () => {
+  const buySales = await lastYearBuyAndSales();
   return (
     <>
       <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
@@ -23,7 +25,7 @@ const DailyBuySaleSection = ({ buySales }) => {
 
       {/* Purchase and Sales Chart */}
       <div className="h-full max-h-[300px] w-full">
-        <DailyBuySaleChart buySales={buySales} />
+        <DailyBuySaleChart buySales={buySales?.data} />
       </div>
     </>
   );

@@ -1,6 +1,9 @@
+import { getFinance } from "@/actions/storeAdmin/dashboard/dashboardActions";
 import React from "react";
 
-const TopSection = ({ finance }) => {
+const TopSection = async () => {
+  //get all financial informations
+  const { data: finance } = await getFinance();
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
       <div className="flex h-24 cursor-pointer items-center justify-center gap-x-4 rounded bg-white/50 shadow-md backdrop-blur hover:bg-primary/50 hover:text-text">

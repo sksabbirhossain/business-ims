@@ -3,7 +3,7 @@
 import { Fetch } from "@/utils/Fetch";
 
 //get all stock
-export const getStocks = async () => {
+export const getStocks = async (limit, page) => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/stock/all`,

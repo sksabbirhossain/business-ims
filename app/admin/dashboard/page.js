@@ -1,9 +1,5 @@
 import { getCategories } from "@/actions/storeAdmin/category/categoryActions";
-import {
-  getFinance,
-  getPurchaseAndSales,
-  lastYearBuyAndSales,
-} from "@/actions/storeAdmin/dashboard/dashboardActions";
+import { getPurchaseAndSales } from "@/actions/storeAdmin/dashboard/dashboardActions";
 import { getStocks } from "@/actions/storeAdmin/stock/stockActions";
 import DailyBuySaleSection from "@/components/admin/Dashboard/DailyBuySaleSection";
 import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSection";
@@ -16,22 +12,16 @@ export const metadata = {
 };
 
 const Dashboard = async () => {
-  //get all financial informations
-  const finance = await getFinance();
-
-  //get all categories
-  const categories = await getCategories(6);
-
-  //get all stocks
-  const stocks = await getStocks();
-
-  const res = await getPurchaseAndSales();
-
-  const buySales = await lastYearBuyAndSales();
+  // Fetch categories, stocks, and purchase/sales data in parallel
+  const [categories, stocks, res] = await Promise.all([
+    getCategories(6),
+    getStocks(5),
+    getPurchaseAndSales(),
+  ]);
 
   return (
     <div className="space-y-4 md:space-y-6">
-      <TopSection finance={finance?.data} />
+      <TopSection />
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}
         <div className="col-span-1 rounded bg-white/50 p-4 shadow shadow-primary backdrop-blur lg:col-span-2">
@@ -69,7 +59,7 @@ const Dashboard = async () => {
             </div>
           </div>
 
-          {/* new products table */}
+          {/* categories */}
           <div className="relative overflow-x-auto sm:rounded-lg">
             <table className="w-full text-left text-sm text-gray-500 rtl:text-right">
               <thead className="bg-transparent text-center text-xs uppercase text-gray-900 backdrop-blur">
@@ -126,10 +116,10 @@ const Dashboard = async () => {
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* daily buy and sales */}
         <div className="col-span-1 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur">
-          <DailyBuySaleSection buySales={buySales?.data} />
+          <DailyBuySaleSection />
         </div>
 
-        {/* recently added products */}
+        {/* recently added stock */}
         <div className="col-span-1 space-y-4 rounded bg-white/50 p-4 shadow-sm shadow-primary backdrop-blur lg:col-span-2">
           <div className="flex flex-wrap items-center justify-between lg:flex-nowrap">
             <div>
@@ -159,7 +149,7 @@ const Dashboard = async () => {
               </Link>
             </div>
           </div>
-          {/* new products table */}
+          {/*  stock table */}
           <div className="relative overflow-x-auto">
             <table className="w-full text-left text-sm text-gray-500 rtl:text-right">
               <thead className="border-b bg-transparent text-center text-xs uppercase text-gray-900 backdrop-blur">

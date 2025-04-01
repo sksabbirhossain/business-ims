@@ -32,6 +32,8 @@ const SearchContainer = () => {
     }
   };
 
+  console.log(searchResults);
+
   return (
     <>
       <div className="">
@@ -106,6 +108,14 @@ const SearchContainer = () => {
           <div className="flex w-full justify-center py-3">
             <p className="text-center font-medium text-primary">
               No results found!
+            </p>
+          </div>
+        )}
+        {searchResults?.data?.cart?.length === 0 && !loading && (
+          <div className="flex w-full justify-center py-3">
+            <p className="text-center font-medium text-primary">
+              Cart is empty. please search on return sales list by this
+              Transaction ID.
             </p>
           </div>
         )}

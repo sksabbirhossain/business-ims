@@ -19,7 +19,7 @@ const ReturnSaleItem = ({ sale }) => {
         scope="row"
         className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
       >
-        {sale?.product?.name.substr(0.2) || "N/A"}
+        {sale?.product?.name?.substr(0.2) || "N/A"}
       </th>
       <td className="px-2 py-1">{sale?.sales?.customer?.name || "N/A"}</td>
       <td className="px-2 py-1">{sale?.qty}</td>

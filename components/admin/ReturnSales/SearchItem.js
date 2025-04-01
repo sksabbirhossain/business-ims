@@ -41,7 +41,7 @@ const SearchItem = ({ item, customer, trxid }) => {
         scope="row"
         className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
       >
-        {item.product.name.substr(0, 20)}...
+        {item?.product?.name?.substr(0, 20)}...
       </th>
       <td className="whitespace-nowrap px-1 py-2"> {customer?.name} </td>
       <td className="text-nowrap px-1 py-2">

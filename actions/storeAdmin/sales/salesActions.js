@@ -3,10 +3,10 @@
 import { Fetch } from "@/utils/Fetch";
 
 //get all sales
-export const getAllSales = async () => {
+export const getAllSales = async (limit, page) => {
   try {
     const res = await Fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales?page=${page}&limit=${limit}`,
       { cache: "no-store" },
     );
     const data = await res.json();

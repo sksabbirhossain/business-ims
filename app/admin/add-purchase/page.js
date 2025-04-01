@@ -4,6 +4,8 @@ import PurchaseForm from "@/components/admin/Purchase/PurchaseForm";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Add Purchase",
 };

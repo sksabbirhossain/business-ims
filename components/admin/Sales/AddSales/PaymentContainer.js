@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const PaymentContainer = ({ customers }) => {
+const PaymentContainer = ({ customerData }) => {
   const { carts, setCarts } = useAddToCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
@@ -182,11 +182,12 @@ const PaymentContainer = ({ customers }) => {
               required={selectCustomer === "old"}
             >
               <option value="">Select customer</option>
-              {customers?.data?.map((customer) => (
-                <option key={customer?._id} value={customer?._id}>
-                  {customer?.name}
-                </option>
-              ))}
+              {customerData?.data.length > 0 &&
+                customerData?.data?.map((customer) => (
+                  <option key={customer?._id} value={customer?._id}>
+                    {customer?.name}
+                  </option>
+                ))}
             </SelectInput>
           </div>
         )}

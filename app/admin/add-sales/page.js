@@ -5,6 +5,8 @@ import PaymentContainer from "@/components/admin/Sales/AddSales/PaymentContainer
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Add Sales",
 };
@@ -28,7 +30,7 @@ const AddSales = async () => {
         </div>
 
         {/* payment section */}
-        <PaymentContainer customers={customers} />
+        <PaymentContainer customerData={customers} />
       </div>
     </Container>
   );

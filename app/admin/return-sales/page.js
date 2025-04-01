@@ -4,6 +4,8 @@ import SearchContainer from "@/components/admin/ReturnSales/SearchContainer";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Return Sales",
 };

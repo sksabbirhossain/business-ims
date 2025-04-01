@@ -1,3 +1,4 @@
+import { getAllCustomer } from "@/actions/storeAdmin/customer/customerActions";
 import AddSalesContainer from "@/components/admin/Sales/AddSales/AddSalesContainer";
 import CartItemsContainer from "@/components/admin/Sales/AddSales/CartItemsContainer";
 import PaymentContainer from "@/components/admin/Sales/AddSales/PaymentContainer";
@@ -8,7 +9,10 @@ export const metadata = {
   title: "Add Sales",
 };
 
-const AddSales = () => {
+const AddSales = async () => {
+  //get all customer
+  const customers = await getAllCustomer();
+
   return (
     <Container>
       {/* add page header */}
@@ -24,7 +28,7 @@ const AddSales = () => {
         </div>
 
         {/* payment section */}
-        <PaymentContainer />
+        <PaymentContainer customers={customers} />
       </div>
     </Container>
   );

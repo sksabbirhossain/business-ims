@@ -59,7 +59,7 @@ const CustomerList = async ({ searchParams }) => {
         </table>
         {data?.data && data?.data?.length === 0 && (
           <p className="py-4 text-center font-medium text-black/70">
-            No category found!
+            No customer found!
           </p>
         )}
       </div>

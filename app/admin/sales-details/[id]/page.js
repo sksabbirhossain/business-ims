@@ -10,18 +10,21 @@ export const metadata = {
 const SalesDetails = async ({ params }) => {
   const salesId = (await params).id;
   const sale = await getSale(salesId);
+  console.log(sale);
   return (
     <Container>
       <PageHeader headText="Sales Details" />
       {/* details */}
       <div className="rounded-lg bg-white p-4 shadow-md">
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 capitalize md:grid-cols-2">
           <div className="space-y-3">
             {/* customer information */}
             <div className="space-y-3 rounded shadow shadow-primary">
               <div className="space-y-1 rounded p-3 shadow">
                 <h2 className="text-md font-semibold">Customer Name</h2>
-                <p className="text-gray-800">{sale?.data?.customer?.name}</p>
+                <p className="text-gray-800">
+                  {sale?.data?.customer?.name || "N/A"}
+                </p>
               </div>
               <div className="space-y-1 rounded p-3 shadow">
                 <h2 className="text-md font-semibold">Customer Email</h2>
@@ -86,6 +89,18 @@ const SalesDetails = async ({ params }) => {
               <div className="space-y-1 rounded p-3 shadow">
                 <h2 className="text-md font-semibold">payment Method</h2>
                 <p className="text-gray-800">{sale?.data?.paymentMethod}</p>
+              </div>
+              <div className="space-y-1 rounded p-3 shadow">
+                <h2 className="text-md font-semibold">total due</h2>
+                <p className="text-gray-800">{sale?.data?.due} Tk.</p>
+              </div>
+              <div className="space-y-1 rounded p-3 shadow">
+                <h2 className="text-md font-semibold">payment with cash</h2>
+                <p className="text-gray-800">{sale?.data?.cash} Tk.</p>
+              </div>
+              <div className="space-y-1 rounded p-3 shadow">
+                <h2 className="text-md font-semibold">payment with bank</h2>
+                <p className="text-gray-800">{sale?.data?.bank} Tk.</p>
               </div>
               <div className="space-y-1 rounded p-3 shadow">
                 <h2 className="text-md font-semibold">Transaction Id</h2>

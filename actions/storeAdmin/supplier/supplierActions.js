@@ -4,10 +4,10 @@ import { Fetch } from "@/utils/Fetch";
 import { redirect } from "next/navigation";
 
 //get suppliers
-export const getSuppliers = async () => {
+export const getSuppliers = async (limit, page) => {
   try {
     const res = await Fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/suppliers`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/suppliers?page=${page}&limit=${limit}`,
     );
     const data = await res.json();
     return data;

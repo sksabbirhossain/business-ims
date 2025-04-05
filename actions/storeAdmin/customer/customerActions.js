@@ -28,7 +28,7 @@ export const getAllCustomer = async () => {
   }
 };
 
-//get customers
+//get customer
 export const getACustomer = async (customerId) => {
   try {
     const res = await Fetch(

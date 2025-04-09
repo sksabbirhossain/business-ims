@@ -1,3 +1,4 @@
+import { getAllBank } from "@/actions/storeAdmin/bank/bankActions";
 import { getAllCustomer } from "@/actions/storeAdmin/customer/customerActions";
 import AddSalesContainer from "@/components/admin/Sales/AddSales/AddSalesContainer";
 import CartItemsContainer from "@/components/admin/Sales/AddSales/CartItemsContainer";
@@ -15,6 +16,9 @@ const AddSales = async () => {
   //get all customer
   const customers = await getAllCustomer();
 
+  //get all bank
+  const banks = await getAllBank();
+
   return (
     <Container>
       {/* add page header */}
@@ -30,7 +34,7 @@ const AddSales = async () => {
         </div>
 
         {/* payment section */}
-        <PaymentContainer customerData={customers} />
+        <PaymentContainer customerData={customers} banks={banks} />
       </div>
     </Container>
   );

@@ -12,13 +12,13 @@ const ActionButtons = ({ id }) => {
 
   const router = useRouter();
 
-  //delete a category
+  //delete a bank
   const handleDelete = async (ID) => {
     setLoading(true);
     const agree = confirm("Are you sure you wanna delete this?");
     try {
       if (agree) {
-        //call the api to delete this category
+        //call the api to delete this bank
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/admin/bank/delete-bank/${ID}`,
           {

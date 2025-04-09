@@ -10,7 +10,7 @@ export const metadata = {
 const SalesDetails = async ({ params }) => {
   const salesId = (await params).id;
   const sale = await getSale(salesId);
-  console.log(sale);
+
   return (
     <Container>
       <PageHeader headText="Sales Details" />
@@ -46,6 +46,21 @@ const SalesDetails = async ({ params }) => {
               </div>
             </div>
 
+            {/* bank information */}
+            <div className="space-y-3 rounded shadow shadow-primary">
+              <div className="space-y-1 rounded p-3 shadow">
+                <h2 className="text-md font-semibold">Bank Name</h2>
+                <p className="text-gray-800">
+                  {sale?.data?.bankInfo?.name || "N/A"}
+                </p>
+              </div>
+              <div className="space-y-1 rounded p-3 shadow">
+                <h2 className="text-md font-semibold">Account Number</h2>
+                <p className="text-gray-800">
+                  {sale?.data?.bankInfo?.accountNumber || "N/A"}
+                </p>
+              </div>
+            </div>
             {/* product information */}
             {sale?.data?.cart?.map((item) => (
               <div

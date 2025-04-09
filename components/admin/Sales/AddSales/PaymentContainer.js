@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const PaymentContainer = ({ customerData }) => {
+const PaymentContainer = ({ customerData, banks }) => {
   const { carts, setCarts } = useAddToCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
@@ -282,8 +282,15 @@ const PaymentContainer = ({ customerData }) => {
                 required={bank > 0}
               >
                 <option value="">Select Bank</option>
-                <option value=""> bank 1</option>
-                <option value=""> bank 2</option>
+                {banks?.data?.map((bank) => (
+                  <option
+                    value={bank._id}
+                    key={bank._id}
+                    className="capitalize"
+                  >
+                    {bank.name.slice(0, 20)}
+                  </option>
+                ))}
               </SelectInput>
             </div>
           </div>

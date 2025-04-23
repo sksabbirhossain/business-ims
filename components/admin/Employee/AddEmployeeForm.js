@@ -3,6 +3,7 @@ import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddEmployeeForm = () => {
   const [name, setName] = useState("");
@@ -25,11 +26,17 @@ const AddEmployeeForm = () => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/add-category`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/employee/create`,
         {
           method: "POST",
           body: JSON.stringify({
             name,
+            email,
+            phone,
+            position,
+            monthlySalary,
+            joiningDate,
+            picture,
           }),
           headers: {
             "Content-Type": "application/json",
@@ -43,7 +50,12 @@ const AddEmployeeForm = () => {
         setLoading(false);
         // Reset the form fields
         setName("");
-        setDescription("");
+        setEmail(""),
+          setPhone(""),
+          setPosition(""),
+          setMonthlySalary(0),
+          setJoiningDate(Date.now()),
+          SetPicture(null);
         toast.success("Employee Added Successful!");
       } else {
         setLoading(false);

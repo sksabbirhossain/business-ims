@@ -78,3 +78,27 @@ input[type="number"] {
 }
 
 /* customize sidebar end */
+
+/* customize table scrollbar start */
+/* For WebKit browsers like Chrome, Edge, and Safari */
+.table-container::-webkit-scrollbar {
+  @apply h-1 w-1;
+}
+
+.table-container::-webkit-scrollbar-track {
+  @apply rounded-b-md bg-white;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  @apply bg-primary;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  @apply cursor-pointer bg-secondary;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  @apply cursor-pointer bg-secondary;
+}
+
+/* customize table scrollbar end */

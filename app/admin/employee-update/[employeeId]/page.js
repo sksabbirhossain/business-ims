@@ -6,8 +6,12 @@
  *Contact Info: https://www.linkedin.com/in/sk-sabbir-hossain
  */
 
-import LoadingComponent from "@/components/common/Loading/LoadingComponent";
+export const metadata = {
+  title: "Update Employee",
+};
 
-export default function Loading() {
-  return <LoadingComponent />;
-}
+const UpdateEmployee = () => {
+  return <div>UpdateEmployee</div>;
+};
+
+export default UpdateEmployee;

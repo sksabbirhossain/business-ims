@@ -8,7 +8,7 @@
 
 "use client";
 
-import { DeleteSale } from "@/actions/storeAdmin/sales/salesActions";
+import { DeletePurchase } from "@/actions/storeAdmin/purchase/purchaseActions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -18,18 +18,18 @@ const ActionButtons = ({ id }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // delete a stock
-  const handleDelete = async (salesId) => {
+  // delete a purchase
+  const handleDelete = async (purchaseId) => {
     setLoading(true);
     try {
       const isSure = confirm("Are you sure you wanna delete this?");
       if (isSure) {
-        const result = await DeleteSale(salesId);
+        const result = await DeletePurchase(purchaseId);
         if (result?.data) {
-          toast.success("Sales deleted successfully");
-          router.refresh("/admin/sale-list");
+          toast.success("Purchase deleted successfully");
+          router.refresh("/admin/purchase-list");
         } else {
-          toast.error("Failed to delete the Sales");
+          toast.error("Failed to delete the purchase");
         }
       }
       setLoading(false);
@@ -41,7 +41,7 @@ const ActionButtons = ({ id }) => {
 
   return (
     <span className="flex w-full items-center justify-center gap-2">
-      <Link href={`/admin/sales-details/${id}`}>
+      <Link href={`/admin/employee-details/${id}`}>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ const ActionButtons = ({ id }) => {
           </svg>
         </span>
       </Link>
-      <Link href={`/admin/sales-update/${id}`}>
+      <Link href={`/admin/employee-update/${id}`}>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,3 +1,11 @@
+/*
+ * Business-IMS — Inventory Management System
+ * Copyright (c) 2025 Sk Sahbir Hossain
+ * Licensed under a custom license. Personal use, Unauthorized use, reproduction, or distribution is strictly prohibited.
+ * Official Repository: https://github.com/sksabbirhossain/business-ims
+ *Contact Info: https://www.linkedin.com/in/sk-sabbir-hossain
+ */
+
 import { returnSales } from "@/actions/storeAdmin/returnSale/returnSaleActions";
 import ReturnSaleItem from "@/components/admin/ReturnSales/ReturnSaleItem";
 import SearchContainer from "@/components/admin/ReturnSales/SearchContainer";

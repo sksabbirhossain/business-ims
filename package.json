@@ -2,6 +2,9 @@
   "name": "business-ims",
   "version": "0.1.0",
   "private": true,
+  "author": "sk sabbir hossain <sksabbirhossain4@gmail.com>",
+  "repository": "https://github.com/sksabbirhossain/business-ims",
+  "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

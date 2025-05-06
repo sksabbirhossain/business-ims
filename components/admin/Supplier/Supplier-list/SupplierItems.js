@@ -56,7 +56,7 @@ const SupplierItems = ({ suppliers }) => {
 
   return (
     <div>
-      <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
+      <div className="table-container relative overflow-x-auto rounded-md shadow-sm shadow-primary">
         <table className="w-full text-left text-sm text-text/80 rtl:text-right">
           <thead className="bg-primary/25 text-xs uppercase text-text">
             <tr>

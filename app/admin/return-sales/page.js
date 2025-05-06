@@ -34,7 +34,7 @@ const ReturnSales = async () => {
         <div className="space-y-3">
           <p className="text-sm font-medium capitalize">return sale list</p>
           <div className="space-y-5">
-            <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
+            <div className="table-container relative overflow-x-auto rounded-md shadow-sm shadow-primary">
               <table className="w-full text-left text-sm text-text/80 rtl:text-right">
                 <thead className="bg-primary/25 text-center text-xs uppercase text-text">
                   <tr>

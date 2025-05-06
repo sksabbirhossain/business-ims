@@ -8,7 +8,7 @@
 
 "use client";
 
-import { DeletePurchase } from "@/actions/storeAdmin/purchase/purchaseActions";
+import { DeleteEmployee } from "@/actions/storeAdmin/employee/employeeActions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -19,23 +19,23 @@ const ActionButtons = ({ id }) => {
   const router = useRouter();
 
   // delete a purchase
-  const handleDelete = async (purchaseId) => {
+  const handleDelete = async (employeeId) => {
     setLoading(true);
     try {
       const isSure = confirm("Are you sure you wanna delete this?");
       if (isSure) {
-        const result = await DeletePurchase(purchaseId);
-        if (result?.data) {
-          toast.success("Purchase deleted successfully");
-          router.refresh("/admin/purchase-list");
+        const result = await DeleteEmployee(employeeId);
+        if (result?.status === 200) {
+          toast.success("Employee deleted successfully");
+          router.refresh("/admin/employee-list");
         } else {
-          toast.error("Failed to delete the purchase");
+          toast.error("Failed to delete the Employee");
         }
       }
       setLoading(false);
-    } catch (er) {
+    } catch (err) {
       setLoading(false);
-      toast.error(er.message);
+      toast.error(err.message);
     }
   };
 

@@ -39,7 +39,7 @@ const BankList = async ({ searchParams }) => {
       {/* add page header */}
       <PageHeader headText="Bank List" />
       {/* category table */}
-      <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary">
+      <div className="relative overflow-x-auto rounded-md shadow-sm shadow-primary table-container">
         <table className="w-full text-left text-sm text-text/80 rtl:text-right">
           <thead className="text-nowrap bg-primary/25 text-center text-xs uppercase text-text">
             <tr>

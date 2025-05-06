@@ -29,7 +29,7 @@ const PurchaseUpdate = async ({ params }) => {
   return (
     <Container>
       {/* add page header */}
-      <PageHeader headText="add purchase" />
+      <PageHeader headText="Update purchase" />
 
       {/* update product form */}
       <PurchaseUpdateForm

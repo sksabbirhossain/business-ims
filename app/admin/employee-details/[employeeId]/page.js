@@ -77,7 +77,11 @@ const EmployeeDetails = async ({ params }) => {
                     employee?.data?.salaryHistory
                       .reverse()
                       .map((salary) => (
-                        <HistoryCard key={salary?._id} salary={salary} />
+                        <HistoryCard
+                          key={salary?._id}
+                          salary={salary}
+                          employeeId={employeeId}
+                        />
                       ))
                   ) : (
                     <p className="text-sm font-semibold capitalize">

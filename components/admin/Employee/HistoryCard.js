@@ -7,10 +7,11 @@
  */
 
 import { format } from "date-fns";
+import HistoryCardActionButtons from "./HistoryCardActionButtons";
 
-const HistoryCard = ({ salary }) => {
+const HistoryCard = ({ salary, employeeId }) => {
   return (
-    <div className="flex w-full justify-evenly gap-x-2 rounded bg-secondary py-1 text-gray-50 sm:gap-x-5">
+    <div className="group relative flex w-full justify-evenly gap-x-2 rounded bg-secondary/90 py-1 text-gray-50 sm:gap-x-5">
       <p className="text-start">
         <span className="block text-nowrap text-sm font-medium uppercase">
           Paided Month
@@ -35,6 +36,8 @@ const HistoryCard = ({ salary }) => {
           {format(new Date(salary?.paidAt), "dd MMM yyyy")}
         </span>
       </p>
+
+      <HistoryCardActionButtons salary={salary} employeeId={employeeId} />
     </div>
   );
 };

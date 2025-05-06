@@ -7,6 +7,8 @@
  */
 
 import { getAEmployee } from "@/actions/storeAdmin/employee/employeeActions";
+import AddSalaryForm from "@/components/admin/Employee/AddSalaryForm";
+import HistoryCard from "@/components/admin/Employee/HistoryCard";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import { format } from "date-fns";
@@ -14,6 +16,7 @@ import { format } from "date-fns";
 const EmployeeDetails = async ({ params }) => {
   const employeeId = (await params).employeeId;
   const employee = await getAEmployee(employeeId);
+
   return (
     <Container>
       <PageHeader headText="employee Details" />
@@ -64,26 +67,34 @@ const EmployeeDetails = async ({ params }) => {
           </div>
 
           <div className="space-y-3">
-            <div className="space-y-3 rounded shadow shadow-primary">
-              <div className="space-y-1 rounded p-3 shadow">
-                <h2 className="text-md font-semibold capitalize">
+            <div className="rounded shadow shadow-primary">
+              <div className="space-y-1 rounded p-2 shadow sm:p-3">
+                <h2 className="text-md pb-2 font-semibold capitalize">
                   salary History
                 </h2>
-                <div className="flex flex-wrap gap-5">
-                  {employee?.data?.salaryHostory?.length > 0 ? (
-                    employee?.data?.salaryHostory.map((salary, i) => (
-                      <p
-                        className="rounded bg-primary p-2 text-gray-800"
-                        key={i}
-                      >
-                        {salary?.month}
-                      </p>
-                    ))
+                <div className="flex h-full max-h-[300px] w-full flex-wrap space-y-1 overflow-x-auto px-1 sm:px-2">
+                  {employee?.data?.salaryHistory?.length > 0 ? (
+                    employee?.data?.salaryHistory
+                      .reverse()
+                      .map((salary) => (
+                        <HistoryCard key={salary?._id} salary={salary} />
+                      ))
                   ) : (
                     <p className="text-sm font-semibold capitalize">
                       No salary History found!
                     </p>
                   )}
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded shadow shadow-primary">
+              <div className="space-y-1 rounded p-2 shadow sm:p-3">
+                <h2 className="text-md pb-2 font-semibold capitalize">
+                  Add Salary
+                </h2>
+                <div className="space-y-1 rounded p-2">
+                  <AddSalaryForm employeeId={employee?.data?._id} />
                 </div>
               </div>
             </div>

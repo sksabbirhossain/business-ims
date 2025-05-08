@@ -3,10 +3,10 @@
 import { Fetch } from "@/utils/Fetch";
 
 //get all return sales
-export const returnSales = async () => {
+export const returnSales = async (limit, page) => {
   try {
     const res = await Fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/return-sale/all`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/return-sale/all?page=${page}&limit=${limit}`,
       {
         cache: "no-store",
       },

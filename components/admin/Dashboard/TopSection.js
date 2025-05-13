@@ -14,8 +14,6 @@ const TopSection = async () => {
   const data = await getFinance();
   const finance = data?.data;
 
-  console.log(data);
-
   return (
     <div>
       {data?.status === 403 && (

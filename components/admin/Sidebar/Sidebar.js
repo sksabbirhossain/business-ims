@@ -12,11 +12,13 @@ import useMobileMenu from "@/contexts/mobileMenuContext";
 import sidebarRoutes from "@/utils/admin/sidebarRoutes";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import MenuItems from "./MenuItems";
 
 const Sidebar = () => {
   const { menuOpen, mobileMenuHandler } = useMobileMenu();
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState(null);
 
   const router = useRouter();
   //user signout handler
@@ -40,7 +42,13 @@ const Sidebar = () => {
         <div className="sidebar-scrollbar-customize h-full overflow-y-auto bg-white/80 py-2 shadow-sm shadow-gray-400 backdrop-blur">
           <ul className="select-none space-y-1 text-[15px] font-medium">
             {sidebarRoutes?.map((item, i) => (
-              <MenuItems key={i} item={item} />
+              <MenuItems
+                key={i}
+                item={item}
+                index={i}
+                activeDropdownIndex={activeDropdownIndex}
+                setActiveDropdownIndex={setActiveDropdownIndex}
+              />
             ))}
 
             {/* logout button */}

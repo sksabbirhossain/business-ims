@@ -12,32 +12,38 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const MenuItems = ({ item }) => {
+const MenuItems = ({
+  item,
+  index,
+  activeDropdownIndex,
+  setActiveDropdownIndex,
+}) => {
   const pathName = usePathname();
-  const [dropDown, setDropDown] = useState(false);
+
+  const isOpen = activeDropdownIndex === index;
 
   //dropdown menu open
-  const handleDropDownMenu = () => {
-    setDropDown((prv) => !prv);
+  const toggleDropdown = () => {
+    setActiveDropdownIndex(isOpen ? null : index);
   };
 
   return item?.menu?.length >= 0 ? (
     <li
-      className={`cursor-pointer hover:border-l-4 hover:border-green-700 ${dropDown ? "border-l-4 border-green-700 bg-primary" : ""}`}
+      className={`cursor-pointer hover:border-l-4 hover:border-green-700 ${isOpen ? "border-l-4 border-green-700 bg-primary" : ""}`}
     >
       <div
-        onClick={() => handleDropDownMenu()}
+        onClick={() => toggleDropdown()}
         className="flex items-center justify-between text-text hover:bg-secondary hover:text-white"
       >
         <p className={`group flex items-center rounded-sm p-2 px-3`}>
           <span className="h-5 w-5 text-text/50 transition duration-75 group-hover:text-green-700">
             {item?.icon}
           </span>
-          <span className={`${dropDown ? "text-text" : ""} ms-2`}>
+          <span className={`${isOpen ? "text-text" : ""} ms-2`}>
             {item?.name}
           </span>
         </p>
-        <span className={`${dropDown ? "text-white" : ""} pe-2`}>
+        <span className={`${isOpen ? "text-white" : ""} pe-2`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -55,21 +61,27 @@ const MenuItems = ({ item }) => {
         </span>
       </div>
 
-      {/* dropdown menu */}
-      {item?.menu?.length >= 0 && (
-        <ul className={`${dropDown ? "bg-secondary" : "hidden"} `}>
-          {item.menu.map((item, i) => (
-            <li key={i} className="border-t-[1px] border-white/30">
-              <Link
-                href={item?.path}
-                className={`group flex items-center rounded-sm px-5 py-2 capitalize text-white/95 before:absolute before:left-9 before:h-2 before:w-2 before:rounded-full hover:bg-primary hover:text-white ${pathName === item?.path ? "active-menu before:bg-white" : "before:bg-green-900"}`}
-              >
-                <span className={`ms-7`}>{item?.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* dropdown menu's item */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        {item?.menu?.length >= 0 && (
+          <ul className={`bg-secondary`}>
+            {item.menu.map((item, i) => (
+              <li key={i} className="border-t-[1px] border-white/30">
+                <Link
+                  href={item?.path}
+                  className={`group flex items-center rounded-sm px-5 py-2 capitalize text-white/95 before:absolute before:left-9 before:h-2 before:w-2 before:rounded-full hover:bg-primary hover:text-white ${pathName === item?.path ? "active-menu before:bg-white" : "before:bg-green-900"}`}
+                >
+                  <span className={`ms-7`}>{item?.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </li>
   ) : (
     <li>

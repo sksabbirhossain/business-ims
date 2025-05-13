@@ -10,7 +10,7 @@
 
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -23,12 +23,6 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
-
-  const { data: session } = useSession();
-
-  if (session?.user?._id) {
-    return router.push("/superadmin/dashboard");
-  }
 
   //handle submit form
   const handleSubmit = async (e) => {

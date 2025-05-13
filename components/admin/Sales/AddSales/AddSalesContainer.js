@@ -18,15 +18,15 @@ import SearchItem from "./SearchItem";
 const AddSalesContainer = () => {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState({});
 
   //handle product search
   const handleSearchProduct = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
+      setErrors({});
       const result = await searchStock(query);
 
       //if data found
@@ -34,26 +34,39 @@ const AddSalesContainer = () => {
         setProducts(result.data);
       } else if (result.data?.length === 0) {
         setProducts([]);
-        toast.info("No product found");
+        setErrors({
+          errors: {
+            common: {
+              msg: "No product found!",
+            },
+          },
+        });
       }
       //if any errors
       if (result.errors) {
-        toast.error(result.errors?.common?.msg);
+        setErrors(result);
       }
-
       setLoading(false);
     } catch (err) {
-      toast.error(err.message);
       setLoading(false);
+      setErrors({
+        errors: {
+          common: {
+            msg: err.message,
+          },
+        },
+      });
     }
   };
 
   return (
-    <div className="space-y-3 rounded-md bg-white px-2 py-5 shadow">
-      <div className="w-full space-y-2">
-        <p className="text-[15px] font-semibold capitalize">search products</p>
+    <div className="rounded-md bg-white py-5">
+      <div className="w-full space-y-2 pb-2 shadow">
+        <p className="px-2 text-[15px] font-semibold uppercase">
+          search products
+        </p>
         <form onSubmit={handleSearchProduct}>
-          <div className="flex w-full items-center gap-3">
+          <div className="flex w-full items-center gap-3 px-2">
             <FormInput
               type="text"
               label={0}
@@ -74,15 +87,27 @@ const AddSalesContainer = () => {
         </form>
       </div>
       {/* search items */}
-      <div className="space-y-3">
-        {products.map((product) => (
-          <SearchItem key={product._id} product={product} />
-        ))}
-        {products?.length === 0 && (
-          <p className="pt-2 text-center text-sm font-medium capitalize text-gray-700">
-            Search list are empty!
-          </p>
-        )}
+      <div className="sales-container-scroll h-full max-h-[250px] overflow-x-auto pt-3">
+        <div className="space-y-3 pe-2 ps-1">
+          {/* showing search products */}
+          {products.map((product) => (
+            <SearchItem key={product._id} product={product} />
+          ))}
+        </div>
+
+        {/* showing errors message */}
+        <div>
+          {products?.length === 0 && (
+            <p className="pt-2 text-center text-sm font-medium capitalize text-gray-700">
+              Search list are empty!
+            </p>
+          )}
+          {errors?.errors?.common && (
+            <p className="pt-2 text-center text-sm font-medium capitalize text-primary">
+              {errors?.errors?.common?.msg}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

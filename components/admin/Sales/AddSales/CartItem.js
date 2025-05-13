@@ -40,20 +40,20 @@ const CartItem = ({ item }) => {
       </div>
       <div className="">
         <p className="text-[14px] font-semibold capitalize text-primary">Qty</p>
-        <p className="text-[15px] font-normal">{item.qty}</p>
+        <p className="text-[15px] font-medium">{item.qty}</p>
       </div>
       <div className="">
         <p className="text-[14px] font-semibold capitalize text-primary">
           price
         </p>
-        <p className="text-[15px] font-normal">{item.sellingPrice} Tk. </p>
+        <p className="text-[15px] font-medium">{item.sellingPrice} Tk. </p>
       </div>
 
       <div className="">
         <p className="text-[14px] font-semibold capitalize text-primary">
           Total
         </p>
-        <p className="text-[15px] font-normal">{item.total} Tk.</p>
+        <p className="text-[15px] font-medium">{item.total} Tk.</p>
       </div>
       <div>
         <p

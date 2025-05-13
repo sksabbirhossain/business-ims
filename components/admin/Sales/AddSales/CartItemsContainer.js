@@ -14,12 +14,20 @@ import CartItem from "./CartItem";
 const CartItemsContainer = () => {
   const { carts } = useAddToCart();
   return (
-    <div className="space-y-3 rounded-md bg-white px-2 py-3">
-      <p className="text-[15px] font-semibold capitalize">cart list</p>
-      {/* card items */}
-      {carts.map((item) => (
-        <CartItem key={item._id} item={item} />
-      ))}
+    <div className="space-y-3 rounded-md bg-white pb-5">
+      <p className="w-full px-2 py-3 text-[15px] font-semibold uppercase shadow">
+        cart list
+      </p>
+      <div className="px-2">
+        <div className="sales-container-scroll h-full max-h-[410px] w-full overflow-x-auto">
+          <div className="space-y-3 pe-2 ps-1">
+            {/*showing cart items */}
+            {carts.map((item) => (
+              <CartItem key={item._id} item={item} />
+            ))}
+          </div>
+        </div>
+      </div>
       {/* messages */}
       {carts.length === 0 && (
         <p className="text-center text-sm font-medium capitalize text-gray-700">

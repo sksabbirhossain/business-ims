@@ -61,6 +61,8 @@ input[type="number"] {
   @apply cursor-pointer bg-secondary;
 }
 
+/* customize sidebar end */
+
 .active {
   @apply border-l-4 border-green-700 bg-primary text-white;
 }
@@ -76,8 +78,6 @@ input[type="number"] {
 .pagination-active {
   @apply bg-primary text-white;
 }
-
-/* customize sidebar end */
 
 /* customize table scrollbar start */
 /* For WebKit browsers like Chrome, Edge, and Safari */
@@ -100,5 +100,28 @@ input[type="number"] {
 .table-container::-webkit-scrollbar-thumb:hover {
   @apply cursor-pointer bg-secondary;
 }
-
 /* customize table scrollbar end */
+
+/* customize sidebar start*/
+/* width */
+
+.sales-container-scroll::-webkit-scrollbar {
+  @apply w-[5px];
+}
+
+/* Track */
+.sales-container-scroll::-webkit-scrollbar-track {
+  @apply bg-white;
+}
+
+/* Handle */
+.sales-container-scroll::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-primary;
+}
+
+/* Handle on hover */
+.sales-container-scroll::-webkit-scrollbar-thumb:hover {
+  @apply cursor-pointer bg-secondary;
+}
+
+/* customize sidebar end */

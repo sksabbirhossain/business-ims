@@ -19,7 +19,7 @@ const TopSection = async () => {
       {data?.status === 403 && (
         <p className="mb-3 w-full rounded-sm bg-red-500 py-3 text-center text-[15px] font-medium text-gray-100">
           {data?.errors?.common?.msg}{" "}
-          <Link href="">
+          <Link href="/admin/subscription">
             <span className="capitalize text-green-400 hover:underline">
               click to renew here.
             </span>

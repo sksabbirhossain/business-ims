@@ -16,57 +16,92 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const StripePaymentForm = ({ planType }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [country, setCountry] = useState("US");
+  const [country, setCountry] = useState("BD");
   const [zip, setZip] = useState("");
-  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!stripe || !elements) return;
-
     setLoading(true);
+    setErrors({});
 
-    const card = elements.getElement(CardNumberElement);
+    try {
+      if (!stripe || !elements) return;
 
-    if (!card) return;
+      const card = elements.getElement(CardNumberElement);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card,
-    });
+      if (!card) return;
 
-    if (error) {
-      setMessage(error.message || "Payment failed");
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card,
+        billing_details: {
+          address: {
+            postal_code: zip,
+            country: country,
+          },
+        },
+      });
+
+      if (error) {
+        setErrors({
+          errors: {
+            common: {
+              msg: error.message || "Payment failed",
+            },
+          },
+        });
+        setLoading(false);
+        return;
+      }
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/subscription/stripe-payment`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            paymentMethodId: paymentMethod.id,
+            planType,
+            paymentMethod: "stripe",
+            postalCode: zip,
+            country,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.user?.accessToken}`,
+          },
+        },
+      );
+
+      const data = await res.json();
+
+      if (data?.data?._id) {
+        toast.success("Payment successful");
+      } else {
+        setErrors(data);
+      }
       setLoading(false);
-      return;
+    } catch (err) {
+      setLoading(false);
+      setErrors({
+        errors: {
+          common: {
+            msg: "Intranal server error!",
+          },
+        },
+      });
     }
-
-    const res = await fetch("/api/subscribe", {
-      method: "POST",
-      body: JSON.stringify({
-        paymentMethodId: paymentMethod.id,
-        planType,
-        paymentMethod: "stripe",
-      }),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      setMessage("✅ Subscription successful!");
-    } else {
-      setMessage("❌ " + data.message);
-    }
-
-    setLoading(false);
   };
 
   const inputStyle = {
@@ -156,7 +191,11 @@ const StripePaymentForm = ({ planType }) => {
       >
         Pay Now
       </Button>
-      {message && <p className="text-sm text-red-500">{message}</p>}
+      {errors?.errors?.common && (
+        <p className="rounded bg-red-600 py-2 text-center text-sm font-medium text-white">
+          {errors?.errors?.common?.msg}
+        </p>
+      )}
     </form>
   );
 };

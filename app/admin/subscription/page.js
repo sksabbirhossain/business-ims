@@ -18,7 +18,11 @@ export const metadata = {
 export default function Subscription() {
   return (
     <Container>
-      <PageHeader headText="Subscription" />
+      <PageHeader
+        headText="Subscription"
+        linkName="Subscription list"
+        link="/admin/subscription-list"
+      />
       <div className="flex items-center justify-center rounded-md bg-white/50 px-2 py-3 shadow-sm shadow-primary backdrop-blur">
         <StripeProvider>
           <SubscriptionForm />

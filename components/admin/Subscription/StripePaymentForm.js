@@ -31,6 +31,7 @@ const StripePaymentForm = ({ planType }) => {
 
   const { data: session } = useSession();
 
+  // create a payment handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -67,7 +68,7 @@ const StripePaymentForm = ({ planType }) => {
       }
 
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/subscription/stripe-payment`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/subscription/stripe-payment`,
         {
           method: "POST",
           body: JSON.stringify({

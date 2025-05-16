@@ -32,7 +32,9 @@ const SubscriptionForm = () => {
             className={`cursor-pointer rounded-md border p-3 text-center shadow-sm transition hover:shadow-md ${isSelected(planType, "monthly")}`}
           >
             <h3 className="mb-1 text-xl font-semibold">Monthly Plan</h3>
-            <p className="font-medium text-gray-600">$10 / month</p>
+            <p className="font-medium uppercase text-gray-600">
+              500 BDT / month
+            </p>
           </div>
 
           <div
@@ -40,7 +42,9 @@ const SubscriptionForm = () => {
             className={`cursor-pointer rounded-md border p-3 text-center shadow-sm transition hover:shadow-md ${isSelected(planType, "yearly")}`}
           >
             <h3 className="mb-1 text-xl font-semibold">Yearly Plan</h3>
-            <p className="font-medium text-gray-600">$100 / year</p>
+            <p className="font-medium uppercase text-gray-600">
+              5000 BDT / year
+            </p>
           </div>
         </div>
       </div>
@@ -92,7 +96,7 @@ const SubscriptionForm = () => {
         <div className="mb-6 rounded-md border bg-gray-50 p-4">
           <h4 className="mb-2 font-semibold">Bkash/Nagad Payment</h4>
           <p className="text-sm text-gray-600">
-            You’ll be redirected to SSLCommerz checkout.
+            This payment gateway not available right now!
           </p>
         </div>
       )}

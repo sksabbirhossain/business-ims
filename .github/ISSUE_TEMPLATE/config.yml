@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a Question in Discussions
+    url: https://github.com/sksabbirhossain/business-ims/discussions
+    about: Please ask and answer questions in the Discussions tab instead of opening an issue.

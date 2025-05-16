@@ -301,7 +301,9 @@ const StockUpdateForm = ({ categories, suppliers, stock }) => {
               </div>
 
               <div>
-                <Button className="w-full">Update product</Button>
+                <Button className="w-full" loading={loading}>
+                  Update product
+                </Button>
               </div>
               {errors?.errors?.common && (
                 <p className="rounded bg-red-600 py-2 text-center text-sm font-medium text-white">

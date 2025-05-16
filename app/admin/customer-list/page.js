@@ -25,7 +25,7 @@ const CustomerList = async ({ searchParams }) => {
   let content;
 
   if (data?.errors) {
-    content = <p>{data?.errors?.common?.msg}</p>;
+    content = <p className="py-3 text-center">{data?.errors?.common?.msg}</p>;
   }
 
   if (data?.data && data?.data?.length > 0) {

@@ -15,6 +15,19 @@ export const getAllSales = async (limit, page) => {
     console.log(e.message);
   }
 };
+//get all sales
+export const getDueSales = async (limit, page) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/due-list?page=${page}&limit=${limit}`,
+      { cache: "no-store" },
+    );
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 
 //get sales by trxId
 export const getSalesByTrxId = async (trxId) => {
@@ -24,6 +37,21 @@ export const getSalesByTrxId = async (trxId) => {
       { cache: "no-store" },
     );
     const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+//get sales by trxId
+export const getDueSalesByNameTrxId = async (query) => {
+  try {
+    const res = await Fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/due/search?query=${query}`,
+      { cache: "no-store" },
+    );
+    const data = await res.json();
+    console.log(data);
     return data;
   } catch (e) {
     console.log(e.message);

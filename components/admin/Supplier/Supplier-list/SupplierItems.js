@@ -35,7 +35,7 @@ const SupplierItems = ({ suppliers }) => {
     const agree = confirm("Are you sure you wanna delete this?");
     if (agree) {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/delete-supplier/${id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/supplier/delete-supplier/${id}`,
         {
           headers: {
             Authorization: `Bearer ${session?.user?.accessToken}`,

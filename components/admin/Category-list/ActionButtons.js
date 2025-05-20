@@ -28,7 +28,7 @@ const ActionButtons = ({ id }) => {
       if (agree) {
         //call the api to delete this category
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/admin/delete-category/${ID}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category/delete-category/${ID}`,
           {
             method: "DELETE",
             headers: {

@@ -171,7 +171,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
 
             <div className="space-y-2">
               <FormInput
-                label="Purchase Price"
+                label={`Purchase Price ${uom ? "(per " + uom + ")" : ""}`}
                 type="number"
                 placeholder="Enter product Purchase Price"
                 value={purchasePrice}

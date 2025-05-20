@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 export const getSuppliers = async (limit, page) => {
   try {
     const res = await Fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/suppliers?page=${page}&limit=${limit}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/supplier/suppliers?page=${page}&limit=${limit}`,
     );
     const data = await res.json();
     return data;
@@ -35,7 +35,7 @@ export const addSupplier = async (prevState, formData) => {
     const formDataObject = Object.fromEntries(formData.entries());
 
     const res = await Fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/create-supplier`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/admin/supplier/create-supplier`,
       {
         headers: {
           Accept: "application/json",

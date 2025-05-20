@@ -32,7 +32,7 @@ const AddCategoryForm = () => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/add-category`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category/add-category`,
         {
           method: "POST",
           body: JSON.stringify({

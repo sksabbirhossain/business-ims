@@ -49,7 +49,7 @@ const UpdateSupplierForm = ({ supplier }) => {
     setLoading(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/update-supplier/${supplier?._id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/supplier/update-supplier/${supplier?._id}`,
         {
           headers: {
             Accept: "application/json",

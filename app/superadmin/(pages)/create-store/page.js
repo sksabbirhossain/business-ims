@@ -46,7 +46,7 @@ const CreateStore = () => {
     }
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/create-store`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/stores/create-store`,
         {
           method: "POST",
           body: JSON.stringify({

@@ -47,7 +47,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         try {
           const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/login`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/superadmin/users/login`,
             {
               method: "POST",
               body: JSON.stringify(credentials),
@@ -81,7 +81,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         try {
           const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/admin/login`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/admin/store/login`,
             {
               method: "POST",
               body: JSON.stringify(credentials),

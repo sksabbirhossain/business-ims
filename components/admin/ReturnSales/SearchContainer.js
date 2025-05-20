@@ -40,8 +40,6 @@ const SearchContainer = () => {
     }
   };
 
-  console.log(searchResults);
-
   return (
     <>
       <div className="">

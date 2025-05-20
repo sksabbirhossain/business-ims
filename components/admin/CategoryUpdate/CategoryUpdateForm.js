@@ -40,7 +40,7 @@ const CategoryUpdateForm = ({ category }) => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/update-category/${category?.data?._id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category/update-category/${category?.data?._id}`,
         {
           method: "PATCH",
           body: JSON.stringify({

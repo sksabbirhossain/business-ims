@@ -7,7 +7,6 @@
  */
 
 "use client";
-import { addSupplier } from "@/actions/storeAdmin/supplier/supplierActions";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import TextArea from "@/components/common/FormInput/TextArea";
@@ -38,7 +37,7 @@ const AddSupplierForm = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/create-supplier`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/supplier/create-supplier`,
         {
           headers: {
             Accept: "application/json",

@@ -15,10 +15,28 @@ import { toast } from "react-toastify";
 
 const SearchItem = ({ item, customer, trxid }) => {
   const [qty, setQty] = useState(item.qty);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   //handle return sale
   const handleReturnSale = async () => {
+    setLoading(true);
+    if (qty <= 0) {
+      toast.error("Please enter a valid quantity!");
+      setLoading(false);
+      return;
+    }
+    if (qty > item?.qty) {
+      toast.error("Please enter a valid quantity!");
+      setLoading(false);
+      return;
+    }
+    const isSure = confirm(`Are you sure you wanna return this item?`);
+    if (!isSure) {
+      setLoading(false);
+      return;
+    }
+
     const data = {
       trxid,
       product: item.product?._id,
@@ -29,8 +47,13 @@ const SearchItem = ({ item, customer, trxid }) => {
     if (results?.data?._id) {
       toast.success(results?.message);
       router.refresh();
+      setLoading(false);
+    } else if (results?.errors) {
+      toast.error(results?.errors?.common?.msg);
+      setLoading(false);
     } else {
-      toast.error("Please try again something went wrong!");
+      toast.error("Something Went Wrong Please Try Again Later!");
+      setLoading(false);
     }
   };
 
@@ -66,8 +89,14 @@ const SearchItem = ({ item, customer, trxid }) => {
         </p>
       </td>
       <td className="px-1 py-2"> {item?.price} Tk. </td>
-      <td className="px-1 py-2" onClick={handleReturnSale}>
-        <button className="text-primary hover:text-primary/80">Return</button>
+      <td className="px-1 py-2">
+        <button
+          className="font-semibold text-primary hover:text-primary/80 disabled:cursor-wait disabled:text-text/50"
+          onClick={handleReturnSale}
+          disabled={loading}
+        >
+          Return
+        </button>
       </td>
     </tr>
   );

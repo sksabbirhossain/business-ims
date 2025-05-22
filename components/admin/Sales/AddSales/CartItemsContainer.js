@@ -14,7 +14,7 @@ import CartItem from "./CartItem";
 const CartItemsContainer = () => {
   const { carts } = useAddToCart();
   return (
-    <div className="space-y-3 rounded-md bg-white pb-5">
+    <div className="space-y-3 rounded-md bg-white/50 pb-5 backdrop-blur">
       <p className="w-full px-2 py-3 text-[15px] font-semibold uppercase shadow">
         cart list
       </p>

@@ -28,7 +28,7 @@ const ReturnSales = async ({ searchParams }) => {
     <Container>
       {/* add page header */}
       <PageHeader headText="Return Sale" />
-      <div className="space-y-10 rounded-md bg-white px-2 py-5 shadow-md">
+      <div className="space-y-10 rounded-md bg-white/50 px-2 py-5 shadow-md backdrop-blur">
         {/* search products and return sale search list */}
         <SearchContainer />
 

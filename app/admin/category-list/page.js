@@ -41,7 +41,7 @@ const CategoryList = async ({ searchParams }) => {
       {/* category table */}
       <div className="table-container relative overflow-x-auto rounded-md shadow-sm shadow-primary">
         <table className="w-full text-left text-sm text-text/80 rtl:text-right">
-          <thead className="bg-primary/25 text-xs uppercase text-text">
+          <thead className="bg-primary/25 text-xs uppercase text-text text-center">
             <tr>
               <th scope="col" className="px-2 py-4">
                 Category image

@@ -12,7 +12,6 @@ import { searchStock } from "@/actions/storeAdmin/stock/stockActions";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
 import SearchItem from "./SearchItem";
 
 const AddSalesContainer = () => {
@@ -60,7 +59,7 @@ const AddSalesContainer = () => {
   };
 
   return (
-    <div className="rounded-md bg-white py-5">
+    <div className="rounded-md bg-white/50 py-5 backdrop-blur">
       <div className="w-full space-y-2 pb-2 shadow">
         <p className="px-2 text-[15px] font-semibold uppercase">
           search products
@@ -71,6 +70,7 @@ const AddSalesContainer = () => {
               type="text"
               label={0}
               name="search"
+              className="bg-transparent"
               placeholder="search products from store..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}

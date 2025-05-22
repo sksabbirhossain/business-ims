@@ -149,7 +149,7 @@ const PaymentContainer = ({ customerData, banks }) => {
     }
   };
   return (
-    <div className="rounded-md bg-white px-2 py-5 shadow">
+    <div className="rounded-md bg-white/50 px-2 py-5 shadow backdrop-blur">
       {errors?.errors?.common && (
         <p className="mb-2 rounded-sm bg-red-500 py-2 text-center font-semibold text-white">
           {errors.errors.common.msg}
@@ -208,6 +208,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               type="text"
               placeholder="customer name"
               name="name"
+              className="bg-transparent"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -216,6 +217,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               type="email"
               placeholder="customer email"
               name="email"
+              className="bg-transparent"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -224,6 +226,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               type="number"
               placeholder="customer phone"
               name="phone"
+              className="bg-transparent"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
@@ -232,6 +235,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               type="text"
               placeholder="customer address"
               name="address"
+              className="bg-transparent"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
@@ -248,6 +252,7 @@ const PaymentContainer = ({ customerData, banks }) => {
             type="number"
             placeholder="discount ammount"
             name="discount"
+            className="bg-transparent"
             value={discount}
             onChange={(e) => setDiscount(e.target.value)}
           />
@@ -263,6 +268,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               type="number"
               placeholder="cash ammount"
               name="cash"
+              className="bg-transparent"
               value={cash}
               onChange={(e) => setCash(e.target.value)}
             />
@@ -276,6 +282,7 @@ const PaymentContainer = ({ customerData, banks }) => {
                 type="number"
                 placeholder="bank ammount"
                 name="bank"
+                className="bg-transparent"
                 value={bank}
                 onChange={(e) => setBank(e.target.value)}
               />

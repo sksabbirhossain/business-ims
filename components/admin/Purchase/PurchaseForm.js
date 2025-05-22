@@ -103,7 +103,7 @@ const PurchaseForm = ({ categories, suppliers }) => {
   };
 
   return (
-    <div className="rounded-md bg-white px-2 py-5 shadow-sm shadow-primary">
+    <div className="rounded-md bg-white/50 px-2 py-5 shadow-sm shadow-primary">
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <div className="space-y-4">

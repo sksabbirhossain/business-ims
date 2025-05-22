@@ -14,6 +14,7 @@ import PurchaseSaleSection from "@/components/admin/Dashboard/PurchaseSaleSectio
 import TopSection from "@/components/admin/Dashboard/TopSection";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +36,9 @@ const Dashboard = async () => {
       <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-3">
         {/* purchase and sales */}
         <div className="col-span-1 rounded bg-white/50 p-4 shadow shadow-primary backdrop-blur lg:col-span-2">
-          <PurchaseSaleSection data={res?.data} />
+          <Suspense fallback={"Loading purchase and sales..."}>
+            <PurchaseSaleSection data={res?.data} />
+          </Suspense>
         </div>
 
         {/* recently added categories */}

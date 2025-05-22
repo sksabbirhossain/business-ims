@@ -7,6 +7,7 @@
  */
 
 import { lastYearBuyAndSales } from "@/actions/storeAdmin/dashboard/dashboardActions";
+import { Suspense } from "react";
 import DailyBuySaleChart from "./DailyBuySaleChart";
 
 const DailyBuySaleSection = async () => {
@@ -33,7 +34,9 @@ const DailyBuySaleSection = async () => {
 
       {/* Purchase and Sales Chart */}
       <div className="h-full max-h-[300px] w-full">
-        <DailyBuySaleChart buySales={buySales?.data} />
+        <Suspense fallback={"Loading chart..."}>
+          <DailyBuySaleChart buySales={buySales?.data} />
+        </Suspense>
       </div>
     </>
   );

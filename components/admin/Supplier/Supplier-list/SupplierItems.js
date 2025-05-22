@@ -58,7 +58,7 @@ const SupplierItems = ({ suppliers }) => {
     <div>
       <div className="table-container relative overflow-x-auto rounded-md shadow-sm shadow-primary">
         <table className="w-full text-left text-sm text-text/80 rtl:text-right">
-          <thead className="bg-primary/25 text-xs uppercase text-text">
+          <thead className="bg-primary/25 text-center text-xs uppercase text-text">
             <tr>
               <th scope="col" className="px-2 py-4">
                 supplier image
@@ -82,10 +82,10 @@ const SupplierItems = ({ suppliers }) => {
             {suppliers?.data?.map((supplier) => (
               <>
                 <tr
-                  className="border-b odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
+                  className="border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10"
                   key={supplier?._id}
                 >
-                  <td className="px-2 py-1">
+                  <td className="flex items-center justify-center px-2 py-1">
                     <Image
                       src={supplier?.picture || "/default.jpg"}
                       alt="product image"

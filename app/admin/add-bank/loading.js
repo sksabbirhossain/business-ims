@@ -6,7 +6,7 @@
  *Contact Info: https://www.linkedin.com/in/sk-sabbir-hossain
  */
 
-const { FormSkeleton } = require("@/components/common/Skeleton/FormSkeleton");
+import FormSkeleton from "@/components/common/Skeleton/FormSkeleton";
 
 export default function Loading() {
   return <FormSkeleton />;

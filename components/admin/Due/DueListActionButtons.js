@@ -64,7 +64,7 @@ const DueListActionButtons = ({ id }) => {
           </svg>
         </span>
       </Link>
-      <Link href={`/admin/sales-update/${id}`}>
+      <Link href={`/admin/due-list/${id}`}>
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

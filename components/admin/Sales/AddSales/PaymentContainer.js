@@ -250,7 +250,7 @@ const PaymentContainer = ({ customerData, banks }) => {
           <FormInput
             label={0}
             type="number"
-            placeholder="discount ammount"
+            placeholder="discount amount"
             name="discount"
             className="bg-transparent"
             value={discount}
@@ -266,7 +266,7 @@ const PaymentContainer = ({ customerData, banks }) => {
             <FormInput
               label={0}
               type="number"
-              placeholder="cash ammount"
+              placeholder="cash amount"
               name="cash"
               className="bg-transparent"
               value={cash}
@@ -280,7 +280,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               <FormInput
                 label={0}
                 type="number"
-                placeholder="bank ammount"
+                placeholder="bank amount"
                 name="bank"
                 className="bg-transparent"
                 value={bank}
@@ -314,7 +314,7 @@ const PaymentContainer = ({ customerData, banks }) => {
               <span>sub Price:</span> <span>{subTotal} tk.</span>
             </p>
             <p className="flex items-center justify-between text-base font-medium uppercase text-gray-900">
-              <span>discount ammounts:</span> <span>{discount} tk.</span>
+              <span>discount amounts:</span> <span>{discount} tk.</span>
             </p>
             <p className="flex items-center justify-between text-base font-medium uppercase text-gray-900">
               <span>total due:</span> <span>{due} tk.</span>

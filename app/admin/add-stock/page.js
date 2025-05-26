@@ -11,6 +11,7 @@ import { getSuppliers } from "@/actions/storeAdmin/supplier/supplierActions";
 import StockForm from "@/components/admin/Stock/StockForm";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Add Stock",
@@ -30,8 +31,10 @@ const AddStock = async () => {
         linkName="stcok list"
       />
 
-      {/* add stock form */}
-      <StockForm categories={categories} suppliers={suppliers} />
+      <Suspense fallback={<p className="py-2 text-sm">Loading...</p>}>
+        {/* add stock form */}
+        <StockForm categories={categories} suppliers={suppliers} />
+      </Suspense>
     </Container>
   );
 };

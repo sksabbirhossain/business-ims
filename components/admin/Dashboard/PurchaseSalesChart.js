@@ -7,8 +7,7 @@
  */
 
 "use client";
-import { getPurchaseAndSales } from "@/actions/storeAdmin/dashboard/dashboardActions";
-import { useEffect, useState } from "react";
+
 import {
   Bar,
   BarChart,

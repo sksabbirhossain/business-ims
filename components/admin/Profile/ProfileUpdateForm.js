@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const ProfileUpdateForm = () => {
   const [storeName, setStoreName] = useState("");
@@ -51,9 +52,62 @@ const ProfileUpdateForm = () => {
     }
   };
 
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrors({});
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/admin/security/profile`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            ownerName,
+            storeName,
+            phone,
+            website,
+            address,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.user?.accessToken}`,
+          },
+        },
+      );
+
+      const data = await res.json();
+
+      if (data?.data?._id) {
+        setLoading(false);
+        // Update session data with new profile information
+        await update({
+          ...session,
+          user: {
+            ...data?.data,
+          },
+        });
+        router.refresh();
+        toast.success("Profile updated successfully");
+      } else {
+        setLoading(false);
+        setErrors(data);
+      }
+    } catch (err) {
+      setLoading(false);
+      setErrors({
+        errors: {
+          common: {
+            msg: "Failed to update profile. Please try again",
+          },
+        },
+      });
+    }
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="rounded-md bg-white/10 p-5 shadow-sm shadow-primary backdrop-blur">
         <div className="mb-7 flex w-full items-center justify-center">
           {/* store image */}
@@ -91,6 +145,7 @@ const ProfileUpdateForm = () => {
               id="picture"
               className="hidden"
               onChange={handlePictureChange}
+              accept="image/*"
             />
           </div>
         </div>

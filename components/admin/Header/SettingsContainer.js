@@ -13,13 +13,13 @@ const SettingsContainer = () => {
   return (
     <div className="">
       <ul>
-        <li className="list-item border-b px-4 py-3 text-[15px] font-medium uppercase hover:bg-primary/60">
+        <li className="list-item border-b border-primary px-4 py-3 text-[15px] font-medium uppercase hover:bg-primary/60">
           <Link href="/admin/subscription">subscription</Link>
         </li>
-        <li className="list-item border-b px-4 py-3 text-[15px] font-medium uppercase hover:bg-primary/60">
+        <li className="list-item border-b border-primary px-4 py-3 text-[15px] font-medium uppercase hover:bg-primary/60">
           <Link href="/admin/security">security</Link>
         </li>
-        <li className="list-item border-b px-4 py-3 text-[15px] font-medium uppercase hover:bg-primary/60">
+        <li className="list-item border-b border-primary px-4 py-3 text-[15px] font-medium uppercase hover:bg-primary/60">
           <Link href="/admin/profile">Personal info</Link>
         </li>
       </ul>

@@ -12,6 +12,7 @@ import defaultLogo from "@/public/defaultLogo.png";
 import { auth } from "@/utils/authOptions";
 import Image from "next/image";
 import Link from "next/link";
+import MessageContainer from "./MessageContainer";
 import OpenSidebarButton from "./OpenSidebarButton";
 import SettingsContainer from "./SettingsContainer";
 
@@ -83,22 +84,28 @@ const Header = async () => {
             </svg>
           </p>
           {/* message icon */}
-          <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-primary hover:bg-green-50">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6 group-hover:text-green-900"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-              />
-            </svg>
-          </p>
+          <div className="group relative cursor-pointer">
+            <p className="group cursor-pointer rounded-lg border-2 border-gray-300 p-1 hover:border-primary hover:bg-green-50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6 group-hover:text-green-900"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                />
+              </svg>
+            </p>
+            {/* message container */}
+            <div className="absolute -right-[100px] top-9 z-50 hidden h-[400px] w-[350px] overflow-hidden rounded-lg bg-secondary/95 shadow-sm shadow-primary backdrop-blur transition-all duration-500 ease-linear group-hover:block">
+              <MessageContainer />
+            </div>
+          </div>
           {/* settings icon */}
           <div className="group relative cursor-pointer">
             <p className="rounded-lg border-2 border-gray-300 p-1 hover:border-primary hover:bg-green-50">
@@ -123,7 +130,7 @@ const Header = async () => {
               </svg>
             </p>
             {/* settings container */}
-            <div className="h-min-[200px] absolute -right-[100px] top-9 z-50 hidden w-[250px] overflow-hidden rounded-lg bg-white shadow-sm shadow-primary transition-all duration-500 ease-linear group-hover:block">
+            <div className="h-min-[200px] absolute -right-[100px] top-9 z-50 hidden w-[250px] overflow-hidden rounded-lg bg-secondary/95 shadow-sm shadow-primary backdrop-blur transition-all duration-500 ease-linear group-hover:block">
               <SettingsContainer />
             </div>
           </div>

@@ -23,7 +23,7 @@ const LogoutButton = ({ link }) => {
   };
 
   return (
-    <div className="h-[90px] w-full rounded-md bg-white p-5 shadow-md">
+    <div className="shadow-primary-300 h-[90px] w-full rounded-md bg-white/90 p-5 shadow-md backdrop-blur">
       <div className="flex h-full w-full items-end justify-end gap-5">
         <Link href={link}>
           <button className="rounded bg-secondary px-3 py-1 font-semibold text-white hover:bg-primary">

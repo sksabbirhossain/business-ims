@@ -17,7 +17,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const PaymentContainer = ({ customerData, banks }) => {
-  const { carts, setCarts } = useAddToCart();
+  const { carts, setCarts, setQuery, setProducts } = useAddToCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
@@ -122,8 +122,6 @@ const PaymentContainer = ({ customerData, banks }) => {
 
       if (data?.data?._id) {
         setCarts([]);
-        router.push("/admin/add-sales");
-        toast.success("Sales Created Successful!");
         setName("");
         setEmail("");
         setPhone("");
@@ -131,7 +129,12 @@ const PaymentContainer = ({ customerData, banks }) => {
         setCash(0);
         setDue(0);
         setBank(0);
+        setQuery("");
+        setProducts([]);
         setLoading(false);
+        toast.success("Sales Created Successful!");
+        setSelectCustomer("new");
+        router.push("/admin/add-sales");
       } else {
         setLoading(false);
         setErrors(data);
@@ -141,13 +144,14 @@ const PaymentContainer = ({ customerData, banks }) => {
       setErrors({
         errors: {
           common: {
-            msg: err.message,
-            // msg: "Intranal server error!",
+            // msg: err.message,
+            msg: "Intranal server error!",
           },
         },
       });
     }
   };
+
   return (
     <div className="rounded-md bg-white/50 px-2 py-5 shadow backdrop-blur">
       {errors?.errors?.common && (

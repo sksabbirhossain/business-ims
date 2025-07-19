@@ -16,6 +16,8 @@ export default function useAddToCart() {
 }
 
 export function AddToCartProvider({ children }) {
+  const [query, setQuery] = useState("");
+  const [products, setProducts] = useState([]);
   const [carts, setCarts] = useState([]);
 
   //toggle mobile menu handler
@@ -37,6 +39,10 @@ export function AddToCartProvider({ children }) {
   };
 
   const info = {
+    query,
+    setQuery,
+    products,
+    setProducts,
     carts,
     addToCart,
     removeFromCart,

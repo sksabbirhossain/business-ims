@@ -11,12 +11,12 @@
 import { searchStock } from "@/actions/storeAdmin/stock/stockActions";
 import Button from "@/components/common/Button/Button";
 import FormInput from "@/components/common/FormInput/FormInput";
+import useAddToCart from "@/contexts/addToCartContext";
 import React, { useState } from "react";
 import SearchItem from "./SearchItem";
 
 const AddSalesContainer = () => {
-  const [query, setQuery] = useState("");
-  const [products, setProducts] = useState([]);
+  const { query, setQuery, products, setProducts } = useAddToCart();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 

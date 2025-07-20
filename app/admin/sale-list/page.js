@@ -8,6 +8,7 @@
 
 import { getAllSales } from "@/actions/storeAdmin/sales/salesActions";
 import ActionButtons from "@/components/admin/Sales/Sales-list/ActionButtons";
+import SearchFilter from "@/components/admin/Sales/Sales-list/SearchFilter";
 import Container from "@/components/common/Container/Container";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
 import Pagination from "@/components/common/Pagination/Pagination";
@@ -18,13 +19,16 @@ export const metadata = {
 };
 
 const AllSales = async ({ searchParams }) => {
-  const { page, limit } = await searchParams;
-  const sales = await getAllSales(limit, page);
+  const { page, limit, query, filter } = await searchParams;
+  const sales = await getAllSales(limit, page, query, filter);
 
   return (
     <Container>
       {/* add page header */}
       <PageHeader headText="all sales" />
+
+      {/* search sales and sort sales */}
+      <SearchFilter />
 
       {/* all purchase item table */}
       <div className="table-container relative overflow-x-auto rounded-md shadow-sm shadow-primary">
@@ -37,6 +41,9 @@ const AllSales = async ({ searchParams }) => {
 
               <th scope="col" className="px-2 py-4">
                 payment Method
+              </th>
+              <th scope="col" className="px-2 py-4">
+                payment Status
               </th>
               <th scope="col" className="px-2 py-4">
                 Total Price
@@ -64,9 +71,19 @@ const AllSales = async ({ searchParams }) => {
                 </td>
                 <th
                   scope="row"
-                  className="whitespace-nowrap px-2 py-4 font-medium text-gray-900"
+                  className="whitespace-nowrap px-2 py-4 font-medium capitalize text-gray-900"
                 >
                   {sale?.paymentMethod}
+                </th>
+                <th
+                  scope="row"
+                  className="whitespace-nowrap px-2 py-4 font-medium"
+                >
+                  <span
+                    className={`rounded-md px-1 capitalize ${sale?.paymentStatus === "due" ? "bg-red-500 text-white" : "bg-green-500 text-white"}`}
+                  >
+                    {sale?.paymentStatus}
+                  </span>
                 </th>
                 <td className="whitespace-nowrap px-2 py-4 font-medium text-gray-800">
                   {sale?.totalPrice} Tk.

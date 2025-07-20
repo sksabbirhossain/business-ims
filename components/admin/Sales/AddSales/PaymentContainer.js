@@ -45,9 +45,9 @@ const PaymentContainer = ({ customerData, banks }) => {
     setTotalPrice(calculatedTotalPrice);
 
     // Set cash only if it's 0 (meaning user hasn't manually changed it)
-    if (parseFloat(cash) === 0) {
-      setCash(calculatedTotalPrice);
-    }
+    // if (parseFloat(cash) === 0) {
+    //   setCash(calculatedTotalPrice);
+    // }
 
     setDue(
       calculatedTotalPrice - (parseFloat(cash) || 0) - (parseFloat(bank) || 0),
@@ -90,6 +90,16 @@ const PaymentContainer = ({ customerData, banks }) => {
       return;
     }
 
+    // set payment method
+    var paymentMethod = "cash";
+    if (cash <= 0 && bank > 0) {
+      paymentMethod = "bank";
+    } else if (cash > 0 && bank <= 0) {
+      paymentMethod = "cash";
+    } else if (cash > 0 && bank > 0) {
+      paymentMethod = "cash/bank";
+    }
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/admin/sale/sales-pament`,
@@ -104,6 +114,8 @@ const PaymentContainer = ({ customerData, banks }) => {
             bankInfo: selectBank,
             due,
             totalPrice,
+            paymentStatus: due > 0 ? "due" : "completed",
+            paymentMethod,
             cart: [
               ...carts.map((item) => ({
                 product: item._id,

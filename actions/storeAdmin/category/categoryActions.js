@@ -6,7 +6,7 @@ export const getCategories = async (limit, page) => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/category/category-list?page=${page}&limit=${limit}`,
-      { cache: "no-store" },
+      { cache: "no-cache" },
     );
     const data = await res.json();
     return data;

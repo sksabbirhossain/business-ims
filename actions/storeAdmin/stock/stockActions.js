@@ -7,7 +7,7 @@ export const getStocks = async (limit, page) => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/stock/all?page=${page}&limit=${limit}`,
-      { cache: "no-store" },
+      { cache: "no-cache" },
     );
     const data = await res.json();
     return data;

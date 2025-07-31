@@ -5,7 +5,7 @@ export const getFinance = async () => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/financial`,
-      { cache: "no-store" },
+      { cache: "no-cache" },
     );
     const data = await res.json();
     return data;
@@ -19,7 +19,7 @@ export const getPurchaseAndSales = async () => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/dashboard/purchase-sale`,
-      { cache: "no-store" },
+      { cache: "no-cache" },
     );
     const data = await res.json();
     return data;
@@ -33,7 +33,7 @@ export const lastYearBuyAndSales = async () => {
   try {
     const res = await Fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/admin/dashboard/buy-sale`,
-      { cache: "no-store" },
+      { cache: "no-cache" },
     );
     const data = await res.json();
     return data;

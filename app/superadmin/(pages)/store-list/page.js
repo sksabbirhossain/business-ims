@@ -23,7 +23,6 @@ const StoreList = async ({ searchParams }) => {
 
   const stores = await getAllStores(limit, page);
 
-  const data = {};
   return (
     <Container>
       {/* add page header */}
@@ -84,9 +83,9 @@ const StoreList = async ({ searchParams }) => {
                 </td>
                 <td className="px-2 py-1">
                   {store?.isActive ? (
-                    <span className="text-green-600 font-semibold">Active</span>
+                    <span className="font-semibold text-green-600">Active</span>
                   ) : (
-                    <span className="text-red-600 font-semibold">Inactive</span>
+                    <span className="font-semibold text-red-600">Inactive</span>
                   )}
                 </td>
                 <td className="px-2 py-1">

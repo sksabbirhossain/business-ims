@@ -11,6 +11,7 @@ import Button from "@/components/common/Button/Button";
 import Container from "@/components/common/Container/Container";
 import FormInput from "@/components/common/FormInput/FormInput";
 import PageHeader from "@/components/common/PageHeader/PageHeader";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -27,6 +28,8 @@ const CreateStore = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { data: session } = useSession();
 
   //handle submit form
   const handleSubmit = async (e) => {
@@ -60,6 +63,7 @@ const CreateStore = () => {
           }),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.user?.accessToken}`,
           },
         },
       );

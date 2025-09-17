@@ -6,7 +6,7 @@
  *Contact Info: https://www.linkedin.com/in/sk-sabbir-hossain
  */
 
-import defaultImage from "@/public/default.jpg";
+import defaultImage from "@/public/images/default.jpg";
 import { auth } from "@/utils/authOptions";
 import Image from "next/image";
 import LogoutButton from "../../common/Header/LogoutButton";

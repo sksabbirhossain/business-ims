@@ -129,7 +129,7 @@ const StripePaymentForm = ({ planType }) => {
               className="w-full rounded-md border p-2"
             />
             <span className="absolute right-2 top-[55%] text-gray-500">
-              <Image alt="card icon" src="/card.png" height={100} width={100} />
+              <Image alt="card icon" src="/images/card.png" height={100} width={100} />
             </span>
           </div>
 
@@ -149,7 +149,7 @@ const StripePaymentForm = ({ planType }) => {
               />
 
               <span className="absolute right-2 top-[30px] size-6 text-gray-500">
-                <Image alt="cvc icon" src="/cvc.png" height={100} width={100} />
+                <Image alt="cvc icon" src="/images/cvc.png" height={100} width={100} />
               </span>
             </div>
           </div>

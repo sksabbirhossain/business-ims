@@ -6,7 +6,7 @@
  *Contact Info: https://www.linkedin.com/in/sk-sabbir-hossain
  */
 
-import defaultLogo from "@/public/defaultLogo.png";
+import defaultLogo from "@/public/images/defaultLogo.png";
 import { auth } from "@/utils/authOptions";
 import Image from "next/image";
 import Link from "next/link";

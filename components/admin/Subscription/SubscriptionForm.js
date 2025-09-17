@@ -60,7 +60,7 @@ const SubscriptionForm = () => {
             className={`flex cursor-pointer select-none flex-col items-center justify-center rounded-md border p-3 transition hover:shadow-md ${isSelected(paymentMethod, "stripe")}`}
           >
             <Image
-              src="/stripe-logo1.png"
+              src="/images/stripe-logo1.png"
               alt="Stripe"
               className="h-10 object-cover"
               width={100}
@@ -74,7 +74,7 @@ const SubscriptionForm = () => {
             className={`flex cursor-pointer select-none flex-col items-center justify-center rounded-md border p-3 transition hover:shadow-md ${isSelected(paymentMethod, "sslcommerz")}`}
           >
             <Image
-              src="/sslcommerz-logo.png"
+              src="/images/sslcommerz-logo.png"
               alt="SSLCommerz"
               className="h-10 object-cover"
               width={100}

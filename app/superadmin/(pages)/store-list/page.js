@@ -64,7 +64,7 @@ const StoreList = async ({ searchParams }) => {
               >
                 <td className="flex w-full items-center justify-center p-2">
                   <Image
-                    src={store.picture ? store.picture : "/default.jpg"}
+                    src={store.picture ? store.picture : "/images/default.jpg"}
                     alt="product image"
                     width={200}
                     height={200}

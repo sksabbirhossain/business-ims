@@ -63,7 +63,11 @@ const EmployeeList = async ({ searchParams }) => {
               >
                 <td className="flex w-full items-center justify-center px-2 pt-2">
                   <Image
-                    src={employee.picture ? employee.picture : "/default.jpg"}
+                    src={
+                      employee.picture
+                        ? employee.picture
+                        : "/images/default.jpg"
+                    }
                     alt="product image"
                     width={200}
                     height={200}

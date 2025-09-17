@@ -16,7 +16,7 @@ const ReturnSaleItem = ({ sale }) => {
     <tr className="border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
       <td className="flex justify-center px-2 py-1">
         <Image
-          src={"/default.jpg"}
+          src={"/images/default.jpg"}
           alt="product image"
           width={200}
           height={200}

@@ -115,7 +115,7 @@ const ProfileUpdateForm = () => {
             <label htmlFor="picture">
               <div className="group relative h-full w-full overflow-hidden rounded-xl ring-2 ring-primary transition-all duration-300 ease-linear hover:ring-4">
                 <Image
-                  src={picture ? picture : "/default.jpg"}
+                  src={picture ? picture : "/images/default.jpg"}
                   width={100}
                   height={100}
                   alt="profile"

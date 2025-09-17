@@ -87,7 +87,7 @@ const SupplierItems = ({ suppliers }) => {
                 >
                   <td className="flex items-center justify-center px-2 py-1">
                     <Image
-                      src={supplier?.picture || "/default.jpg"}
+                      src={supplier?.picture || "/images/default.jpg"}
                       alt="product image"
                       width={200}
                       height={200}

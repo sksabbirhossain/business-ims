@@ -23,7 +23,7 @@ const CartItem = ({ item }) => {
     <div className="flex h-full w-full flex-wrap items-center justify-between gap-3 border-b pb-2">
       <div className="pt-[1px]">
         <Image
-          src="/default.jpg"
+          src="/images/default.jpg"
           alt="product"
           width={50}
           height={50}

@@ -1,0 +1,27 @@
+{
+  "name": "Business-ims",
+  "short_name": "Business-ims",
+  "theme_color": "#15b392",
+  "background_color": "#15b392",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/pwa-icons/business-ims-logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/pwa-icons/business-ims-logo-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/pwa-icons/business-ims-logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

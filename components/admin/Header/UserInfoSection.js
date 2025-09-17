@@ -8,7 +8,7 @@
 "use client";
 
 import LogoutButton from "@/components/common/Header/LogoutButton";
-import defaultImage from "@/public/default.jpg";
+import defaultImage from "@/public/images/default.jpg";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 

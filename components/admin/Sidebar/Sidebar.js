@@ -37,7 +37,7 @@ const Sidebar = () => {
         />
       )}
       <aside
-        className={`fixed left-0 top-[45px] z-40 h-screen w-52 -translate-x-full bg-[url('/sidebar-bg.jpg')] pb-[45px] transition-transform sm:translate-x-0 ${menuOpen ? "translate-x-0" : ""}`}
+        className={`fixed left-0 top-[45px] z-40 h-screen w-52 -translate-x-full bg-[url('/images/sidebar-bg.jpg')] pb-[45px] transition-transform sm:translate-x-0 ${menuOpen ? "translate-x-0" : ""}`}
       >
         <div className="sidebar-scrollbar-customize h-full overflow-y-auto bg-white/80 py-2 shadow-sm shadow-gray-400 backdrop-blur">
           <ul className="select-none space-y-1 text-[15px] font-medium">

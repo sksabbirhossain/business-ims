@@ -62,7 +62,11 @@ const AllPurchase = async ({ searchParams }) => {
               >
                 <td className="flex w-full items-center justify-center px-2 pt-2">
                   <Image
-                    src={purchase.picture ? purchase.picture : "/default.jpg"}
+                    src={
+                      purchase.picture
+                        ? purchase.picture
+                        : "/images/default.jpg"
+                    }
                     alt="product image"
                     width={200}
                     height={200}

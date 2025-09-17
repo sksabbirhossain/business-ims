@@ -111,7 +111,7 @@ const Dashboard = async () => {
                         className="h-8 w-8 rounded-full ring-1"
                         width={100}
                         height={100}
-                        src="/default.jpg"
+                        src="/images/default.jpg"
                         alt="Jese image"
                       />
                     </td>
@@ -192,7 +192,7 @@ const Dashboard = async () => {
                         className="h-8 w-8 rounded-full ring-1"
                         width={100}
                         height={100}
-                        src="/default.jpg"
+                        src="/images/default.jpg"
                         alt="Jese image"
                       />
                     </td>

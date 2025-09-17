@@ -61,7 +61,7 @@ const SearchItem = ({ item, customer, trxid }) => {
     <tr className="border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
       <td className="flex w-full items-center justify-center px-1 py-2">
         <Image
-          src={"/default.jpg"}
+          src={"/images/default.jpg"}
           alt="product image"
           width={200}
           height={200}

@@ -12,10 +12,10 @@ import ActionButtons from "./ActionButtons";
 
 const CustomerItem = ({ customer }) => {
   return (
-    <tr className="border-b text-center text-nowrap odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
+    <tr className="text-nowrap border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
       <td className="flex h-full w-full justify-center px-2 py-2">
         <Image
-          src={customer?.picture ? customer.picture : "/default.jpg"}
+          src={customer?.picture ? customer.picture : "/images/default.jpg"}
           alt={customer?.name}
           width={200}
           height={200}

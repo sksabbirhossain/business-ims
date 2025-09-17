@@ -14,7 +14,7 @@ const CategoryItem = ({ category }) => {
     <tr className="border-b text-center odd:bg-primary/10 even:bg-secondary/5 hover:bg-secondary/10">
       <td className="flex items-center justify-center px-2 py-1">
         <Image
-          src={category?.picture ? category.picture : "/default.jpg"}
+          src={category?.picture ? category.picture : "/images/default.jpg"}
           alt={category?.name}
           width={200}
           height={200}
